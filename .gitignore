@@ -1,0 +1,9 @@
+.idea/*
+!.idea/atreus.iml
+!.idea/.gitignore
+!.idea/modules.xml
+!.idea/vcs.xml
+
+# Added by cargo
+
+/target
