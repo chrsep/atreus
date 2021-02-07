@@ -1,3 +1,3 @@
 # atreus
 
-infosec experiment.
+experimental stuffs.
