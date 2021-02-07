@@ -1,0 +1,15 @@
+version: "3"
+services:
+  db:
+    image: obserfy/postgres-dev:latest
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: defaultdb,defaultdb_test
+      POSTGRES_PASSWORD: postgres
+    command: ["postgres", "-c", "log_statement=all"]
+    ports:
+      - "5432:5432"
+    volumes:
+      - atreus-pg:/var/lib/postgresql/data
+
+volumes:
+  atreus-pg:
