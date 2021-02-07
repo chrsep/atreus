@@ -15,11 +15,9 @@
     "react-dom": "preact/compat"
   },
   "dependencies": {
-    "npm-run-all": "^4.1.5",
     "preact": "^10.5.12",
     "preact-iso": "^0.3.0",
     "rollup-plugin-html-minifier": "^1.1.0",
-    "rollup-plugin-postcss": "^4.0.0",
     "tailwindcss-cli": "^0.1.2"
   },
   "devDependencies": {
