@@ -1,4 +1,5 @@
-import {createProxyMiddleware} from "http-proxy-middleware"
+import lsPlugin from "./ls-plugin.mjs"
+import { createProxyMiddleware } from "http-proxy-middleware"
 import htmlMinifier from "rollup-plugin-html-minifier"
 
 /** @type (config: import('wmr').Options) => void */
@@ -19,4 +20,5 @@ export default async function (config) {
   })
 
   config.plugins.push(htmlMinifier())
+  config.plugins.push(lsPlugin(config))
 }

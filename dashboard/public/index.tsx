@@ -1,22 +1,28 @@
 import hydrate from "preact-iso/hydrate"
 import { LocationProvider, Router } from "preact-iso/router"
-import { ErrorBoundary } from "preact-iso/lazy"
-import Home from "./pages/home"
-import NotFound from "./pages/_404"
-import Header from "./header"
+import lazy from "preact-iso/lazy"
+// @ts-ignore
+import files from "ls:./pages"
+import { Layout } from "./components/layout"
+import { NotFound } from "./pages/_404"
+
+// Generate a Route component and URL for each "page" module:
+const routes = files.map((name) => ({
+  Route: lazy(() => import(`./pages/${name}`)),
+  url: "/" + name.replace(/(index)?\.\w+$/, ""), // strip file extension and "index"
+}))
 
 export function App() {
   return (
     <LocationProvider>
-      <div class="h-full">
-        <Header />
-        <ErrorBoundary>
-          <Router>
-            <Home path="/" />
-            <NotFound default />
-          </Router>
-        </ErrorBoundary>
-      </div>
+      <Layout>
+        <Router>
+          {routes.map(({ Route, url }) => (
+            <Route path={url} />
+          ))}
+          <NotFound default />
+        </Router>
+      </Layout>
     </LocationProvider>
   )
 }
