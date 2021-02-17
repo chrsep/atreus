@@ -1,26 +1,8 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "jsx": "preserve",
-    "jsxFactory": "preact.h",
-    "jsxFragmentFactory": "preact.Fragment",
-    "allowJs": true,
-    "checkJs": true,
-    // "strict": true,
-    "noEmit": true,
-    "moduleResolution": "node",
-    "target": "ESNext",
-    "module": "esnext",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "downlevelIteration": true,
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ]
-  },
-  "typeAcquisition": {
-    "enable": true
-  }
-}
+		"extends": "@tsconfig/svelte/tsconfig.json",
+		"compilerOptions": {
+			"lib": ["DOM", "ES2017", "WebWorker"]
+		},
+		"include": ["src/**/*", "src/node_modules/**/*"],
+		"exclude": ["node_modules/*", "__sapper__/*", "static/*"]
+	}

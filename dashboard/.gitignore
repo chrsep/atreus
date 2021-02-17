@@ -1,4 +1,6 @@
+.DS_Store
+/node_modules/
+/src/node_modules/@sapper/
+yarn-error.log
+/__sapper__/
 dist
-.cache
-node_modules
-public/tailwind.css
