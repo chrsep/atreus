@@ -19,6 +19,6 @@ export default async function (config) {
     else next()
   })
 
-  config.plugins.push(htmlMinifier())
   config.plugins.push(lsPlugin(config))
+  config.plugins.push(htmlMinifier())
 }
