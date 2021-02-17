@@ -2,7 +2,8 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn run dev:tailwind && wmr",
-    "build": "yarn run build:tailwind && wmr build --prerender",
+    "build": "yarn run build:tailwind && wmr build",
+    "build:prerender": "yarn run build:tailwind && wmr build --prerender",
     "serve": "wmr serve",
     "dev:tailwind": "tailwind build public/_tailwind.css -o ./public/tailwind.css",
     "build:tailwind": "NODE_ENV=production tailwind build public/_tailwind.css -o ./public/tailwind.css"
