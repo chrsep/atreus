@@ -1,6 +1,7 @@
 #[macro_use]
 extern crate diesel;
 extern crate dotenv;
+extern crate r2d2;
 
 use crate::api::setup_api;
 use actix_files as fs;
@@ -16,14 +17,19 @@ mod schema;
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
 
-    let server = HttpServer::new(|| {
+    let db_pool = db::connect();
+
+    let server = HttpServer::new(move || {
         let api = setup_api();
 
         let dashboard = fs::Files::new("/", "dist")
             .show_files_listing()
             .index_file("index.html");
 
-        App::new().service(api).service(dashboard)
+        App::new()
+            .data(db_pool.clone())
+            .service(api)
+            .service(dashboard)
     });
 
     server.bind("0.0.0.0:8080")?.run().await
