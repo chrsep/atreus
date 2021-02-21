@@ -6,7 +6,7 @@ module.exports = {
     sveltePreprocess.typescript(),
     require("svelte-windicss-preprocess").preprocess({
       // uncomment this, if you need a config file
-      // config: 'tailwind.config.js',
+      config: 'tailwind.config.cjs',
       compile: false,
       prefix: "windi-",
       globalPreflight: true,

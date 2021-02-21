@@ -9,7 +9,6 @@
 // 		$components: './src/components'
 // 	}
 // };
-
 const path = require("path")
 const pkg = require(path.join(process.cwd(), "package.json"))
 const { createProxyMiddleware } = require("http-proxy-middleware")
@@ -65,10 +64,7 @@ module.exports = {
     {
       src: "/api/.*",
       dest: (req, res) => {
-        // remove /api prefix (optional)
-        // req.url = req.url.replace(/^\/api/, '');
-        proxy(req, res)
-
+        proxy(req, res, undefined)
       }
     }
   ]
