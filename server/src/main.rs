@@ -7,9 +7,10 @@ use crate::api::setup_api;
 use actix_files as fs;
 use actix_web::middleware::errhandlers::{ErrorHandlerResponse, ErrorHandlers};
 use actix_web::middleware::Logger;
-use actix_web::{dev, http, App, HttpServer, Result};
+use actix_web::{dev, http, App, HttpServer, Result, middleware};
 use dotenv::dotenv;
 use env_logger::Env;
+use actix_web::http::ContentEncoding;
 
 mod api;
 mod db;
@@ -43,6 +44,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(ErrorHandlers::new().handler(http::StatusCode::INTERNAL_SERVER_ERROR, render_500))
             .wrap(Logger::default())
             .wrap(Logger::new("%a %{User-Agent}i"))
+            .wrap(middleware::Compress::new(ContentEncoding::Br))
             .service(api)
             .service(dashboard)
     });
