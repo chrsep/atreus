@@ -22,7 +22,6 @@ const proxy = createProxyMiddleware({
   // }
 })
 
-
 // Consult https://www.snowpack.dev to learn about these options
 module.exports = {
   packageOptions: {
@@ -31,8 +30,8 @@ module.exports = {
     // ignore `import fs from 'fs'` etc
     external: [
       ...require("module").builtinModules,
-      ...Object.keys(pkg.dependencies || {})
-    ]
+      ...Object.keys(pkg.dependencies || {}),
+    ],
   },
   plugins: [
     [
@@ -40,32 +39,34 @@ module.exports = {
       {
         configFilePath: "svelte.config.cjs", // to fix issue of loading preprocessors.
         compilerOptions: {
-          hydratable: true
-        }
-      }
-    ]
+          hydratable: true,
+        },
+      },
+    ],
   ],
   devOptions: {
     open: "none",
-    output: "stream"
+    output: "stream",
   },
   buildOptions: {
-    sourcemap: true
+    sourcemap: true,
   },
   mount: {
     ".svelte/assets": `/${process.env.SVELTE_KIT_APP_DIR}/assets`,
-    "src/components": "/_components"
+    "src/components": "/_components",
+    "src/api": "/_api",
   },
   alias: {
     $app: "./.svelte/assets/runtime/app",
-    $components: "./src/components"
+    $components: "./src/components",
+    $api: "./src/api",
   },
   routes: [
     {
       src: "/api/.*",
       dest: (req, res) => {
         proxy(req, res, undefined)
-      }
-    }
-  ]
+      },
+    },
+  ],
 }

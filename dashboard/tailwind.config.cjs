@@ -3,10 +3,10 @@ module.exports = {
   important: true,
   darkMode: "class", // or 'media' or 'class'
   theme: {
-    extend: {}
+    extend: {},
   },
   variants: {
-    extend: {}
+    extend: {},
   },
-  plugins: []
+  plugins: [],
 }
