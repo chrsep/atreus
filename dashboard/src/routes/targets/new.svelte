@@ -2,9 +2,11 @@
   import Input from "../../components/Input.svelte"
   import Button from "../../components/Button.svelte"
   import Card from "../../components/Card.svelte"
+  import { postTargets } from "../../api/targets"
 
   let scopes: string[] = []
   let newScope = ""
+  let name = ""
 
   function handleAddScope() {
     scopes = [...scopes, newScope]
@@ -19,10 +21,15 @@
   function handleEnter(e: KeyboardEvent) {
     if (e.code === "Enter") handleAddScope()
   }
+
+  async function handleSubmit() {
+    const result = await postTargets({ name, scopes })
+    console.log(result)
+  }
 </script>
 
 <div class="p-3 flex flex-col">
-  <Input label="Name" class="my-3 w-full" />
+  <Input label="Name" class="my-3 w-full" bind:value={name} />
 
 
   <Card class="px-3 mb-3">
@@ -37,7 +44,7 @@
     {/each}
 
     <div class="flex items-end my-3 pt-3">
-      <Input label="Pattern" class="w-full" bind:value={newScope} on:keyup={handleEnter}/>
+      <Input label="Pattern" class="w-full" bind:value={newScope} on:keyup={handleEnter} />
 
       <Button class="ml-3 flex-shrink-0" on:click={handleAddScope}>
         Add pattern
@@ -46,7 +53,7 @@
   </Card>
 
 
-  <Button class="ml-auto mt-6">
+  <Button class="ml-auto mt-6" on:click={handleSubmit}>
     Save
   </Button>
 </div>
