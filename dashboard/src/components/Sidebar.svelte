@@ -1,8 +1,8 @@
 <script>
   import Button from "./Button.svelte"
-  import { getTargets } from "../api/targets"
+  // import { getTargets } from "../api/targets"
 
-  let targets = getTargets()
+  // let targets = getTargets()
 </script>
 
 <div class="sticky top-0 m-3 sidebar">
@@ -10,16 +10,18 @@
     TARGETS
   </h2>
 
-  {#await targets}
-  {:then data}
-    {data}
-  {:catch error}
-    {error}
-  {/await}
+  <!--{#await targets}-->
+  <!--{:then data}-->
+  <!--  {data}-->
+  <!--{:catch error}-->
+  <!--  {error}-->
+  <!--{/await}-->
 
-  <Button class="w-full">
-    New Target
-  </Button>
+  <a href="/targets/new">
+    <Button class="w-full">
+      New Target
+    </Button>
+  </a>
 </div>
 
 <style>

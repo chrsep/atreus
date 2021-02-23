@@ -1,7 +1,6 @@
 <script>
   import Sidebar from "$components/Sidebar.svelte"
   import Topbar from "$components/Topbar.svelte"
-  import { getTargets } from "../api/targets"
 
   let darkMode = true
 
@@ -18,7 +17,7 @@
     <div class="flex">
       <Sidebar />
 
-      <main>
+      <main class="w-full">
         <slot />
       </main>
     </div>
