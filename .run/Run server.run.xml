@@ -7,7 +7,10 @@
     <option name="allFeatures" value="false" />
     <option name="emulateTerminal" value="false" />
     <option name="backtrace" value="SHORT" />
-    <envs />
+    <envs>
+      <env name="RUST_BACKTRACE" value="1" />
+      <env name="RUST_LOG" value="actix_web=debug" />
+    </envs>
     <option name="isRedirectInput" value="false" />
     <option name="redirectInputPath" value="" />
     <method v="2">

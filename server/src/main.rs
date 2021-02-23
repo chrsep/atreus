@@ -5,12 +5,12 @@ extern crate r2d2;
 
 use crate::api::setup_api;
 use actix_files as fs;
+use actix_web::http::ContentEncoding;
 use actix_web::middleware::errhandlers::{ErrorHandlerResponse, ErrorHandlers};
 use actix_web::middleware::Logger;
-use actix_web::{dev, http, App, HttpServer, Result, middleware};
+use actix_web::{dev, http, middleware, web, App, HttpServer, Result};
 use dotenv::dotenv;
 use env_logger::Env;
-use actix_web::http::ContentEncoding;
 
 mod api;
 mod db;
@@ -35,9 +35,11 @@ async fn main() -> std::io::Result<()> {
     let server = HttpServer::new(move || {
         let api = setup_api();
 
-        let dashboard = fs::Files::new("/", "dist")
-            .show_files_listing()
-            .index_file("index.html");
+        let dashboard = web::scope("/").service(
+            fs::Files::new("/", "dist")
+                .show_files_listing()
+                .index_file("index.html"),
+        );
 
         App::new()
             .data(db_pool.clone())
@@ -47,7 +49,8 @@ async fn main() -> std::io::Result<()> {
             .wrap(middleware::Compress::new(ContentEncoding::Br))
             .service(api)
             .service(dashboard)
-    });
+    })
+    .keep_alive(75);
 
     server.bind("0.0.0.0:8080")?.run().await
 }

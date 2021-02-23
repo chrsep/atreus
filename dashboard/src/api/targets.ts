@@ -22,7 +22,10 @@ export const postTargets = async (payload: PostPayload): Promise<string> => {
   try {
     const result = await fetch("/api/targets", {
       method: "post",
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
   } catch (e) {
     console.log("failed request")
