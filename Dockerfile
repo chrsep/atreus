@@ -4,7 +4,7 @@ COPY ./dashboard /usr/src
 RUN yarn install
 RUN yarn build
 
-FROM rust:1.49 as server
+FROM rust:1.50 as server
 WORKDIR /usr/src
 COPY ./server /usr/src
 RUN cargo build --release
