@@ -7,18 +7,18 @@ dependencies:
   redaxios: 0.4.1
   svelte-windicss-preprocess: 2.1.3
 devDependencies:
-  '@snowpack/plugin-typescript': 1.2.1_typescript@4.1.5
+  '@snowpack/plugin-typescript': 1.2.1_typescript@4.2.2
   '@sveltejs/adapter-static': 1.0.0-next.2
   '@sveltejs/kit': 1.0.0-next.35_svelte@3.32.3
-  '@sveltejs/snowpack-config': 1.0.0-next.3_ac7224b11abbfefda0abe0a3616090b3
+  '@sveltejs/snowpack-config': 1.0.0-next.3_bdfe450c6abbf602a45934a06d42f8a2
   autoprefixer: 10.2.4_postcss@8.2.6
   prettier: 2.2.1
   prettier-plugin-svelte: 2.1.6_prettier@2.2.1+svelte@3.32.3
   svelte: 3.32.3
-  svelte-preprocess: 4.6.9_ac7224b11abbfefda0abe0a3616090b3
+  svelte-preprocess: 4.6.9_bdfe450c6abbf602a45934a06d42f8a2
   tailwindcss: 2.0.3_759587f5361760629983e9fe457a3aed
   tslib: 2.1.0
-  typescript: 4.1.5
+  typescript: 4.2.2
 lockfileVersion: 5.2
 packages:
   /@fullhuman/postcss-purgecss/3.1.3:
@@ -38,12 +38,12 @@ packages:
       rollup: ^1.20.0||^2.0.0
     resolution:
       integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==
-  /@snowpack/plugin-svelte/3.5.2_ac7224b11abbfefda0abe0a3616090b3:
+  /@snowpack/plugin-svelte/3.5.2_bdfe450c6abbf602a45934a06d42f8a2:
     dependencies:
       rollup-plugin-svelte: 7.1.0_svelte@3.32.3
       svelte: 3.32.3
       svelte-hmr: 0.12.6_svelte@3.32.3
-      svelte-preprocess: 4.6.9_ac7224b11abbfefda0abe0a3616090b3
+      svelte-preprocess: 4.6.9_bdfe450c6abbf602a45934a06d42f8a2
     dev: true
     peerDependencies:
       postcss: '*'
@@ -51,11 +51,11 @@ packages:
       typescript: '*'
     resolution:
       integrity: sha512-i7OhkIRNt1uJ/y3qpowlU7icjtSgFPIl/GjMmBxhtwoIqHAnowFLh1Ur5G6S36GCFo65ymClnYfEIM/2x1+wPQ==
-  /@snowpack/plugin-typescript/1.2.1_typescript@4.1.5:
+  /@snowpack/plugin-typescript/1.2.1_typescript@4.2.2:
     dependencies:
       execa: 5.0.0
       npm-run-path: 4.0.1
-      typescript: 4.1.5
+      typescript: 4.2.2
     dev: true
     peerDependencies:
       typescript: '*'
@@ -78,9 +78,9 @@ packages:
       vite: ^2.0.4
     resolution:
       integrity: sha512-axcALtHJSlNMVgjPSP5PQG62o712l/Nu58MtsTEmw+/QIjIoIdKGaKadiwxJqJxe8LE7iIU44sx5KVLzfepaqA==
-  /@sveltejs/snowpack-config/1.0.0-next.3_ac7224b11abbfefda0abe0a3616090b3:
+  /@sveltejs/snowpack-config/1.0.0-next.3_bdfe450c6abbf602a45934a06d42f8a2:
     dependencies:
-      '@snowpack/plugin-svelte': 3.5.2_ac7224b11abbfefda0abe0a3616090b3
+      '@snowpack/plugin-svelte': 3.5.2_bdfe450c6abbf602a45934a06d42f8a2
     dev: true
     peerDependencies:
       postcss: '*'
@@ -1007,7 +1007,7 @@ packages:
       svelte: '>=3.19.0'
     resolution:
       integrity: sha512-q08BjoUSbwXpKo9ij6aym93jBrt7K8eutLwix5Y9cuSFLS5djxumOoUVsSzDkdKssLlg5X//Kg/0MWHHBeQRTg==
-  /svelte-preprocess/4.6.9_ac7224b11abbfefda0abe0a3616090b3:
+  /svelte-preprocess/4.6.9_bdfe450c6abbf602a45934a06d42f8a2:
     dependencies:
       '@types/pug': 2.0.4
       '@types/sass': 1.16.0
@@ -1015,7 +1015,7 @@ packages:
       postcss: 8.2.6
       strip-indent: 3.0.0
       svelte: 3.32.3
-      typescript: 4.1.5
+      typescript: 4.2.2
     dev: true
     engines:
       node: '>= 9.11.2'
@@ -1116,13 +1116,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
-  /typescript/4.1.5:
+  /typescript/4.2.2:
     dev: true
     engines:
       node: '>=4.2.0'
     hasBin: true
     resolution:
-      integrity: sha512-6OSu9PTIzmn9TCDiovULTnET6BgXtDYL4Gg4szY+cGsc3JP1dQL8qvE8kShTRx1NIw4Q9IBHlwODjkjWEtMUyA==
+      integrity: sha512-tbb+NVrLfnsJy3M59lsDgrzWIflR4d4TIUjz+heUnHZwdF7YsrMTKoRERiIvI2lvBG95dfpLxB21WZhys1bgaQ==
   /uniq/1.0.1:
     dev: true
     resolution:
@@ -1182,4 +1182,4 @@ specifiers:
   svelte-windicss-preprocess: 2.1.3
   tailwindcss: 2.0.3
   tslib: 2.1.0
-  typescript: 4.1.5
+  typescript: 4.2.2
