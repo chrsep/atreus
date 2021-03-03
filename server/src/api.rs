@@ -23,7 +23,7 @@ async fn handle_get_targets() -> impl Responder {
 async fn handle_post_targets(pool: web::Data<db::Pool>, input: Json<Target>) -> impl Responder {
     let conn = pool.get().expect("can't get db connection from pool");
 
-    let target = web::block(move || db::insert_new_target(&conn, input.name.clone()))
+    web::block(move || db::insert_new_target(&conn, input.name.clone()))
         .await
         .expect("failed to save target");
 

@@ -1,9 +1,9 @@
-use diesel::sql_types::{Timestamp, Uuid};
-use crate::schema::targets;
+use super::schema::targets;
+use uuid::Uuid;
 
-#[derive(Queryable)]
+#[derive(Clone, Queryable, Insertable)]
 pub struct Target {
     pub id: Uuid,
     pub name: String,
-    pub created_at: Timestamp,
+    pub created_at: chrono::NaiveDateTime,
 }

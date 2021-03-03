@@ -4,8 +4,6 @@ extern crate diesel;
 extern crate diesel_migrations;
 extern crate dotenv;
 extern crate r2d2;
-#[macro_use]
-extern crate log;
 
 use crate::api::setup_api;
 use actix_files as fs;
