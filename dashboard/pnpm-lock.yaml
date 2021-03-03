@@ -15,7 +15,7 @@ devDependencies:
   '@rollup/plugin-commonjs': 17.1.0_rollup@2.40.0
   '@rollup/plugin-node-resolve': 8.4.0_rollup@2.40.0
   '@rollup/plugin-replace': 2.4.1_rollup@2.40.0
-  '@rollup/plugin-typescript': 6.1.0_611c8b2ed1e492df47cb58b5c35b4947
+  '@rollup/plugin-typescript': 8.2.0_611c8b2ed1e492df47cb58b5c35b4947
   '@rollup/plugin-url': 5.0.1_rollup@2.40.0
   '@tsconfig/svelte': 1.0.10
   '@types/compression': 1.7.0
@@ -1038,7 +1038,7 @@ packages:
       rollup: ^1.20.0 || ^2.0.0
     resolution:
       integrity: sha512-XwC1oK5rrtRJ0tn1ioLHS6OV5JTluJF7QE1J/q1hN3bquwjnVxjtMyY9iCnoyH9DQbf92CxajB3o98wZbP3oAQ==
-  /@rollup/plugin-typescript/6.1.0_611c8b2ed1e492df47cb58b5c35b4947:
+  /@rollup/plugin-typescript/8.2.0_611c8b2ed1e492df47cb58b5c35b4947:
     dependencies:
       '@rollup/pluginutils': 3.1.0_rollup@2.40.0
       resolve: 1.20.0
@@ -1053,7 +1053,7 @@ packages:
       tslib: '*'
       typescript: '>=3.4.0'
     resolution:
-      integrity: sha512-hJxaiE6WyNOsK+fZpbFh9CUijZYqPQuAOWO5khaGTUkM8DYNNyA2TDlgamecE+qLOG1G1+CwbWMAx3rbqpp6xQ==
+      integrity: sha512-5DyVsb7L+ehLfNPu/nat8Gq3uJGzku4bMFPt90XahtgiSBf7z9YKPLqFUJKMT41W/mJ98SVGDPOhzikGrr/Lhg==
   /@rollup/plugin-url/5.0.1_rollup@2.40.0:
     dependencies:
       '@rollup/pluginutils': 3.1.0_rollup@2.40.0
@@ -2401,7 +2401,7 @@ specifiers:
   '@rollup/plugin-commonjs': 17.1.0
   '@rollup/plugin-node-resolve': 8.4.0
   '@rollup/plugin-replace': 2.4.1
-  '@rollup/plugin-typescript': 6.1.0
+  '@rollup/plugin-typescript': 8.2.0
   '@rollup/plugin-url': 5.0.1
   '@tsconfig/svelte': 1.0.10
   '@types/compression': 1.7.0
