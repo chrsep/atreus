@@ -9,7 +9,7 @@ dependencies:
 devDependencies:
   '@snowpack/plugin-typescript': 1.2.1_typescript@4.2.2
   '@sveltejs/adapter-static': 1.0.0-next.2
-  '@sveltejs/kit': 1.0.0-next.35_svelte@3.32.3
+  '@sveltejs/kit': 1.0.0-next.37_svelte@3.32.3
   '@sveltejs/snowpack-config': 1.0.0-next.3_bdfe450c6abbf602a45934a06d42f8a2
   autoprefixer: 10.2.4_postcss@8.2.6
   prettier: 2.2.1
@@ -65,9 +65,9 @@ packages:
     dev: true
     resolution:
       integrity: sha512-05MdCVpI8vJgEk4f0uNg5Xd3pjd/DZ83jl8UQ6fOmE9Fwou3RNspJJuueWeDUHmbY7tlqxI2ge3yMMqO5/KdUg==
-  /@sveltejs/kit/1.0.0-next.35_svelte@3.32.3:
+  /@sveltejs/kit/1.0.0-next.37_svelte@3.32.3:
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 1.0.0-next.1_svelte@3.32.3
+      '@sveltejs/vite-plugin-svelte': 1.0.0-next.2_svelte@3.32.3
       cheap-watch: 1.0.3
       sade: 1.7.4
       svelte: 3.32.3
@@ -77,7 +77,7 @@ packages:
       svelte: ^3.32.1
       vite: ^2.0.4
     resolution:
-      integrity: sha512-axcALtHJSlNMVgjPSP5PQG62o712l/Nu58MtsTEmw+/QIjIoIdKGaKadiwxJqJxe8LE7iIU44sx5KVLzfepaqA==
+      integrity: sha512-pf4OxoewUaLsh8QzByCEqRwkuuEosnYg6z6C6j9mWFUfEfa460JUegGny4GGTVslZ601PjRnKkPr35KdlxDpuQ==
   /@sveltejs/snowpack-config/1.0.0-next.3_bdfe450c6abbf602a45934a06d42f8a2:
     dependencies:
       '@snowpack/plugin-svelte': 3.5.2_bdfe450c6abbf602a45934a06d42f8a2
@@ -88,7 +88,7 @@ packages:
       typescript: '*'
     resolution:
       integrity: sha512-ML2rZTkZG1iV0qKk1H2rwt1Th2ifhD2wxQs4DTYOb61xQY57Y41tKfo0Lzf4IYjRKd4CgbvLsXwSw4NkftDl3A==
-  /@sveltejs/vite-plugin-svelte/1.0.0-next.1_svelte@3.32.3:
+  /@sveltejs/vite-plugin-svelte/1.0.0-next.2_svelte@3.32.3:
     dependencies:
       '@rollup/pluginutils': 4.1.0
       chalk: 4.1.0
@@ -103,7 +103,7 @@ packages:
       svelte: ^3.34.0
       vite: ^2
     resolution:
-      integrity: sha512-4pPzIZkGW7JzB1z3zOmnp3NfW1/CFd3rUqChyySVT1xI0Rm26r3Pf74dlddw+QDerPM+OCfPq730puKKbUu+UQ==
+      integrity: sha512-2MFgwQybGhhCqgByloC2qTTwwnomnsfGQhapETyfB4w4s5Ylz0bUqgfMvq9deRMTD9zwtL/DWfrK7d+0DNYILg==
   /@types/body-parser/1.19.0:
     dependencies:
       '@types/connect': 3.4.34
@@ -1161,7 +1161,7 @@ packages:
 specifiers:
   '@snowpack/plugin-typescript': 1.2.1
   '@sveltejs/adapter-static': 1.0.0-next.2
-  '@sveltejs/kit': 1.0.0-next.35
+  '@sveltejs/kit': 1.0.0-next.37
   '@sveltejs/snowpack-config': 1.0.0-next.3
   '@types/express': 4.17.11
   '@types/http-proxy': 1.17.5
