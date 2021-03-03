@@ -13,7 +13,7 @@ devDependencies:
   '@babel/runtime': 7.13.9
   '@rollup/plugin-babel': 5.3.0_@babel+core@7.13.8+rollup@2.40.0
   '@rollup/plugin-commonjs': 17.1.0_rollup@2.40.0
-  '@rollup/plugin-node-resolve': 8.4.0_rollup@2.40.0
+  '@rollup/plugin-node-resolve': 11.2.0_rollup@2.40.0
   '@rollup/plugin-replace': 2.4.1_rollup@2.40.0
   '@rollup/plugin-typescript': 6.1.0_611c8b2ed1e492df47cb58b5c35b4947
   '@rollup/plugin-url': 5.0.1_rollup@2.40.0
@@ -1011,23 +1011,22 @@ packages:
       rollup: ^2.30.0
     resolution:
       integrity: sha512-PoMdXCw0ZyvjpCMT5aV4nkL0QywxP29sODQsSGeDpr/oI49Qq9tRtAsb/LbYbDzFlOydVEqHmmZWFtXJEAX9ew==
-  /@rollup/plugin-node-resolve/8.4.0_rollup@2.40.0:
+  /@rollup/plugin-node-resolve/11.2.0_rollup@2.40.0:
     dependencies:
       '@rollup/pluginutils': 3.1.0_rollup@2.40.0
       '@types/resolve': 1.17.1
       builtin-modules: 3.2.0
-      deep-freeze: 0.0.1
       deepmerge: 4.2.2
       is-module: 1.0.0
       resolve: 1.20.0
       rollup: 2.40.0
     dev: true
     engines:
-      node: '>= 8.0.0'
+      node: '>= 10.0.0'
     peerDependencies:
       rollup: ^1.20.0||^2.0.0
     resolution:
-      integrity: sha512-LFqKdRLn0ShtQyf6SBYO69bGE1upV6wUhBX0vFOUnLAyzx5cwp8svA0eHUnu8+YU57XOkrMtfG63QOpQx25pHQ==
+      integrity: sha512-qHjNIKYt5pCcn+5RUBQxK8krhRvf1HnyVgUCcFFcweDS7fhkOLZeYh0mhHK6Ery8/bb9tvN/ubPzmfF0qjDCTA==
   /@rollup/plugin-replace/2.4.1_rollup@2.40.0:
     dependencies:
       '@rollup/pluginutils': 3.1.0_rollup@2.40.0
@@ -1467,10 +1466,6 @@ packages:
         optional: true
     resolution:
       integrity: sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
-  /deep-freeze/0.0.1:
-    dev: true
-    resolution:
-      integrity: sha1-OgsABd4YZygZ39OM0x+RF5yJPoQ=
   /deepmerge/4.2.2:
     dev: true
     engines:
@@ -2399,7 +2394,7 @@ specifiers:
   '@babel/runtime': 7.13.9
   '@rollup/plugin-babel': 5.3.0
   '@rollup/plugin-commonjs': 17.1.0
-  '@rollup/plugin-node-resolve': 8.4.0
+  '@rollup/plugin-node-resolve': 11.2.0
   '@rollup/plugin-replace': 2.4.1
   '@rollup/plugin-typescript': 6.1.0
   '@rollup/plugin-url': 5.0.1
