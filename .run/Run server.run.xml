@@ -1,14 +1,14 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Run server" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+  <configuration default="false" name="Watch server" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
     <option name="command" value="watch -x &quot;run --bin server&quot;" />
     <option name="workingDirectory" value="file://$PROJECT_DIR$/server" />
     <option name="channel" value="DEFAULT" />
     <option name="requiredFeatures" value="true" />
     <option name="allFeatures" value="false" />
-    <option name="emulateTerminal" value="false" />
+    <option name="emulateTerminal" value="true" />
     <option name="backtrace" value="SHORT" />
     <envs>
-      <env name="RUST_BACKTRACE" value="1" />
+      <env name="RUST_BACKTRACE" value="full" />
       <env name="RUST_LOG" value="actix_web=debug" />
     </envs>
     <option name="isRedirectInput" value="false" />
