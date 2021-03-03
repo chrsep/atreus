@@ -9,7 +9,7 @@
 
 <label class={clazz}>
   {label}
-  <input class="rounded p-2 w-full text-white dark:text-black border border-gray-400" bind:value on:keyup />
+  <input class="rounded p-2 w-full text-black border border-gray-400" bind:value on:keyup />
 </label>
 
 <style>

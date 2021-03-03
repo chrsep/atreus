@@ -24,8 +24,8 @@ export const postTargets = async (payload: PostPayload): Promise<string> => {
       method: "post",
       body: JSON.stringify(payload),
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
   } catch (e) {
     console.log("failed request")

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "http-proxy-middleware": "^1.0.6",
     "polka": "next",
     "prettier": "^2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
