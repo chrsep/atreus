@@ -14,7 +14,7 @@
     "@sveltejs/snowpack-config": "1.0.0-next.3",
     "autoprefixer": "10.2.4",
     "prettier": "2.2.1",
-    "prettier-plugin-svelte": "2.1.6",
+    "prettier-plugin-svelte": "2.2.0",
     "svelte": "3.32.3",
     "svelte-preprocess": "4.6.9",
     "tailwindcss": "2.0.3",

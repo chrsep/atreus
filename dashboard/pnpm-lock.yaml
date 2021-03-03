@@ -13,7 +13,7 @@ devDependencies:
   '@sveltejs/snowpack-config': 1.0.0-next.3_bdfe450c6abbf602a45934a06d42f8a2
   autoprefixer: 10.2.4_postcss@8.2.6
   prettier: 2.2.1
-  prettier-plugin-svelte: 2.1.6_prettier@2.2.1+svelte@3.32.3
+  prettier-plugin-svelte: 2.2.0_prettier@2.2.1+svelte@3.32.3
   svelte: 3.32.3
   svelte-preprocess: 4.6.9_bdfe450c6abbf602a45934a06d42f8a2
   tailwindcss: 2.0.3_759587f5361760629983e9fe457a3aed
@@ -833,7 +833,7 @@ packages:
       node: ^10 || ^12 || >=14
     resolution:
       integrity: sha512-xpB8qYxgPuly166AGlpRjUdEYtmOWx2iCwGmrv4vqZL9YPVviDVPZPRXxnXr6xPZOdxQ9lp3ZBFCRgWJ7LE3Sg==
-  /prettier-plugin-svelte/2.1.6_prettier@2.2.1+svelte@3.32.3:
+  /prettier-plugin-svelte/2.2.0_prettier@2.2.1+svelte@3.32.3:
     dependencies:
       prettier: 2.2.1
       svelte: 3.32.3
@@ -842,7 +842,7 @@ packages:
       prettier: ^1.16.4 || ^2.0.0
       svelte: ^3.2.0
     resolution:
-      integrity: sha512-eg6MhH394IYsljIcLMgCx/wozObkUFZJ1GkH+Nj8sZQilnNCFTeSBcEohBaNa9hr5RExvlJQJ8a2CEjMMrwL8g==
+      integrity: sha512-Xdmqgr71tAuMqqzNCK52/v94g/Yv7V7lz+nmbO9NEA+9ol15VV3uUHOfydMNOo3SWvFaVlBcp947ebEaMWqVfQ==
   /prettier/2.2.1:
     dev: true
     engines:
@@ -1170,7 +1170,7 @@ specifiers:
   node-fetch: 2.6.1
   postcss: 8.2.6
   prettier: 2.2.1
-  prettier-plugin-svelte: 2.1.6
+  prettier-plugin-svelte: 2.2.0
   redaxios: 0.4.1
   svelte: 3.32.3
   svelte-preprocess: 4.6.9
