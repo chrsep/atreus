@@ -1,8 +1,9 @@
 FROM node:15 AS dashboard
 WORKDIR /usr/src
 COPY ./dashboard /usr/src
-RUN yarn install
-RUN yarn build
+RUN npm -g install pnpm
+RUN pnpm install
+RUN pnpm export
 
 FROM rust:1.50 as server
 WORKDIR /usr/src

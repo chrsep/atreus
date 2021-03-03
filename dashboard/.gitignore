@@ -6,3 +6,4 @@ node_modules
 .idea
 .run
 dist
+__sapper__
