@@ -8,7 +8,13 @@ const { PORT, NODE_ENV } = process.env
 const dev = NODE_ENV === "development"
 
 polka() // You can also use Express
-  .use("/api", createProxyMiddleware({ target: "http://localhost:8080", changeOrigin: true }))
+  .use(
+    "/api",
+    createProxyMiddleware({
+      target: "http://localhost:8080",
+      changeOrigin: true,
+    })
+  )
   .use(
     compression({ threshold: 0 }),
     sirv("static", { dev }),

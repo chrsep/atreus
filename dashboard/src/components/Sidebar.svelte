@@ -1,8 +1,6 @@
-<script>
+<script lang="ts">
   import Button from "./Button.svelte"
-  // import { getTargets } from "../api/targets"
-
-  // let targets = getTargets()
+  import { getTargets } from "../api/targets"
 </script>
 
 <div class="sticky top-0 m-3 sidebar">
@@ -10,12 +8,19 @@
     TARGETS
   </h2>
 
-  <!--{#await targets}-->
-  <!--{:then data}-->
-  <!--  {data}-->
-  <!--{:catch error}-->
-  <!--  {error}-->
-  <!--{/await}-->
+  {#await getTargets()}
+    <p>loading</p>
+  {:then targets}
+    <div class="mb-3">
+      {#each targets as target}
+        <div class="py-2">
+          {target.name}
+        </div>
+      {/each}
+    </div>
+  {:catch error}
+    {error}
+  {/await}
 
   <a href="/targets/new">
     <Button class="w-full">

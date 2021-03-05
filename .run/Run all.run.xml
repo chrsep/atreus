@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run all" type="CompoundRunConfigurationType">
-    <toRun name="Run dashboard" type="js.build_tools.npm" />
-    <toRun name="Run server" type="CargoCommandRunConfiguration" />
     <toRun name="Run DB" type="docker-deploy" />
+    <toRun name="Watch server" type="CargoCommandRunConfiguration" />
+    <toRun name="Run dashboard" type="js.build_tools.npm" />
     <method v="2" />
   </configuration>
 </component>

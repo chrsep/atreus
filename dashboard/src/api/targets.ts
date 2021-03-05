@@ -1,14 +1,15 @@
-type GetResponse = Array<{
-  id: string
+interface Target {
   name: string
-}>
-export const getTargets = async (): Promise<string> => {
-  if (typeof window === "undefined") return ""
+  scopes: string[]
+}
+
+export const getTargets = async (): Promise<Target[]> => {
+  if (typeof window === "undefined") return []
   try {
     const result = await fetch("/api/targets")
-    return "success"
+    return await result.json()
   } catch (e) {
-    return "failed"
+    return []
   }
 }
 

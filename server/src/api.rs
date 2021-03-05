@@ -1,4 +1,4 @@
-use crate::db;
+use crate::{db, models};
 use actix_web::web::Json;
 use actix_web::{get, post, web, HttpResponse, Responder, Scope};
 use serde::{Deserialize, Serialize};
@@ -9,14 +9,32 @@ struct Target {
     scopes: Vec<String>,
 }
 
+impl From<models::Target> for Target {
+    fn from(target: models::Target) -> Target {
+        let scopes = Vec::<String>::new();
+        Target {
+            name: target.name,
+            scopes,
+        }
+    }
+}
+
 #[get("/hello")]
 async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello world!")
 }
 
 #[get("/targets")]
-async fn handle_get_targets() -> impl Responder {
-    HttpResponse::Ok().body("Targets")
+async fn handle_get_targets(pool: web::Data<db::Pool>) -> impl Responder {
+    let conn = pool.get().expect("can't get db connection from pool");
+
+    let targets = web::block(move || db::find_targets(&conn))
+        .await
+        .expect("failed to query targets");
+
+    let response: Vec<Target> = targets.into_iter().map(|s| s.into()).collect();
+
+    HttpResponse::Ok().json(response)
 }
 
 #[post("/targets")]
