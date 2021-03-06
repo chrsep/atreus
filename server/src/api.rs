@@ -2,9 +2,11 @@ use crate::{db, models};
 use actix_web::web::Json;
 use actix_web::{get, post, web, HttpResponse, Responder, Scope};
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 
 #[derive(Serialize, Deserialize)]
 struct Target {
+    id: Uuid,
     name: String,
     scopes: Vec<String>,
 }
@@ -13,6 +15,7 @@ impl From<models::Target> for Target {
     fn from(target: models::Target) -> Target {
         let scopes = Vec::<String>::new();
         Target {
+            id: target.id,
             name: target.name,
             scopes,
         }

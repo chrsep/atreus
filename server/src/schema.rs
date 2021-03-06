@@ -6,8 +6,8 @@ table! {
 }
 
 table! {
-    scopes (domain) {
-        domain -> Varchar,
+    scopes (scope) {
+        scope -> Varchar,
         target -> Nullable<Uuid>,
     }
 }

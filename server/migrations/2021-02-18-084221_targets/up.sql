@@ -6,7 +6,7 @@ create table targets (
 );
 
 create table scopes (
-    domain varchar not null primary key,
+    scope varchar not null primary key,
     target uuid references targets on delete cascade
 );
 

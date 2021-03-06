@@ -13,9 +13,11 @@
   {:then targets}
     <div class="mb-3">
       {#each targets as target}
-        <div class="py-2">
-          {target.name}
-        </div>
+        <a href="/targets?id={target.id}" class="block py-3">
+          <div>
+            {target.name}
+          </div>
+        </a>
       {/each}
     </div>
   {:catch error}
