@@ -28,7 +28,7 @@ devDependencies:
   svelte: 3.35.0
   svelte-check: 1.2.0_@babel+core@7.13.8+svelte@3.35.0
   svelte-preprocess: 4.6.9_e3d3df60e03b729263bf7570d1a4e888
-  svelte-windicss-preprocess: 2.3.0
+  svelte-windicss-preprocess: 2.3.1
   tslib: 2.1.0
   typescript: 4.2.2
 lockfileVersion: 5.2
@@ -2268,14 +2268,14 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-SROWH0rB0DJ+0Ii264cprmNu/NJyZacs5wFD71ya93Cg/oA2lKHgQm4F6j0EWA4ktFMzeuJJm/eX6fka39hEHA==
-  /svelte-windicss-preprocess/2.3.0:
+  /svelte-windicss-preprocess/2.3.1:
     dependencies:
       chalk: 4.1.0
       magic-string: 0.25.7
       windicss: 2.2.3
     dev: true
     resolution:
-      integrity: sha512-eZriXwq3NMTHxhhGaNEcxq8l0JV6+JVs1KElRP9+/TVzT/XcC6H/ClhKTvEK2kiQOzEcCfEnTq9UcHb7UjonrQ==
+      integrity: sha512-YuLxBE5C3D0hpJPtLgQP+MmgMzEkGNPmUN4eKHB6aQfkjyvNhQbx0xWuGrN++kVphFafZggRm5pmJnedgxHbmw==
   /svelte/3.35.0:
     dev: true
     engines:
@@ -2415,6 +2415,6 @@ specifiers:
   svelte: 3.35.0
   svelte-check: 1.2.0
   svelte-preprocess: 4.6.9
-  svelte-windicss-preprocess: 2.3.0
+  svelte-windicss-preprocess: 2.3.1
   tslib: 2.1.0
   typescript: 4.2.2
