@@ -1,14 +1,16 @@
 table! {
-    domains (domain) {
+    domains (id) {
+        id -> Uuid,
+        scope_id -> Uuid,
         domain -> Varchar,
-        scope -> Nullable<Varchar>,
     }
 }
 
 table! {
-    scopes (scope) {
+    scopes (id) {
+        id -> Uuid,
+        target_id -> Uuid,
         scope -> Varchar,
-        target -> Nullable<Uuid>,
     }
 }
 
@@ -20,8 +22,8 @@ table! {
     }
 }
 
-joinable!(domains -> scopes (scope));
-joinable!(scopes -> targets (target));
+joinable!(domains -> scopes (scope_id));
+joinable!(scopes -> targets (target_id));
 
 allow_tables_to_appear_in_same_query!(
     domains,

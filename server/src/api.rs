@@ -6,6 +6,7 @@ use uuid::Uuid;
 
 #[derive(Serialize, Deserialize)]
 struct Target {
+    #[serde(default)]
     id: Uuid,
     name: String,
     scopes: Vec<String>,
@@ -44,7 +45,7 @@ async fn handle_get_targets(pool: web::Data<db::Pool>) -> impl Responder {
 async fn handle_post_targets(pool: web::Data<db::Pool>, input: Json<Target>) -> impl Responder {
     let conn = pool.get().expect("can't get db connection from pool");
 
-    web::block(move || db::insert_new_target(&conn, input.name.clone()))
+    web::block(move || db::insert_new_target(&conn, input.name.clone(), input.scopes.clone()))
         .await
         .expect("failed to save target");
 
