@@ -15,7 +15,7 @@ devDependencies:
   '@rollup/plugin-commonjs': 17.1.0_rollup@2.40.0
   '@rollup/plugin-node-resolve': 11.2.0_rollup@2.40.0
   '@rollup/plugin-replace': 2.4.1_rollup@2.40.0
-  '@rollup/plugin-typescript': 8.2.0_611c8b2ed1e492df47cb58b5c35b4947
+  '@rollup/plugin-typescript': 8.2.0_2914f388182fa220278416b3b5c7c400
   '@rollup/plugin-url': 6.0.0_rollup@2.40.0
   '@tsconfig/svelte': 1.0.10
   '@types/compression': 1.7.0
@@ -27,10 +27,10 @@ devDependencies:
   sapper: 0.29.1_svelte@3.35.0
   svelte: 3.35.0
   svelte-check: 1.2.0_@babel+core@7.13.8+svelte@3.35.0
-  svelte-preprocess: 4.6.9_e3d3df60e03b729263bf7570d1a4e888
+  svelte-preprocess: 4.6.9_6b294226f89299c51e549e3d090eb793
   svelte-windicss-preprocess: 2.3.1
   tslib: 2.1.0
-  typescript: 4.2.2
+  typescript: 4.2.3
 lockfileVersion: 5.2
 packages:
   /@babel/code-frame/7.12.13:
@@ -1037,13 +1037,13 @@ packages:
       rollup: ^1.20.0 || ^2.0.0
     resolution:
       integrity: sha512-XwC1oK5rrtRJ0tn1ioLHS6OV5JTluJF7QE1J/q1hN3bquwjnVxjtMyY9iCnoyH9DQbf92CxajB3o98wZbP3oAQ==
-  /@rollup/plugin-typescript/8.2.0_611c8b2ed1e492df47cb58b5c35b4947:
+  /@rollup/plugin-typescript/8.2.0_2914f388182fa220278416b3b5c7c400:
     dependencies:
       '@rollup/pluginutils': 3.1.0_rollup@2.40.0
       resolve: 1.20.0
       rollup: 2.40.0
       tslib: 2.1.0
-      typescript: 4.2.2
+      typescript: 4.2.3
     dev: true
     engines:
       node: '>=8.0.0'
@@ -2217,6 +2217,57 @@ packages:
       svelte: ^3.24.0
     resolution:
       integrity: sha512-yrgYZwd50fstLeECaOjMAGxchUv+Gfg2W4e4gNxQ36910A1gUv49STtwe8PqDbNOeMIMF7kgwJ/h4rqAJAmZnQ==
+  /svelte-preprocess/4.6.9_6b294226f89299c51e549e3d090eb793:
+    dependencies:
+      '@babel/core': 7.13.8
+      '@types/pug': 2.0.4
+      '@types/sass': 1.16.0
+      detect-indent: 6.0.0
+      strip-indent: 3.0.0
+      svelte: 3.35.0
+      typescript: 4.2.3
+    dev: true
+    engines:
+      node: '>= 9.11.2'
+    peerDependencies:
+      '@babel/core': ^7.10.2
+      coffeescript: ^2.5.1
+      less: ^3.11.3
+      node-sass: '*'
+      postcss: ^7 || ^8
+      postcss-load-config: ^2.1.0 || ^3.0.0
+      pug: ^3.0.0
+      sass: ^1.26.8
+      stylus: ^0.54.7
+      sugarss: ^2.0.0
+      svelte: ^3.23.0
+      typescript: ^3.9.5 || ^4.0.0
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      coffeescript:
+        optional: true
+      less:
+        optional: true
+      node-sass:
+        optional: true
+      postcss:
+        optional: true
+      postcss-load-config:
+        optional: true
+      pug:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      typescript:
+        optional: true
+    requiresBuild: true
+    resolution:
+      integrity: sha512-SROWH0rB0DJ+0Ii264cprmNu/NJyZacs5wFD71ya93Cg/oA2lKHgQm4F6j0EWA4ktFMzeuJJm/eX6fka39hEHA==
   /svelte-preprocess/4.6.9_e3d3df60e03b729263bf7570d1a4e888:
     dependencies:
       '@babel/core': 7.13.8
@@ -2331,6 +2382,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-tbb+NVrLfnsJy3M59lsDgrzWIflR4d4TIUjz+heUnHZwdF7YsrMTKoRERiIvI2lvBG95dfpLxB21WZhys1bgaQ==
+  /typescript/4.2.3:
+    dev: true
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-qOcYwxaByStAWrBf4x0fibwZvMRG+r4cQoTjbPtUlrWjBHbmCAww1i448U0GJ+3cNNEtebDteo/cHOR3xJ4wEw==
   /uglify-js/3.13.0:
     dev: true
     engines:
@@ -2417,4 +2475,4 @@ specifiers:
   svelte-preprocess: 4.6.9
   svelte-windicss-preprocess: 2.3.1
   tslib: 2.1.0
-  typescript: 4.2.2
+  typescript: 4.2.3
