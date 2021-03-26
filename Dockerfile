@@ -5,7 +5,7 @@ RUN npm -g install pnpm
 RUN pnpm install
 RUN pnpm export
 
-FROM rust:1.50 as server
+FROM rust:1.51 as server
 WORKDIR /usr/src
 COPY ./server /usr/src
 RUN cargo build --release
