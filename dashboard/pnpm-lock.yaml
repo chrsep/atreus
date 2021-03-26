@@ -26,7 +26,7 @@ devDependencies:
   rollup-plugin-terser: 7.0.2_rollup@2.40.0
   sapper: 0.29.1_svelte@3.35.0
   svelte: 3.35.0
-  svelte-check: 1.2.5_8707a1fe8c9c54bf8ea30c8aaec838c0
+  svelte-check: 1.3.0_8707a1fe8c9c54bf8ea30c8aaec838c0
   svelte-preprocess: 4.6.9_3332c709913618ab72ebdbe6a8b6afb3
   svelte-windicss-preprocess: 2.3.1
   tslib: 2.1.0
@@ -2203,7 +2203,7 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
-  /svelte-check/1.2.5_8707a1fe8c9c54bf8ea30c8aaec838c0:
+  /svelte-check/1.3.0_8707a1fe8c9c54bf8ea30c8aaec838c0:
     dependencies:
       chalk: 4.1.0
       chokidar: 3.5.1
@@ -2220,7 +2220,7 @@ packages:
       '@babel/core': '*'
       svelte: ^3.24.0
     resolution:
-      integrity: sha512-1hqlH/J86lpuXk6+SSeZRfCfxXvCpqYGfgPb2sD0YW+tueknbJGR9oaGaLzytU0dgja4ShG+zQzHEsjKb0tFeA==
+      integrity: sha512-FMLZr/wv9S0MzCALo9BlHYyu1wlgXRdHWSjXDiknhraL9Igm0EVb00/tR6CMJ7j4q2kphRIEYcSRQJ7AtXHk+g==
   /svelte-preprocess/4.6.9_3332c709913618ab72ebdbe6a8b6afb3:
     dependencies:
       '@babel/core': 7.13.10
@@ -2417,7 +2417,7 @@ specifiers:
   sapper: 0.29.1
   sirv: 1.0.11
   svelte: 3.35.0
-  svelte-check: 1.2.5
+  svelte-check: 1.3.0
   svelte-preprocess: 4.6.9
   svelte-windicss-preprocess: 2.3.1
   tslib: 2.1.0
