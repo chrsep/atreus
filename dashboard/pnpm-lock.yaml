@@ -19,7 +19,7 @@ devDependencies:
   '@rollup/plugin-url': 6.0.0_rollup@2.40.0
   '@tsconfig/svelte': 1.0.10
   '@types/compression': 1.7.0
-  '@types/node': 14.14.35
+  '@types/node': 14.14.37
   '@types/polka': 0.5.2
   rollup: 2.40.0
   rollup-plugin-svelte: 7.1.0_rollup@2.40.0+svelte@3.35.0
@@ -1148,6 +1148,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
+  /@types/node/14.14.37:
+    dev: true
+    resolution:
+      integrity: sha512-XYmBiy+ohOR4Lh5jE379fV2IU+6Jn4g5qASinhitfyO71b/sCo6MKsMLF5tc7Zf2CE8hViVQyYSobJNke8OvUw==
   /@types/polka/0.5.2:
     dependencies:
       '@types/express': 4.17.11
@@ -2459,7 +2463,7 @@ specifiers:
   '@rollup/plugin-url': 6.0.0
   '@tsconfig/svelte': 1.0.10
   '@types/compression': 1.7.0
-  '@types/node': 14.14.35
+  '@types/node': 14.14.37
   '@types/polka': 0.5.2
   compression: 1.7.4
   http-proxy-middleware: 1.0.6
