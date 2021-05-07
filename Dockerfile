@@ -1,4 +1,4 @@
-FROM node:15 AS dashboard
+FROM node:16 AS dashboard
 WORKDIR /usr/src
 COPY ./dashboard /usr/src
 RUN npm -g install pnpm
