@@ -25,7 +25,7 @@ specifiers:
   rollup-plugin-svelte: 7.1.0
   rollup-plugin-terser: 7.0.2
   sapper: 0.29.1
-  sirv: 1.0.11
+  sirv: 1.0.12
   svelte: 3.38.2
   svelte-check: 1.5.4
   svelte-preprocess: 4.7.3
@@ -36,10 +36,10 @@ specifiers:
 dependencies:
   compression: 1.7.4
   http-proxy-middleware: 2.0.0
-  polka: 1.0.0-next.14
+  polka: 1.0.0-next.15
   prettier: 2.3.0
   prettier-plugin-svelte: 2.3.0_prettier@2.3.0+svelte@3.38.2
-  sirv: 1.0.11
+  sirv: 1.0.12
 
 devDependencies:
   '@babel/core': 7.14.3
@@ -1144,12 +1144,8 @@ packages:
       fastq: 1.11.0
     dev: true
 
-  /@polka/url/1.0.0-next.11:
-    resolution: {integrity: sha512-3NsZsJIA/22P3QUyrEDNA2D133H4j224twJrdipXN38dpnIOzAbUDtOwkcJ5pXmn75w7LSQDjA4tO9dm1XlqlA==}
-    dev: false
-
-  /@polka/url/1.0.0-next.12:
-    resolution: {integrity: sha512-6RglhutqrGFMO1MNUXp95RBuYIuc8wTnMAV5MUhLmjTOy78ncwOw7RgeQ/HeymkKXRhZd0s2DNrM1rL7unk3MQ==}
+  /@polka/url/1.0.0-next.15:
+    resolution: {integrity: sha512-15spi3V28QdevleWBNXE4pIls3nFZmBbUGrW9IVPwiQczuSb9n76TCB4bsk8TSel+I1OkHEdPhu5QKMfY6rQHA==}
     dev: false
 
   /@rollup/plugin-babel/5.3.0_@babel+core@7.14.3+rollup@2.48.0:
@@ -2154,11 +2150,11 @@ packages:
       node-modules-regexp: 1.0.0
     dev: true
 
-  /polka/1.0.0-next.14:
-    resolution: {integrity: sha512-nRxh6lifEred8F973wMJ3YA7z8EBAf+lWFLbhIh4MnYJXmZododD8FDGj+R81xnuNNG8b4PDqNXvrB5ShKcStA==}
-    engines: {node: '>=6'}
+  /polka/1.0.0-next.15:
+    resolution: {integrity: sha512-zBCZO40+USkSj0GDHMqufthqk4TIRc9xVGd50LbMvYNEwGHK8dZczLBQtw9pPHBM+i/Xg7ed7+c+r6J68XkWLg==}
+    engines: {node: '>=8'}
     dependencies:
-      '@polka/url': 1.0.0-next.12
+      '@polka/url': 1.0.0-next.15
       trouter: 3.1.0
     dev: false
 
@@ -2377,11 +2373,11 @@ packages:
     resolution: {integrity: sha512-H2FeQyImK4CFhGG1wVhHEB1hASWz+WQK6t2gMP5lk+b0PW30XSrsryDONDBwF1n6hBKsmbr0REfTinaNdEkcPQ==}
     dev: true
 
-  /sirv/1.0.11:
-    resolution: {integrity: sha512-SR36i3/LSWja7AJNRBz4fF/Xjpn7lQFI30tZ434dIy+bitLYSP+ZEenHg36i23V2SGEz+kqjksg0uOGZ5LPiqg==}
+  /sirv/1.0.12:
+    resolution: {integrity: sha512-+jQoCxndz7L2tqQL4ZyzfDhky0W/4ZJip3XoOuxyQWnAwMxindLl3Xv1qT4x1YX/re0leShvTm8Uk0kQspGhBg==}
     engines: {node: '>= 10'}
     dependencies:
-      '@polka/url': 1.0.0-next.11
+      '@polka/url': 1.0.0-next.15
       mime: 2.5.2
       totalist: 1.1.0
     dev: false

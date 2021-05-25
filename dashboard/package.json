@@ -15,7 +15,7 @@
     "polka": "next",
     "prettier": "2.3.0",
     "prettier-plugin-svelte": "2.3.0",
-    "sirv": "1.0.11"
+    "sirv": "1.0.12"
   },
   "devDependencies": {
     "@babel/core": "7.14.3",
