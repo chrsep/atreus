@@ -27,7 +27,7 @@ specifiers:
   sapper: 0.29.1
   sirv: 1.0.12
   svelte: 3.38.2
-  svelte-check: 1.5.4
+  svelte-check: 1.6.0
   svelte-preprocess: 4.7.3
   svelte-windicss-preprocess: 3.5.3
   tslib: 2.2.0
@@ -62,7 +62,7 @@ devDependencies:
   rollup-plugin-terser: 7.0.2_rollup@2.48.0
   sapper: 0.29.1_svelte@3.38.2
   svelte: 3.38.2
-  svelte-check: 1.5.4_@babel+core@7.14.3+svelte@3.38.2
+  svelte-check: 1.6.0_@babel+core@7.14.3+svelte@3.38.2
   svelte-preprocess: 4.7.3_60e69453c20d43db8c3f0ea10c3310a7
   svelte-windicss-preprocess: 3.5.3
   tslib: 2.2.0
@@ -2045,6 +2045,11 @@ packages:
     resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
     dev: true
 
+  /mri/1.1.6:
+    resolution: {integrity: sha512-oi1b3MfbyGa7FJMP9GmLTttni5JoICpYBRlq+x5V16fZbLsnL9N3wFqqIm/nIG43FjUFkFh9Epzp/kzUGUnJxQ==}
+    engines: {node: '>=4'}
+    dev: true
+
   /ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
     dev: false
@@ -2336,6 +2341,13 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
+  /sade/1.7.4:
+    resolution: {integrity: sha512-y5yauMD93rX840MwUJr7C1ysLFBgMspsdTo4UVrDg3fXDvtwOyIqykhVAAm6fk/3au77773itJStObgK+LKaiA==}
+    engines: {node: '>= 6'}
+    dependencies:
+      mri: 1.1.6
+    dev: true
+
   /safe-buffer/5.1.2:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
 
@@ -2451,8 +2463,8 @@ packages:
       has-flag: 4.0.0
     dev: true
 
-  /svelte-check/1.5.4_@babel+core@7.14.3+svelte@3.38.2:
-    resolution: {integrity: sha512-0rnBT2uqgYQeVsLJYZqAjkZn0k2TiphbOv7p602QmRMPT5VqFrkAaomZm5l4K3coxGSJlC0tDEVCKCQJ6i2jqw==}
+  /svelte-check/1.6.0_@babel+core@7.14.3+svelte@3.38.2:
+    resolution: {integrity: sha512-nQTlbFJWhwoeLY5rkhgbjzGQSwk5F1pRdEXait0EFaQSrE/iJF+PIjrQlk0BjL/ogk9HaR9ZI0DQSYrl7jl3IQ==}
     hasBin: true
     peerDependencies:
       svelte: ^3.24.0
@@ -2462,6 +2474,7 @@ packages:
       glob: 7.1.6
       import-fresh: 3.3.0
       minimist: 1.2.5
+      sade: 1.7.4
       source-map: 0.7.3
       svelte: 3.38.2
       svelte-preprocess: 4.7.3_60e69453c20d43db8c3f0ea10c3310a7
