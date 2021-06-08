@@ -12,7 +12,7 @@ specifiers:
   '@rollup/plugin-replace': 2.4.2
   '@rollup/plugin-typescript': 8.2.1
   '@rollup/plugin-url': 6.0.0
-  '@tsconfig/svelte': 1.0.13
+  '@tsconfig/svelte': 2.0.1
   '@types/compression': 1.7.0
   '@types/node': 14.17.1
   '@types/polka': 0.5.2
@@ -53,7 +53,7 @@ devDependencies:
   '@rollup/plugin-replace': 2.4.2_rollup@2.48.0
   '@rollup/plugin-typescript': 8.2.1_9183d8e6b3162e2170b3691755212ea7
   '@rollup/plugin-url': 6.0.0_rollup@2.48.0
-  '@tsconfig/svelte': 1.0.13
+  '@tsconfig/svelte': 2.0.1
   '@types/compression': 1.7.0
   '@types/node': 14.17.1
   '@types/polka': 0.5.2
@@ -1298,8 +1298,8 @@ packages:
       rollup: 2.48.0
     dev: true
 
-  /@tsconfig/svelte/1.0.13:
-    resolution: {integrity: sha512-5lYJP45Xllo4yE/RUBccBT32eBlRDbqN8r1/MIvQbKxW3aFqaYPCNgm8D5V20X4ShHcwvYWNlKg3liDh1MlBoA==}
+  /@tsconfig/svelte/2.0.1:
+    resolution: {integrity: sha512-aqkICXbM1oX5FfgZd2qSSAGdyo/NRxjWCamxoyi3T8iVQnzGge19HhDYzZ6NrVOW7bhcWNSq9XexWFtMzbB24A==}
     dev: true
 
   /@types/body-parser/1.19.0:
