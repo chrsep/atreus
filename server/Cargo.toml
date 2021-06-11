@@ -16,6 +16,6 @@ uuid = { version = "0.8.2", features = ["serde", "v4"] }
 diesel = { version = "1.4.7", features = ["r2d2", "postgres", "chrono", "uuidv07"] }
 diesel_migrations = { version = "1.4.0" }
 dotenv = "0.15.0"
-env_logger = "0.8.3"
+env_logger = "0.8.4"
 log = "0.4.14"
 chrono = "0.4"
