@@ -19,7 +19,7 @@ specifiers:
   compression: 1.7.4
   http-proxy-middleware: 2.0.0
   polka: next
-  prettier: 2.3.0
+  prettier: 2.3.1
   prettier-plugin-svelte: 2.3.0
   rollup: 2.48.0
   rollup-plugin-svelte: 7.1.0
@@ -37,8 +37,8 @@ dependencies:
   compression: 1.7.4
   http-proxy-middleware: 2.0.0
   polka: 1.0.0-next.15
-  prettier: 2.3.0
-  prettier-plugin-svelte: 2.3.0_prettier@2.3.0+svelte@3.38.2
+  prettier: 2.3.1
+  prettier-plugin-svelte: 2.3.0_prettier@2.3.1+svelte@3.38.2
   sirv: 1.0.12
 
 devDependencies:
@@ -2251,13 +2251,13 @@ packages:
       svelte: 3.37.0
     dev: true
 
-  /prettier-plugin-svelte/2.3.0_prettier@2.3.0+svelte@3.38.2:
+  /prettier-plugin-svelte/2.3.0_prettier@2.3.1+svelte@3.38.2:
     resolution: {integrity: sha512-HTzXvSq7lWFuLsSaxYOUkGkVNCl3RrSjDCOgQjkBX5FQGmWjL8o3IFACSGhjPMMfWKADpapAr0zdbBWkND9mqw==}
     peerDependencies:
       prettier: ^1.16.4 || ^2.0.0
       svelte: ^3.2.0
     dependencies:
-      prettier: 2.3.0
+      prettier: 2.3.1
       svelte: 3.38.2
     dev: false
 
@@ -2267,8 +2267,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.3.0:
-    resolution: {integrity: sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==}
+  /prettier/2.3.1:
+    resolution: {integrity: sha512-p+vNbgpLjif/+D+DwAZAbndtRrR0md0MwfmOVN9N+2RgyACMT+7tfaRnT+WDPkqnuVwleyuBIG2XBxKDme3hPA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: false
