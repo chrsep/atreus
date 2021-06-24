@@ -20,7 +20,7 @@ specifiers:
   http-proxy-middleware: 2.0.0
   polka: next
   prettier: 2.3.1
-  prettier-plugin-svelte: 2.3.0
+  prettier-plugin-svelte: 2.3.1
   rollup: 2.48.0
   rollup-plugin-svelte: 7.1.0
   rollup-plugin-terser: 7.0.2
@@ -38,7 +38,7 @@ dependencies:
   http-proxy-middleware: 2.0.0
   polka: 1.0.0-next.15
   prettier: 2.3.1
-  prettier-plugin-svelte: 2.3.0_prettier@2.3.1+svelte@3.38.2
+  prettier-plugin-svelte: 2.3.1_prettier@2.3.1+svelte@3.38.2
   sirv: 1.0.12
 
 devDependencies:
@@ -2251,8 +2251,8 @@ packages:
       svelte: 3.37.0
     dev: true
 
-  /prettier-plugin-svelte/2.3.0_prettier@2.3.1+svelte@3.38.2:
-    resolution: {integrity: sha512-HTzXvSq7lWFuLsSaxYOUkGkVNCl3RrSjDCOgQjkBX5FQGmWjL8o3IFACSGhjPMMfWKADpapAr0zdbBWkND9mqw==}
+  /prettier-plugin-svelte/2.3.1_prettier@2.3.1+svelte@3.38.2:
+    resolution: {integrity: sha512-F1/r6OYoBq8Zgurhs1MN25tdrhPw0JW5JjioPRqpxbYdmrZ3gY/DzHGs0B6zwd4DLyRsfGB2gqhxUCbHt/D1fw==}
     peerDependencies:
       prettier: ^1.16.4 || ^2.0.0
       svelte: ^3.2.0
