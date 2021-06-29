@@ -24,6 +24,7 @@
     "preact-render-to-string": "^5.1.19",
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
+    "react-hook-form": "^7.9.0",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "tailwindcss": "^2.2.4",
     "webpack": "^5.41.0"
