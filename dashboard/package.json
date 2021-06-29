@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "autoprefixer": "^10.2.6",
     "next": "^11.0.1",
     "next-plugin-preact": "^3.0.6",
     "preact": "^10.5.13",
@@ -22,12 +23,14 @@
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
+    "tailwindcss": "^2.2.4",
     "webpack": "^5.41.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.11",
     "eslint": "7.29.0",
     "eslint-config-airbnb-typescript": "12.3.1",
+    "@typescript-eslint/eslint-plugin": "4.28.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-import-resolver-node": "0.3.4",
     "eslint-plugin-import": "2.23.4",
@@ -35,6 +38,7 @@
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.24.0",
     "eslint-plugin-react-hooks": "4.2.0",
+    "postcss": "^8.3.5",
     "prettier": "^2.3.2",
     "typescript": "^4.3.4"
   }
