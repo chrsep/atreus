@@ -5,11 +5,37 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "analyze": "ANALYZE=true next build",
+    "build:prod": "prisma migrate deploy && next build",
+    "start": "prisma migrate deploy && next start",
+    "prisma:generate": "prisma generate",
+    "lint": "eslint --fix **/*.{ts,tsx}",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "11.0.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "next": "^11.0.1",
+    "next-plugin-preact": "^3.0.6",
+    "preact": "^10.5.13",
+    "preact-render-to-string": "^5.1.19",
+    "react": "npm:@preact/compat",
+    "react-dom": "npm:@preact/compat",
+    "react-ssr-prepass": "npm:preact-ssr-prepass",
+    "webpack": "^5.41.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.11",
+    "eslint": "7.29.0",
+    "eslint-config-airbnb-typescript": "12.3.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-import-resolver-node": "0.3.4",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "3.4.0",
+    "eslint-plugin-react": "7.24.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.4"
   }
 }

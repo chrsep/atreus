@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - atreus-pg:/var/lib/postgresql/data
+      - atreus-pg2:/var/lib/postgresql/data
 
 volumes:
-  atreus-pg:
+  atreus-pg2:
