@@ -9,3 +9,25 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Company {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  Domain Domain[]
+  Scope  Scope[]
+}
+
+model Scope {
+  pattern String @id
+
+  company   Company @relation(fields: [companyId], references: [id])
+  companyId Int
+}
+
+model Domain {
+  name String @id
+
+  company   Company @relation(fields: [companyId], references: [id])
+  companyId Int
+}
