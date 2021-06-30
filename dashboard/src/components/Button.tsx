@@ -31,7 +31,7 @@ const Button: FC<Props> = ({
       break
     case "outline":
       baseClassName =
-        "bg-white border border-gray-300 shadow-sm text-sm  text-gray-700 hover:bg-gray-50"
+        "bg-white border border-gray-300 shadow-sm text-sm  text-gray-700 hover:bg-gray-50 dark:bg-dark-bg-700 dark:hover:bg-dark-bg-900  border-opacity-20 dark:text-white"
       break
     default:
       baseClassName =

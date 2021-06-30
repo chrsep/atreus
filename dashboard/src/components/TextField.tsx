@@ -34,7 +34,10 @@ const TextField: ForwardRefRenderFunction<HTMLInputElement, Props> = (
 ) => {
   return (
     <div className={`${containerClassName}`}>
-      <label htmlFor={name} className="block text-sm text-gray-700">
+      <label
+        htmlFor={name}
+        className="block text-sm text-gray-700 dark:text-gray-200 font-bold"
+      >
         {!hideLabel && <span className="mb-1 block">{label}</span>}
         <div className="rounded-md relative">
           {iconSrc && (
@@ -60,7 +63,7 @@ const TextField: ForwardRefRenderFunction<HTMLInputElement, Props> = (
             ref={ref}
             className={`${inputClassName} focus:ring-primary-500 focus:border-primary-500 block w-full ${
               iconSrc ? "pl-10" : ""
-            } sm:text-sm border-gray-300 rounded-md shadow-sm `}
+            } sm:text-sm border-gray-300 border-opacity-20 rounded-md shadow-sm dark:bg-dark-bg-700`}
           />
         </div>
       </label>
