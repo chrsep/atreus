@@ -1,10 +1,30 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const colors = require("tailwindcss/colors")
+
 /* eslint-disable global-require,import/no-extraneous-dependencies */
 module.exports = {
   mode: "jit",
   purge: ["src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "media", // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
-    extend: {},
+    fontFamily: {
+      ui: `"Inria Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", sans-serif`,
+      body: `"Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", sans-serif`,
+    },
+    colors: {
+      ...colors,
+      "dark-bg": {
+        800: colors.coolGray[800],
+        900: colors.coolGray[900],
+      },
+      primary: {
+        100: colors.blue["50"],
+        300: "#3B82F6",
+        400: "#2563EB",
+        500: "#1d4ed8",
+        600: "#1E40AF",
+      },
+    },
   },
   variants: {
     extend: {},
