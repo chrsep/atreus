@@ -8,10 +8,10 @@ CREATE TABLE "Company" (
 
 -- CreateTable
 CREATE TABLE "Scope" (
-    "pattern" TEXT NOT NULL,
+    "domain" TEXT NOT NULL,
     "companyId" INTEGER NOT NULL,
 
-    PRIMARY KEY ("pattern")
+    PRIMARY KEY ("domain")
 );
 
 -- CreateTable

@@ -1,8 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react"
 import React, { FC, Fragment, useState } from "react"
 import Button from "@components/Button"
-import { useRouter } from "next/router"
 import { useForm } from "react-hook-form"
+import { mutate } from "swr"
 
 interface Props {
   open: boolean
@@ -10,11 +10,10 @@ interface Props {
 }
 
 const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
-  const router = useRouter()
   const { register, handleSubmit } = useForm<{ name: string }>()
 
-  const [apexDomains, setApexDomains] = useState<string[]>([])
-  const [apexDomain, setApexDomain] = useState("")
+  const [scopes, setScopes] = useState<string[]>([])
+  const [scope, setScope] = useState("")
 
   const onSubmit = handleSubmit(async (data) => {
     const result = await fetch("/api/companies", {
@@ -22,12 +21,13 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
       credentials: "include",
       body: JSON.stringify({
         ...data,
-        apexDomains,
+        scopes,
       }),
     })
 
     if (result.ok) {
-      await router.push("/")
+      await mutate("/api/companies")
+      setOpen(false)
     }
   })
 
@@ -84,14 +84,14 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
                 <h2 className="mt-6 text-white mb-4 mx-4">Domain scopes</h2>
 
                 <div className="mx-4">
-                  {apexDomains.map((domain) => (
+                  {scopes.map((domain) => (
                     <div key={domain} className="pb-4 flex items-center">
                       <Button
                         variant="outline"
                         className="mr-4 !text-red-500 font-bold"
                         onClick={() => {
-                          setApexDomains(
-                            apexDomains.filter(
+                          setScopes(
+                            scopes.filter(
                               (testedDomain) => testedDomain !== domain
                             )
                           )
@@ -107,8 +107,8 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
                 <div className="flex items-end mb-6 mx-4 items-center border border-opacity-10 rounded-xl p-3">
                   <input
                     name="domain"
-                    onChange={(e) => setApexDomain(e.target.value)}
-                    value={apexDomain}
+                    onChange={(e) => setScope(e.target.value)}
+                    value={scope}
                     className="bg-dark-bg-800 w-full dark:text-white !outline-none"
                     placeholder="New scope"
                   />
@@ -117,8 +117,8 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
                     variant="outline"
                     className="ml-4"
                     onClick={() => {
-                      setApexDomains([...apexDomains, apexDomain])
-                      setApexDomain("")
+                      setScopes([...scopes, scope])
+                      setScope("")
                     }}
                   >
                     Add

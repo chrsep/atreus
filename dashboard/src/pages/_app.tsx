@@ -4,7 +4,6 @@ import { AppProps } from "next/app"
 import { UserProvider } from "@auth0/nextjs-auth0"
 import Button from "@components/Button"
 import useGetCompanies from "@lib/companies/useGetCompanies"
-import Link from "next/link"
 import NewCompanyDialog from "@components/NewCompanyDialog"
 
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
@@ -22,7 +21,7 @@ const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
 )
 
 const SideBar = () => {
-  const [showNewCompany, setShowNewCompany] = useState(true)
+  const [showNewCompany, setShowNewCompany] = useState(false)
   const companies = useGetCompanies()
 
   return (

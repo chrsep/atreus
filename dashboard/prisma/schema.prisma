@@ -14,12 +14,12 @@ model Company {
   id   Int    @id @default(autoincrement())
   name String
 
-  Domain Domain[]
-  Scope  Scope[]
+  domains Domain[]
+  scopes  Scope[]
 }
 
 model Scope {
-  pattern String @id
+  domain String @id
 
   company   Company @relation(fields: [companyId], references: [id])
   companyId Int
