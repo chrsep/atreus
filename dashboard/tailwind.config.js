@@ -14,9 +14,9 @@ module.exports = {
     colors: {
       ...colors,
       "dark-bg": {
-        700: colors.coolGray[700],
-        800: colors.coolGray[800],
-        900: colors.coolGray[900],
+        700: colors.gray[700],
+        800: colors.gray[800],
+        900: colors.gray[900],
       },
       primary: {
         100: colors.blue["50"],

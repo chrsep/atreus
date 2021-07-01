@@ -31,11 +31,11 @@ const Button: FC<Props> = ({
       break
     case "outline":
       baseClassName =
-        "bg-white border border-gray-300 shadow-sm text-sm  text-gray-700 hover:bg-gray-50 dark:bg-dark-bg-700 dark:hover:bg-dark-bg-900  border-opacity-20 dark:text-white"
+        "bg-white border border-gray-300 shadow-sm text-gray-700 hover:bg-gray-50 dark:bg-dark-bg-700 dark:hover:bg-dark-bg-900  border-opacity-20 dark:text-white"
       break
     default:
       baseClassName =
-        "border border-opacity-20 border-transparent shadow-sm text-sm  text-white bg-primary-400 hover:bg-primary-500"
+        "border border-opacity-20 border-transparent shadow-sm text-white bg-primary-400 hover:bg-primary-500"
   }
 
   return (
@@ -46,7 +46,7 @@ const Button: FC<Props> = ({
       className={classNames(
         className,
         baseClassName,
-        "flex items-center rounded-md py-2 px-4 justify-center",
+        "!text-xs flex items-center rounded-md py-2 px-4 justify-center",
         "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-300",
         "disabled:opacity-40",
         "transition-color"
