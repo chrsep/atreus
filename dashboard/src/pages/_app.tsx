@@ -9,7 +9,7 @@ import Link from "next/link"
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
   <UserProvider>
     <div className="dark">
-      <div className="grid grid-cols-4 gap-8 p-8 h-screen dark:bg-dark-bg-900 dark:text-white">
+      <div className="h-screen dark:bg-dark-bg-900 dark:text-white">
         <SideBar />
 
         <div className="col-span-4 sm:col-span-2 xl:col-span-3">
@@ -24,13 +24,10 @@ const SideBar = () => {
   const companies = useGetCompanies()
 
   return (
-    <nav className="shadow-lg border border-opacity-10 rounded-xl col-span-4 sm:col-span-2 lg:col-span-2 xl:col-span-1 p-4 dark:bg-dark-bg-800">
-      <div className="flex items-center">
-        <h1 className="text-xl font-bold">Companies</h1>
-        <Link href="/companies/new">
-          <Button className="ml-auto">Add Company</Button>
-        </Link>
-      </div>
+    <nav className="border border-opacity-10 w-full h-full w-80 xl:col-span-1 p-4 dark:bg-dark-bg-900">
+      <Link href="/companies/new">
+        <Button className="ml-auto w-full">New company</Button>
+      </Link>
 
       {companies.data?.map(() => (
         <div>test</div>
