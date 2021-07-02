@@ -41,17 +41,22 @@ const SideBar = () => {
           Create company
         </Button>
 
-        {companies.data?.map(({ id, name }) => (
-          <Link href={`/companies/${id}`}>
-            <a
-              className={tw(
-                "block rounded-lg px-4 py-2 dark:hover:bg-dark-bg-800 my-2"
-              )}
-            >
-              {name}
-            </a>
-          </Link>
-        ))}
+        {companies.data?.map(({ id, name }) => {
+          const href = `/companies/${id}`
+          return (
+            <Link href={href}>
+              <a
+                className={tw(
+                  "block rounded-lg px-4 py-2 dark:hover:bg-dark-bg-800 my-2",
+                  router.asPath === href &&
+                    "dark:bg-primary-300 !bg-opacity-20 dark:hover:bg-primary-400 ring-primary-400 ring-1 ring-opacity-30"
+                )}
+              >
+                {name}
+              </a>
+            </Link>
+          )
+        })}
       </nav>
       <NewCompanyDialog open={showNewCompany} setOpen={setShowNewCompany} />
     </>
