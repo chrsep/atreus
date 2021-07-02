@@ -24,19 +24,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 15
-      - name: Install pnpm
-        run: npm -g install pnpm
       - name: Install Dependencies
-        run: cd dashboard && pnpm install
+        working-directory: ./dashboard
+        run: yarn install
       - name: Build
-        run: cd dashboard && pnpm export
-
-  build-server:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-      - run: cd server && cargo build --release
+        working-directory: ./dashboard
+        run: yarn build
