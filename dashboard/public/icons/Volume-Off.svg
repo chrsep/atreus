@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Volume-Off</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Volume-Off">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+            <path d="M4,11 C4,9.89543 4.89543,9 6,9 L7.33333,9 C7.76607,9 8.18714,8.85964 8.53333,8.6 L10.4,7.2 C11.0592,6.70557 12,7.17595 12,8 L12,16 C12,16.824 11.0592,17.2944 10.4,16.8 L8.53333,15.4 C8.18714,15.1404 7.76607,15 7.33333,15 L6,15 C4.89543,15 4,14.1046 4,13 L4,11 Z" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <line x1="19.2427" y1="10" x2="15" y2="14.2426" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="15" y1="10" x2="19.2426" y2="14.2426" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></line>
+        </g>
+    </g>
+</svg>

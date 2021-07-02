@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Bell</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Bell">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+            <path d="M5.82351,17 L18.1765,17 C19.1836,17 20,16.1836 20,15.1765 C20,14.5107 19.6371,13.8978 19.0533,13.5776 L18.3442,13.1887 C18.1272,13.0697 17.9777,12.8567 17.9397,12.6122 L17.1276,7.39163 C16.7344,4.86404 14.558,3 12,3 C9.44202,3 7.26559,4.86404 6.87241,7.39163 L6.06033,12.6122 C6.02229,12.8567 5.87285,13.0697 5.65585,13.1887 L4.94671,13.5776 C4.3629,13.8978 4,14.5107 4,15.1765 C4,16.1836 4.81641,17 5.82351,17 Z" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M14,21 C13.5087,21.6137 12.7947,22 12,22 C11.2053,22 10.4913,21.6137 10,21" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Sketch</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sketch">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+            <line x1="4" y1="10" x2="20" y2="10" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="6" y1="5" x2="18" y2="5" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></line>
+            <path d="M18,5 L20.638,9.39675 C20.8552,9.75863 20.8218,10.2179 20.5545,10.5445 L12.387,20.527 C12.1869,20.7715 11.8131,20.7715 11.613,20.527 L3.44549,10.5445 C3.17825,10.2179 3.14482,9.75863 3.36195,9.39675 L6,5" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M9,10 L11.5211,18.4036 C11.6636,18.8787 12.3364,18.8787 12.4789,18.4036 L15,10" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M9,10 L11.5713,5.71458 C11.7655,5.39091 12.2345,5.39091 12.4287,5.71458 L15,10" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <line x1="15" y1="10" x2="18" y2="5" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="9" y1="10" x2="6" y2="5" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></line>
+        </g>
+    </g>
+</svg>

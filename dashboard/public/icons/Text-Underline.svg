@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Text-Underline</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Text-Underline">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+            <path d="M6,4 L6,11 C6,14.3137 8.68629,17 12,17 L12,17 C15.3137,17 18,14.3137 18,11 L18,4" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <line x1="4" y1="21" x2="20" y2="21" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></line>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Chevron-Right</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Chevron-Right">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+            <path d="M10,18 L15.6464,12.3536 C15.8417,12.1583 15.8417,11.8417 15.6464,11.6464 L10,6" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

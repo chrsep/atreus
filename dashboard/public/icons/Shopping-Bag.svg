@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Shopping-Bag</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Shopping-Bag">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+            <path d="M4.72152,8.94028 C4.75312,8.41213 5.19065,8 5.71974,8 L18.2803,8 C18.8094,8 19.2469,8.41213 19.2785,8.94028 L19.683,15.7014 C19.8549,18.5751 17.5708,21 14.6919,21 L9.30809,21 C6.42924,21 4.14508,18.5751 4.31701,15.7014 L4.72152,8.94028 Z" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M15,8 L15,6.33333 C15,4.49238 13.6569,3 12,3 C10.3431,3 9,4.49238 9,6.33333 L9,8" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

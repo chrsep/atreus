@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 import { FC } from "react"
-import { classNames } from "@lib/ui"
+import { tw } from "@lib/ui"
 
 export type ButtonVariant = "primary" | "secondary" | "outline" | "icon"
 
@@ -43,7 +43,7 @@ const Button: FC<Props> = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={classNames(
+      className={tw(
         className,
         baseClassName,
         "!text-xs flex items-center rounded-md py-2 px-4 justify-center",

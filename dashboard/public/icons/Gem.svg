@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Gem</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Gem">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+            <path d="M3.45593,11.5066 L11.6284,20.5871 C11.827,20.8077 12.173,20.8077 12.3716,20.5871 L20.5441,11.5066 C20.8191,11.201 20.8791,10.7582 20.6952,10.3904 L18.2764,5.55279 C18.107,5.214 17.7607,5 17.382,5 L6.61803,5 C6.23926,5 5.893,5.214 5.72361,5.55279 L3.3048,10.3904 C3.12092,10.7582 3.18088,11.201 3.45593,11.5066 Z" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M8.5,8.5 L7.6382,10.2236 C7.5535,10.393 7.57178,10.5957 7.68541,10.7472 L9,12.5" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

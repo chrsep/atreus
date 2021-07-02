@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Achievements</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Achievements">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+            <line x1="12" y1="16" x2="12" y2="21" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="9" y1="21" x2="15" y2="21" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></line>
+            <path d="M12,16 C14.5714,16 16.7143,15.1111 17.1429,12.4444 L17.8882,5.10098 C17.9481,4.5118 17.4856,4 16.8934,4 L7.10664,4 C6.51443,4 6.05195,4.5118 6.11175,5.10098 L6.85714,12.4444 C7.28571,15.1111 9.42857,16 12,16 Z" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M18,7 L20.4545,7 C20.7558,7 21,7.24421 21,7.54545 L21,9 C21,11.2091 19.2091,13 17,13 L17,13" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M6,7 L3.54545,7 C3.24421,7 3,7.24421 3,7.54545 L3,9 C3,11.2091 4.79086,13 7,13 L7,13" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

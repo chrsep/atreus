@@ -1,4 +1,4 @@
 /** Combines multiple classnames into one */
-export function classNames(...classes: string[]) {
+export function tw(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
 }
