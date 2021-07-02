@@ -16,3 +16,13 @@ export const insertNewCompany = async (name: string, scopes: string[]) => {
     },
   })
 }
+
+export const findCompanyById = async (id: number) => {
+  return prisma.company.findUnique({
+    where: { id },
+    include: {
+      scopes: true,
+      domains: true,
+    },
+  })
+}
