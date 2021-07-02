@@ -38,7 +38,7 @@ jobs:
       - name: Install Dependencies
         working-directory: ./dashboard
         run: yarn install
-      - name: Install Dependencies
+      - name: Run lint
         working-directory: ./dashboard
         run: yarn run lint
 
@@ -61,6 +61,6 @@ jobs:
       - name: Install Dependencies
         working-directory: ./dashboard
         run: yarn install
-      - name: Install Dependencies
+      - name: Run typecheck
         working-directory: ./dashboard
         run: yarn run typecheck
