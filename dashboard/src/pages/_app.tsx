@@ -37,7 +37,7 @@ const SideBar = () => {
           className="ml-auto w-full mb-6 !justify-start leading-tight"
           onClick={() => setShowNewCompany(true)}
         >
-          <Icon src="/icons/Add-Stroke.svg" />
+          <Icon src="/icons/Add-Stroke.svg" className="mr-2" />
           Create company
         </Button>
 
