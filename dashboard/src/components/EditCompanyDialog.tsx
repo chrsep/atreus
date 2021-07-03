@@ -5,6 +5,7 @@ import { mutate } from "swr"
 import { Company, Scope } from "@prisma/client"
 import Icon from "@components/Icon"
 import Dialog from "@components/Dialog"
+import { useRouter } from "next/router"
 
 interface Props {
   open: boolean
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
+  const router = useRouter()
   const { register, handleSubmit } = useForm<{ name: string }>({
     defaultValues: {
       name: company.name,
@@ -31,6 +33,19 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
       setOpen(false)
     }
   })
+
+  const onDelete = async () => {
+    const result = await fetch(`/api/companies/${company.id}`, {
+      method: "DELETE",
+      credentials: "include",
+    })
+
+    if (result.ok) {
+      await mutate("/api/companies")
+      await router.push("/")
+      setOpen(false)
+    }
+  }
 
   return (
     <Dialog open={open} setOpen={setOpen}>
@@ -56,7 +71,7 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
         </div>
 
         <div className="flex items-center">
-          <Button className="ml-auto !p-2" type="submit" variant="outline">
+          <Button className="ml-auto !p-2" variant="outline" onClick={onDelete}>
             <Icon src="/icons/Trash-Red.svg" />
           </Button>
           <Button className="m-4" type="submit">
