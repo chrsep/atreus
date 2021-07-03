@@ -38,7 +38,7 @@
     "@tailwindcss/forms": "0.3.3",
     "@tailwindcss/line-clamp": "0.2.1",
     "@tailwindcss/typography": "0.4.1",
-    "@types/node": "^16.0.0",
+    "@types/node": "16.0.0",
     "@types/react": "17.0.13",
     "@typescript-eslint/eslint-plugin": "4.28.1",
     "eslint": "7.30.0",
