@@ -7,6 +7,7 @@ import Button from "@components/Button"
 import Icon from "@components/Icon"
 import EditCompanyDialog from "@components/EditCompanyDialog"
 import useGetCompanyById from "@lib/companies/useGetCompany"
+import AddScopeDialog from "@components/AddScopeDialog"
 
 const CompanyProfile: FC<
   InferGetServerSidePropsType<typeof getServerSideProps> & {
@@ -15,6 +16,7 @@ const CompanyProfile: FC<
 > = ({ company }) => {
   const { data } = useGetCompanyById(company.id, company)
   const [editCompany, setEditCompany] = useState(false)
+  const [addScope, setAddScope] = useState(false)
 
   return (
     <div>
@@ -24,7 +26,7 @@ const CompanyProfile: FC<
         <Button
           variant="outline"
           className="ml-auto mr-3 !p-2"
-          onClick={() => setEditCompany(true)}
+          onClick={() => setAddScope(true)}
         >
           <Icon src="/icons/Streaming-White.svg" className="mr-2" />
           Add scopes
@@ -45,6 +47,8 @@ const CompanyProfile: FC<
             company={data}
           />
         )}
+
+        {data && <AddScopeDialog open={addScope} setOpen={setAddScope} />}
       </div>
 
       {data?.scopes.map((scope) => (
