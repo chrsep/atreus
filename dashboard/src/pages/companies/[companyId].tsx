@@ -17,24 +17,46 @@ const CompanyProfile: FC<
   const [editCompany, setEditCompany] = useState(false)
 
   return (
-    <div className="flex items-center border-b border-opacity-10 w-full">
-      <h1 className="m-6">{data?.name}</h1>
+    <div>
+      <div className="flex items-center border-b border-opacity-10 w-full">
+        <h1 className="m-6">{data?.name}</h1>
 
-      <Button
-        variant="outline"
-        className="ml-auto mr-6 !p-2"
-        onClick={() => setEditCompany(true)}
-      >
-        <Icon src="/icons/Edit-White.svg" />
-      </Button>
+        <Button
+          variant="outline"
+          className="ml-auto mr-3 !p-2"
+          onClick={() => setEditCompany(true)}
+        >
+          <Icon src="/icons/Streaming-White.svg" className="mr-2" />
+          Add scopes
+        </Button>
 
-      {data && (
-        <EditCompanyDialog
-          open={editCompany}
-          setOpen={setEditCompany}
-          company={data}
-        />
-      )}
+        <Button
+          variant="outline"
+          className="mr-6 !p-2"
+          onClick={() => setEditCompany(true)}
+        >
+          <Icon src="/icons/Edit-White.svg" />
+        </Button>
+
+        {data && (
+          <EditCompanyDialog
+            open={editCompany}
+            setOpen={setEditCompany}
+            company={data}
+          />
+        )}
+      </div>
+
+      {data?.scopes.map((scope) => (
+        <div key={scope.domain}>
+          <div className="px-6 py-3 dark:bg-dark-bg-800 border-b border-opacity-5">
+            <p>{scope.domain}</p>
+          </div>
+          <p className="px-6 py-3 border-b border-opacity-10">
+            no domain found
+          </p>
+        </div>
+      ))}
     </div>
   )
 }

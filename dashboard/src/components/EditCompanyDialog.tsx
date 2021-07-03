@@ -55,10 +55,10 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
         <Button
           className="ml-auto !p-2"
           type="submit"
-          variant="outline"
+          variant="icon"
           onClick={() => setOpen(false)}
         >
-          <Icon src="/icons/Close-White.svg" className="opacity-60" />
+          <Icon src="/icons/Close-White.svg" className="opacity-60 w-5 h-5" />
         </Button>
       </div>
 
@@ -75,7 +75,7 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
           <Button className="ml-auto !p-2" variant="outline" onClick={onDelete}>
             <Icon src="/icons/Trash-Red.svg" />
           </Button>
-          <Button className="m-4" type="submit">
+          <Button className="ml-2 m-4" type="submit">
             Save
           </Button>
         </div>
