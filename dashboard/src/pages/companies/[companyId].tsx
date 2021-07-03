@@ -2,14 +2,14 @@ import { FC, useState } from "react"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import { InferGetServerSidePropsType } from "next"
 import { findCompanyById } from "@lib/db"
-import type { Company } from "@prisma/client"
+import type { Company, Scope } from "@prisma/client"
 import Button from "@components/Button"
 import Icon from "@components/Icon"
 import EditCompanyDialog from "@components/EditCompanyDialog"
 
 const CompanyProfile: FC<
   InferGetServerSidePropsType<typeof getServerSideProps> & {
-    company: Company
+    company: Company & { scopes: Scope[] }
   }
 > = ({ company }) => {
   const [editCompany, setEditCompany] = useState(false)
