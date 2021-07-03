@@ -26,3 +26,13 @@ export const findCompanyById = async (id: number) => {
     },
   })
 }
+
+export const deleteCompanyById = async (id: number) => {
+  return prisma.company.delete({
+    where: { id },
+  })
+}
+
+export const patchCompanyById = async () => {
+  return prisma.company.update
+}
