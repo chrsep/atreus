@@ -1,4 +1,5 @@
 import prisma from "@lib/prisma"
+import { Company } from "@prisma/client"
 
 export const findAllCompanies = async () => {
   return prisma.company.findMany()
@@ -33,6 +34,12 @@ export const deleteCompanyById = async (id: number) => {
   })
 }
 
-export const patchCompanyById = async () => {
-  return prisma.company.update
+export const patchCompanyById = async (
+  companyId: number,
+  company: Partial<Omit<Company, "id">>
+) => {
+  return prisma.company.update({
+    data: company,
+    where: { id: companyId },
+  })
 }

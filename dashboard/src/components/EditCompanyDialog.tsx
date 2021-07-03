@@ -30,6 +30,7 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
 
     if (result.ok) {
       await mutate("/api/companies")
+      await mutate(`/api/companies/${company.id}`)
       setOpen(false)
     }
   })

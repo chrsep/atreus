@@ -6,16 +6,19 @@ import type { Company, Scope } from "@prisma/client"
 import Button from "@components/Button"
 import Icon from "@components/Icon"
 import EditCompanyDialog from "@components/EditCompanyDialog"
+import useGetCompanyById from "@lib/companies/useGetCompany"
 
 const CompanyProfile: FC<
   InferGetServerSidePropsType<typeof getServerSideProps> & {
     company: Company & { scopes: Scope[] }
   }
 > = ({ company }) => {
+  const { data } = useGetCompanyById(company.id, company)
   const [editCompany, setEditCompany] = useState(false)
+
   return (
     <div className="flex items-center border-b border-opacity-10 w-full">
-      <h1 className="m-6">{company.name}</h1>
+      <h1 className="m-6">{data?.name}</h1>
 
       <Button
         variant="outline"
@@ -25,11 +28,13 @@ const CompanyProfile: FC<
         <Icon src="/icons/Edit-White.svg" />
       </Button>
 
-      <EditCompanyDialog
-        open={editCompany}
-        setOpen={setEditCompany}
-        company={company}
-      />
+      {data && (
+        <EditCompanyDialog
+          open={editCompany}
+          setOpen={setEditCompany}
+          company={data}
+        />
+      )}
     </div>
   )
 }
