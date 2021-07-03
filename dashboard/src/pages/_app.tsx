@@ -12,13 +12,11 @@ import Icon from "@components/Icon"
 
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
   <UserProvider>
-    <div className="dark">
-      <div className="flex h-screen dark:bg-dark-bg-900 dark:text-white">
-        <SideBar />
+    <div className="flex h-screen dark:bg-dark-bg-900">
+      <SideBar />
 
-        <div className="w-full">
-          <Component {...pageProps} />
-        </div>
+      <div className="w-full">
+        <Component {...pageProps} />
       </div>
     </div>
   </UserProvider>

@@ -50,7 +50,7 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
   return (
     <Dialog open={open} setOpen={setOpen}>
       <div className="flex items-center p-4 !pb-2">
-        <h1 className="text-white ">Edit company</h1>
+        <h1>Edit company</h1>
         <Button
           className="ml-auto !p-2"
           type="submit"
@@ -65,7 +65,7 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
         <div className="px-2">
           <input
             {...register("name")}
-            className="bg-dark-bg-800 w-full dark:text-white text-xl font-bold mx-2 mb-2 !outline-none"
+            className="bg-dark-bg-800 w-full text-xl font-bold mx-2 mb-2 !outline-none"
             placeholder="Company name"
           />
         </div>

@@ -33,18 +33,18 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
 
   return (
     <Dialog open={open} setOpen={setOpen}>
-      <h1 className="text-white !mb-2 m-4">New company</h1>
+      <h1 className="!mb-2 m-4">New company</h1>
 
       <form className="" onSubmit={onSubmit}>
         <div className="px-2">
           <input
             {...register("name")}
-            className="bg-dark-bg-800 w-full dark:text-white text-xl font-bold p-2 !outline-none"
+            className="bg-dark-bg-800 w-full text-xl font-bold p-2 !outline-none"
             placeholder="Company name"
           />
         </div>
 
-        <h2 className="mt-6 text-white mb-4 mx-4">Domain scopes</h2>
+        <h2 className="mt-6 mb-4 mx-4">Domain scopes</h2>
 
         <div className="mx-4">
           {scopes.map((domain) => (
@@ -60,7 +60,7 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
               >
                 Delete
               </Button>
-              <p className="dark:text-white">{domain}</p>
+              <p>{domain}</p>
             </div>
           ))}
         </div>
@@ -70,7 +70,7 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
             name="domain"
             onChange={(e) => setScope(e.target.value)}
             value={scope}
-            className="bg-dark-bg-800 w-full dark:text-white !outline-none"
+            className="bg-dark-bg-800 w-full !outline-none"
             placeholder="New scope"
           />
 
