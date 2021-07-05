@@ -30,7 +30,7 @@ const AddScopeDialog: FC<Props> = ({ companyId, open, setOpen }) => {
 
   return (
     <Dialog open={open} setOpen={setOpen}>
-      <div className="flex items-center p-4 mb-4">
+      <div className="flex items-center p-4">
         <Icon
           src="/icons/Streaming-White.svg"
           className="mr-3 w-6 h-6 opacity-40"
@@ -38,7 +38,7 @@ const AddScopeDialog: FC<Props> = ({ companyId, open, setOpen }) => {
         <h2 className="text-xs">Add scopes</h2>
 
         <Button
-          className="ml-auto !p-0"
+          className="ml-auto !p-1"
           type="submit"
           variant="icon"
           onClick={() => setOpen(false)}
@@ -48,7 +48,7 @@ const AddScopeDialog: FC<Props> = ({ companyId, open, setOpen }) => {
       </div>
 
       {scopes.map((domain) => (
-        <div key={domain} className="px-4 pb-4 flex items-center">
+        <div key={domain} className="px-4 pb-3 flex items-center">
           <Button
             variant="outline"
             className="mr-4 !text-red-500 font-bold !p-2"
@@ -64,12 +64,12 @@ const AddScopeDialog: FC<Props> = ({ companyId, open, setOpen }) => {
         </div>
       ))}
 
-      <div className="flex items-end mb-4 mx-4 items-center border border-opacity-10 rounded-xl p-3">
+      <div className="flex items-end mb-4 items-center border-t border-b border-opacity-10 px-4 py-2">
         <input
           name="domain"
           onChange={(e) => setScope(e.target.value)}
           value={scope}
-          className="bg-dark-bg-800 w-full !outline-none"
+          className="bg-dark-bg-800 w-full !outline-none text-base py-2"
           placeholder="New scope"
         />
 
@@ -85,11 +85,9 @@ const AddScopeDialog: FC<Props> = ({ companyId, open, setOpen }) => {
         </Button>
       </div>
 
-      <div className="border-t border-opacity-5">
-        <Button className="ml-auto m-4" onClick={handleSubmit}>
-          Save scopes
-        </Button>
-      </div>
+      <Button className="ml-auto m-4" onClick={handleSubmit}>
+        Save scopes
+      </Button>
     </Dialog>
   )
 }
