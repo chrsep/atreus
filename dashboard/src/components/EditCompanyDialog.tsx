@@ -50,25 +50,31 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
 
   return (
     <Dialog open={open} setOpen={setOpen}>
-      <div className="flex items-center p-4 !pb-2">
-        <h1>Edit company</h1>
+      <div className="flex items-center p-4">
+        <Icon src="/icons/Shop-White.svg" className="mr-3 w-6 h-6 opacity-40" />
+        <h2 className="text-xs">Edit company</h2>
+
         <Button
-          className="ml-auto !p-2"
+          className="ml-auto !p-1"
           type="submit"
           variant="icon"
           onClick={() => setOpen(false)}
         >
-          <Icon src="/icons/Close-White.svg" className="opacity-60 w-5 h-5" />
+          <Icon src="/icons/Close-White.svg" className="opacity-60 w-6 h-6" />
         </Button>
       </div>
 
-      <form className="" onSubmit={onSubmit}>
-        <div className="px-2">
-          <input
-            {...register("name")}
-            className="bg-dark-bg-800 w-full text-xl font-bold mx-2 mb-2 !outline-none"
-            placeholder="Company name"
-          />
+      <form onSubmit={onSubmit}>
+        <div className="px-4">
+          <label htmlFor="name" className="text-xs w-full">
+            <span className="opacity-70">Name</span>
+            <input
+              id="name"
+              {...register("name")}
+              className="bg-dark-bg-800 w-full text-xl font-bold !outline-none"
+              placeholder="Company name"
+            />
+          </label>
         </div>
 
         <div className="flex items-center">
