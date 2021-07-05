@@ -6,6 +6,7 @@ import { Company, Scope } from "@prisma/client"
 import Icon from "@components/Icon"
 import Dialog from "@components/Dialog"
 import { useRouter } from "next/router"
+import TextField from "@components/TextField"
 
 interface Props {
   open: boolean
@@ -65,16 +66,8 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
       </div>
 
       <form onSubmit={onSubmit}>
-        <div className="px-4">
-          <label htmlFor="name" className="text-xs w-full">
-            <span className="opacity-70">Name</span>
-            <input
-              id="name"
-              {...register("name")}
-              className="bg-dark-bg-800 w-full text-xl font-bold !outline-none"
-              placeholder="Company name"
-            />
-          </label>
+        <div className="px-4 pb-2">
+          <TextField label="Name" {...register("name")} />
         </div>
 
         <div className="flex items-center">
