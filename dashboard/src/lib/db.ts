@@ -43,3 +43,19 @@ export const patchCompanyById = async (
     where: { id: companyId },
   })
 }
+
+export const addScopesToCompanyById = async (
+  companyId: number,
+  scopes: string[]
+) => {
+  return prisma.company.update({
+    where: { id: companyId },
+    data: {
+      scopes: {
+        createMany: {
+          data: scopes.map((scope) => ({ domain: scope })),
+        },
+      },
+    },
+  })
+}
