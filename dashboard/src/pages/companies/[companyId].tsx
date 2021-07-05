@@ -94,7 +94,7 @@ const ScopeMoreMenu: FC<{
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button>
-            <Button variant="icon" className="!p-0  ml-auto">
+            <Button variant="icon" className="ml-auto">
               <Icon src="/icons/More-White.svg" className="" />
             </Button>
           </Menu.Button>
