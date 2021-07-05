@@ -64,7 +64,14 @@ const AddScopeDialog: FC<Props> = ({ companyId, open, setOpen }) => {
         </div>
       ))}
 
-      <div className="flex items-end mb-4 items-center border-t border-b border-opacity-10 px-4 py-2">
+      <form
+        className="flex items-end mb-4 items-center border-t border-b border-opacity-10 px-4 py-2"
+        onSubmit={(e) => {
+          e.preventDefault()
+          setScopes([...scopes, scope])
+          setScope("")
+        }}
+      >
         <input
           name="domain"
           onChange={(e) => setScope(e.target.value)}
@@ -73,17 +80,10 @@ const AddScopeDialog: FC<Props> = ({ companyId, open, setOpen }) => {
           placeholder="New scope"
         />
 
-        <Button
-          variant="outline"
-          className="ml-4"
-          onClick={() => {
-            setScopes([...scopes, scope])
-            setScope("")
-          }}
-        >
+        <Button variant="outline" className="ml-4" type="submit">
           Add
         </Button>
-      </div>
+      </form>
 
       <Button className="ml-auto m-4" onClick={handleSubmit}>
         Save scopes
