@@ -3688,10 +3688,10 @@ raw-body@2.4.1:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-hook-form@7.10.0:
-  version "7.10.0"
-  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.10.0.tgz"
-  integrity sha512-J6jJDw61TDNG0cEyLlYKUTPTwJH1Gfp8S8+m5Dt3mLY5vEy7UwKr60rl11ESofKmliFH8DconTVFnZgblhGvyg==
+react-hook-form@7.10.1:
+  version "7.10.1"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.10.1.tgz"
+  integrity sha512-YRSkOZ0DJKjJ+PuCB6caFbFSbz6I4JQcGXVb/OeEIVE3YuXXYYJ/YQwodRy8HsZ5WA+DryoThWIeZZzPd5f9lQ==
 
 react-is@17.0.2:
   version "17.0.2"
