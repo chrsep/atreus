@@ -9,7 +9,7 @@ const post: NextApiHandler = async (req, res) => {
   const companyId = string().parse(req.query.companyId)
   const body = PostBody.parse(req.body)
 
-  const company = addScopesToCompanyById(parseInt(companyId, 10), body)
+  const company = await addScopesToCompanyById(parseInt(companyId, 10), body)
 
   res.json(company)
 }

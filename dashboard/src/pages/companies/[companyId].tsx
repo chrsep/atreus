@@ -48,7 +48,13 @@ const CompanyProfile: FC<
           />
         )}
 
-        {data && <AddScopeDialog open={addScope} setOpen={setAddScope} />}
+        {data && (
+          <AddScopeDialog
+            open={addScope}
+            setOpen={setAddScope}
+            companyId={company.id}
+          />
+        )}
       </div>
 
       {data?.scopes.map((scope) => (

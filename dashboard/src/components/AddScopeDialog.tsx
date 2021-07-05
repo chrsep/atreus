@@ -2,15 +2,31 @@ import React, { FC, useState } from "react"
 import Dialog from "@components/Dialog"
 import Button from "@components/Button"
 import Icon from "@components/Icon"
+import axios from "redaxios"
+import { mutate } from "swr"
 
 interface Props {
   open: boolean
   setOpen: (value: boolean) => void
+  companyId: number
 }
 
-const AddScopeDialog: FC<Props> = ({ open, setOpen }) => {
-  const [data, setData] = useState<string[]>([])
+const AddScopeDialog: FC<Props> = ({ companyId, open, setOpen }) => {
+  const [scopes, setScopes] = useState<string[]>([])
   const [scope, setScope] = useState("")
+
+  const handleSubmit = async () => {
+    const result = await axios.post(
+      `/api/companies/${companyId}/scopes`,
+      scopes
+    )
+
+    if (result.status === 200) {
+      await mutate(`/api/companies/${companyId}`, result.data)
+      setOpen(false)
+      setScopes([])
+    }
+  }
 
   return (
     <Dialog open={open} setOpen={setOpen}>
@@ -31,13 +47,15 @@ const AddScopeDialog: FC<Props> = ({ open, setOpen }) => {
         </Button>
       </div>
 
-      {data.map((domain) => (
+      {scopes.map((domain) => (
         <div key={domain} className="px-4 pb-4 flex items-center">
           <Button
             variant="outline"
             className="mr-4 !text-red-500 font-bold !p-2"
             onClick={() => {
-              setData(data.filter((testedDomain) => testedDomain !== domain))
+              setScopes(
+                scopes.filter((testedDomain) => testedDomain !== domain)
+              )
             }}
           >
             <Icon src="/icons/Trash-Red.svg" />
@@ -59,7 +77,7 @@ const AddScopeDialog: FC<Props> = ({ open, setOpen }) => {
           variant="outline"
           className="ml-4"
           onClick={() => {
-            setData([...data, scope])
+            setScopes([...scopes, scope])
             setScope("")
           }}
         >
@@ -68,7 +86,7 @@ const AddScopeDialog: FC<Props> = ({ open, setOpen }) => {
       </div>
 
       <div className="border-t border-opacity-5">
-        <Button className="ml-auto m-4" type="submit">
+        <Button className="ml-auto m-4" onClick={handleSubmit}>
           Save scopes
         </Button>
       </div>

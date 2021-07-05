@@ -50,6 +50,10 @@ export const addScopesToCompanyById = async (
 ) => {
   return prisma.company.update({
     where: { id: companyId },
+    include: {
+      scopes: true,
+      domains: true,
+    },
     data: {
       scopes: {
         createMany: {
