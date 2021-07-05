@@ -3,6 +3,8 @@ import Button from "@components/Button"
 import { useForm } from "react-hook-form"
 import { mutate } from "swr"
 import Dialog from "@components/Dialog"
+import TextField from "@components/TextField"
+import Icon from "@components/Icon"
 
 interface Props {
   open: boolean
@@ -33,39 +35,49 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
 
   return (
     <Dialog open={open} setOpen={setOpen}>
-      <h1 className="!mb-2 m-4">New company</h1>
+      <div className="flex items-center p-4">
+        <Icon src="/icons/Shop-White.svg" className="mr-3 w-6 h-6 opacity-40" />
+        <h2 className="text-xs">New company</h2>
 
-      <form className="" onSubmit={onSubmit}>
-        <div className="px-2">
-          <input
-            {...register("name")}
-            className="bg-dark-bg-800 w-full text-xl font-bold p-2 !outline-none"
-            placeholder="Company name"
-          />
-        </div>
+        <Button
+          className="ml-auto !p-1"
+          type="submit"
+          variant="icon"
+          onClick={() => setOpen(false)}
+        >
+          <Icon src="/icons/Close-White.svg" className="opacity-60 w-6 h-6" />
+        </Button>
+      </div>
 
-        <h2 className="mt-6 mb-4 mx-4">Domain scopes</h2>
+      <form onSubmit={onSubmit}>
+        <TextField
+          label="Name"
+          {...register("name")}
+          containerClassName="px-4 mt-2"
+        />
+
+        <h2 className="mt-8 mb-3 mx-4 font-bold">Domain scopes</h2>
 
         <div className="mx-4">
           {scopes.map((domain) => (
             <div key={domain} className="pb-4 flex items-center">
               <Button
                 variant="outline"
-                className="mr-4 !text-red-500 font-bold"
+                className="mr-3 !text-red-500 font-bold !p-2"
                 onClick={() => {
                   setScopes(
                     scopes.filter((testedDomain) => testedDomain !== domain)
                   )
                 }}
               >
-                Delete
+                <Icon src="/icons/Trash-Red.svg" />
               </Button>
               <p>{domain}</p>
             </div>
           ))}
         </div>
 
-        <div className="flex items-end mb-6 mx-4 items-center border border-opacity-10 rounded-xl p-3">
+        <div className="flex items-end items-center border-t border-b border-opacity-10 p-4">
           <input
             name="domain"
             onChange={(e) => setScope(e.target.value)}
@@ -86,11 +98,9 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
           </Button>
         </div>
 
-        <div className="border-t border-opacity-10">
-          <Button className="ml-auto m-4" type="submit">
-            Save company
-          </Button>
-        </div>
+        <Button className="ml-auto m-4" type="submit">
+          Save company
+        </Button>
       </form>
     </Dialog>
   )
