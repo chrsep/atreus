@@ -9,6 +9,8 @@ import EditCompanyDialog from "@components/EditCompanyDialog"
 import useGetCompanyById from "@lib/companies/useGetCompany"
 import AddScopeDialog from "@components/AddScopeDialog"
 import { Transition, Menu } from "@headlessui/react"
+import axios from "redaxios"
+import { mutate } from "swr"
 
 const CompanyProfile: FC<
   InferGetServerSidePropsType<typeof getServerSideProps> & {
@@ -63,7 +65,7 @@ const CompanyProfile: FC<
           <div className="flex items-center px-6 py-1 dark:bg-dark-bg-800 border-b border-opacity-5">
             <p>{scope.domain}</p>
 
-            <ScopeMoreMenu />
+            <ScopeMoreMenu domain={scope.domain} companyId={company.id} />
           </div>
 
           <p className="px-6 py-3 border-b border-opacity-10">
@@ -75,51 +77,65 @@ const CompanyProfile: FC<
   )
 }
 
-const ScopeMoreMenu = () => (
-  <div className="ml-auto">
-    <Menu as="div" className="relative inline-block text-left">
-      <div>
-        <Menu.Button>
-          <Button variant="icon" className="!p-0  ml-auto">
-            <Icon src="/icons/More-White.svg" className="" />
-          </Button>
-        </Menu.Button>
-      </div>
+const ScopeMoreMenu: FC<{
+  domain: string
+  companyId: number
+}> = ({ companyId, domain }) => {
+  const handleDelete = async () => {
+    const result = await axios.delete(`/api/scopes/${domain}`)
 
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="absolute right-0 w-40 mt-2 origin-top-right divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark-bg-700">
-          <div className="px-1 py-1">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  type="button"
-                  className={`${
-                    active ? "bg-red-800" : "text-gray-300"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                >
-                  {active ? (
-                    <Icon src="/icons/Trash-White.svg" className="mr-2" />
-                  ) : (
-                    <Icon src="/icons/Trash-Red.svg" className="mr-2" />
-                  )}
-                  Delete
-                </button>
-              )}
-            </Menu.Item>
-          </div>
-        </Menu.Items>
-      </Transition>
-    </Menu>
-  </div>
-)
+    if (result.status === 200) {
+      await mutate(`/api/companies/${companyId}`)
+    }
+  }
+
+  return (
+    <div className="ml-auto">
+      <Menu as="div" className="relative inline-block text-left">
+        <div>
+          <Menu.Button>
+            <Button variant="icon" className="!p-0  ml-auto">
+              <Icon src="/icons/More-White.svg" className="" />
+            </Button>
+          </Menu.Button>
+        </div>
+
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Menu.Items className="absolute right-0 w-40 mt-2 origin-top-right divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark-bg-700">
+            <div className="px-1 py-1">
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    type="button"
+                    className={`${
+                      active ? "bg-red-800" : "text-gray-300"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    onClick={handleDelete}
+                  >
+                    {active ? (
+                      <Icon src="/icons/Trash-White.svg" className="mr-2" />
+                    ) : (
+                      <Icon src="/icons/Trash-Red.svg" className="mr-2" />
+                    )}
+                    Delete
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+          </Menu.Items>
+        </Transition>
+      </Menu>
+    </div>
+  )
+}
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(ctx) {

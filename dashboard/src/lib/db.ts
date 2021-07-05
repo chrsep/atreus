@@ -63,3 +63,11 @@ export const addScopesToCompanyById = async (
     },
   })
 }
+
+export const deleteScopeByDomain = async (domain: string) => {
+  return prisma.scope.delete({
+    where: {
+      domain,
+    },
+  })
+}
