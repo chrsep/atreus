@@ -16,7 +16,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-  deploy:
+  deploy-dashboard:
     name: Deploy proxy
     runs-on: ubuntu-latest
     steps:
@@ -27,5 +27,19 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
           DOCKER_BUILDKIT: 1
           FLY_PROJECT_PATH: "./dashboard"
+        with:
+          args: "deploy"
+
+  deploy-worker:
+    name: Deploy proxy
+    runs-on: ubuntu-latest
+    steps:
+      # This step checks out a copy of your repository.
+      - uses: actions/checkout@v2
+      - uses: superfly/flyctl-actions@master
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          DOCKER_BUILDKIT: 1
+          FLY_PROJECT_PATH: "./worker"
         with:
           args: "deploy"
