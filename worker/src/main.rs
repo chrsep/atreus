@@ -1,4 +1,3 @@
-#[macro_use]
 use std::env;
 
 use dotenv::dotenv;
@@ -10,7 +9,18 @@ async fn main() -> Result<(), Error> {
 
     let db_url = env::var("DATABASE_URL").expect("DATABASE_URL cannot be empty");
 
-    tokio_postgres::connect(&db_url, NoTls).await;
+    let (client, connection) = tokio_postgres::connect(&db_url, NoTls).await?;
+
+    tokio::spawn(async move {
+        if let Err(e) = connection.await {
+            eprintln!("connection error: {}", e);
+        }
+    });
+
+    // language=PostgreSQL
+    let companies = client.query(r#"SELECT * FROM "Company""#, &[]).await?;
+
+    println!("{}", companies.len());
 
     Ok(())
 }
