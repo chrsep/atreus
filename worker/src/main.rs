@@ -1,10 +1,16 @@
-use std::thread;
-use std::time::Duration;
+#[macro_use]
+use std::env;
 
-fn main() {
-    loop {
-        println!("Hello, world!");
+use dotenv::dotenv;
+use tokio_postgres::{Error, NoTls};
 
-        thread::sleep(Duration::from_secs(1));
-    }
+#[tokio::main]
+async fn main() -> Result<(), Error> {
+    dotenv().ok();
+
+    let db_url = env::var("DATABASE_URL").expect("DATABASE_URL cannot be empty");
+
+    tokio_postgres::connect(&db_url, NoTls).await;
+
+    Ok(())
 }
