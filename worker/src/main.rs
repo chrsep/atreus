@@ -1,5 +1,3 @@
-mod schema;
-
 use std::thread;
 use std::time::Duration;
 
