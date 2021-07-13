@@ -40,7 +40,7 @@
     "@tailwindcss/line-clamp": "0.2.1",
     "@tailwindcss/typography": "0.4.1",
     "@types/node": "16.0.0",
-    "@types/react": "17.0.13",
+    "@types/react": "17.0.14",
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "eslint": "7.30.0",
     "eslint-config-airbnb-typescript": "12.3.1",
