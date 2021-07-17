@@ -1,11 +1,8 @@
 import useSWR from "swr"
-import { Company, Scope } from "@prisma/client"
+import { CompanyWithRootDomains } from "@lib/model"
 
-const useGetCompanyById = (
-  id: number,
-  company: Company & { scopes: Scope[] }
-) =>
-  useSWR<Company & { scopes: Scope[] }>(`/api/companies/${id}`, {
+const useGetCompanyById = (id: number, company: CompanyWithRootDomains) =>
+  useSWR<CompanyWithRootDomains>(`/api/companies/${id}`, {
     initialData: company,
   })
 

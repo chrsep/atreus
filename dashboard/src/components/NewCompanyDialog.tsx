@@ -14,8 +14,8 @@ interface Props {
 const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
   const { register, handleSubmit } = useForm<{ name: string }>()
 
-  const [scopes, setScopes] = useState<string[]>([])
-  const [scope, setScope] = useState("")
+  const [rootDomains, setRootDomains] = useState<string[]>([])
+  const [rootDomain, setRootDomain] = useState("")
 
   const onSubmit = handleSubmit(async (data) => {
     const result = await fetch("/api/companies", {
@@ -23,7 +23,7 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
       credentials: "include",
       body: JSON.stringify({
         ...data,
-        scopes,
+        rootDomains,
       }),
     })
 
@@ -56,17 +56,19 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
           containerClassName="px-4 mt-2"
         />
 
-        <h2 className="mt-8 mb-3 mx-4 font-bold">Domain scopes</h2>
+        <h2 className="mt-8 mb-3 mx-4 font-bold">Root domains</h2>
 
         <div className="mx-4">
-          {scopes.map((domain) => (
+          {rootDomains.map((domain) => (
             <div key={domain} className="pb-4 flex items-center">
               <Button
                 variant="outline"
                 className="mr-3 !text-red-500 font-bold !p-2"
                 onClick={() => {
-                  setScopes(
-                    scopes.filter((testedDomain) => testedDomain !== domain)
+                  setRootDomains(
+                    rootDomains.filter(
+                      (testedDomain) => testedDomain !== domain
+                    )
                   )
                 }}
               >
@@ -80,18 +82,18 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
         <div className="flex items-end items-center border-t border-b border-opacity-10 p-4">
           <input
             name="domain"
-            onChange={(e) => setScope(e.target.value)}
-            value={scope}
+            onChange={(e) => setRootDomain(e.target.value)}
+            value={rootDomain}
             className="bg-dark-bg-800 w-full !outline-none"
-            placeholder="New scope"
+            placeholder="New root domain"
           />
 
           <Button
             variant="outline"
             className="ml-4"
             onClick={() => {
-              setScopes([...scopes, scope])
-              setScope("")
+              setRootDomains([...rootDomains, rootDomain])
+              setRootDomain("")
             }}
           >
             Add

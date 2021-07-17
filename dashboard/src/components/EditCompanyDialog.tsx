@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import Button from "@components/Button"
 import { useForm } from "react-hook-form"
 import { mutate } from "swr"
-import { Company, Scope } from "@prisma/client"
+import { Company, RootDomain } from "@prisma/client"
 import Icon from "@components/Icon"
 import Dialog from "@components/Dialog"
 import { useRouter } from "next/router"
@@ -11,7 +11,7 @@ import TextField from "@components/TextField"
 interface Props {
   open: boolean
   setOpen: (value: boolean) => void
-  company: Company & { scopes: Scope[] }
+  company: Company & { rootDomains: RootDomain[] }
 }
 
 const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {

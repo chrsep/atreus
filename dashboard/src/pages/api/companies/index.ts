@@ -6,20 +6,16 @@ import { array, object, string } from "zod"
 
 const get: NextApiHandler = async (req, res) => {
   const companies = await findAllCompanies()
-
   res.json(companies)
 }
 
 const postBody = object({
   name: string(),
-  scopes: array(string()).min(1),
+  rootDomains: array(string()).min(1),
 })
-
 const post: NextApiHandler = async (req, res) => {
   const body = postBody.parse(JSON.parse(req.body))
-
-  const newCompany = await insertNewCompany(body.name, body.scopes)
-
+  const newCompany = await insertNewCompany(body.name, body.rootDomains)
   res.json(newCompany)
 }
 

@@ -2,24 +2,24 @@ import React, { FC, Fragment, useState } from "react"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import { InferGetServerSidePropsType } from "next"
 import { findCompanyById } from "@lib/db"
-import type { Company, Scope } from "@prisma/client"
 import Button from "@components/Button"
 import Icon from "@components/Icon"
 import EditCompanyDialog from "@components/EditCompanyDialog"
 import useGetCompanyById from "@lib/companies/useGetCompany"
-import AddScopeDialog from "@components/AddScopeDialog"
-import { Transition, Menu } from "@headlessui/react"
+import AddRootDomainDialog from "@components/AddRootDomainDialog"
+import { Menu, Transition } from "@headlessui/react"
 import axios from "redaxios"
 import { mutate } from "swr"
+import { CompanyWithRootDomains } from "@lib/model"
 
 const CompanyProfile: FC<
   InferGetServerSidePropsType<typeof getServerSideProps> & {
-    company: Company & { scopes: Scope[] }
+    company: CompanyWithRootDomains
   }
 > = ({ company }) => {
   const { data } = useGetCompanyById(company.id, company)
   const [editCompany, setEditCompany] = useState(false)
-  const [addScope, setAddScope] = useState(false)
+  const [addRootDomain, setAddRootDomain] = useState(false)
 
   return (
     <div>
@@ -29,10 +29,10 @@ const CompanyProfile: FC<
         <Button
           variant="outline"
           className="ml-auto mr-3 !p-2"
-          onClick={() => setAddScope(true)}
+          onClick={() => setAddRootDomain(true)}
         >
           <Icon src="/icons/Streaming-White.svg" className="mr-2" />
-          Add scopes
+          Add root domains
         </Button>
 
         <Button
@@ -52,20 +52,23 @@ const CompanyProfile: FC<
         )}
 
         {data && (
-          <AddScopeDialog
-            open={addScope}
-            setOpen={setAddScope}
+          <AddRootDomainDialog
+            open={addRootDomain}
+            setOpen={setAddRootDomain}
             companyId={company.id}
           />
         )}
       </div>
 
-      {data?.scopes.map((scope) => (
-        <div key={scope.domain}>
+      {data?.rootDomains.map((rootDomain) => (
+        <div key={rootDomain.domain}>
           <div className="flex items-center px-6 py-1 dark:bg-dark-bg-800 border-b border-opacity-5">
-            <p>{scope.domain}</p>
+            <p>{rootDomain.domain}</p>
 
-            <ScopeMoreMenu domain={scope.domain} companyId={company.id} />
+            <RootDomainMoreMenu
+              domain={rootDomain.domain}
+              companyId={company.id}
+            />
           </div>
 
           <p className="px-6 py-3 border-b border-opacity-10">
@@ -77,7 +80,7 @@ const CompanyProfile: FC<
   )
 }
 
-const ScopeMoreMenu: FC<{
+const RootDomainMoreMenu: FC<{
   domain: string
   companyId: number
 }> = ({ companyId, domain }) => {

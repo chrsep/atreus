@@ -15,18 +15,18 @@ model Company {
   id   Int    @id @default(autoincrement())
   name String
 
-  domains Domain[]
-  scopes  Scope[]
+  subDomains Subdomain[]
+  rootDomains  RootDomain[]
 }
 
-model Scope {
+model RootDomain {
   domain String @id
 
   company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
   companyId Int
 }
 
-model Domain {
+model Subdomain {
   name String @id
 
   company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)

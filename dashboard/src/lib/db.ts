@@ -5,13 +5,13 @@ export const findAllCompanies = async () => {
   return prisma.company.findMany()
 }
 
-export const insertNewCompany = async (name: string, scopes: string[]) => {
+export const insertNewCompany = async (name: string, rootDomains: string[]) => {
   return prisma.company.create({
     data: {
       name,
-      scopes: {
+      rootDomains: {
         createMany: {
-          data: scopes.map((scope) => ({ domain: scope })),
+          data: rootDomains.map((domain) => ({ domain })),
         },
       },
     },
@@ -22,8 +22,8 @@ export const findCompanyById = async (id: number) => {
   return prisma.company.findUnique({
     where: { id },
     include: {
-      scopes: true,
-      domains: true,
+      rootDomains: true,
+      subDomains: true,
     },
   })
 }
@@ -44,30 +44,28 @@ export const patchCompanyById = async (
   })
 }
 
-export const addScopesToCompanyById = async (
+export const addRootDomainsByCompanyId = async (
   companyId: number,
-  scopes: string[]
+  rootDomains: string[]
 ) => {
   return prisma.company.update({
     where: { id: companyId },
     include: {
-      scopes: true,
-      domains: true,
+      rootDomains: true,
+      subDomains: true,
     },
     data: {
-      scopes: {
+      rootDomains: {
         createMany: {
-          data: scopes.map((scope) => ({ domain: scope })),
+          data: rootDomains.map((domain) => ({ domain })),
         },
       },
     },
   })
 }
 
-export const deleteScopeByDomain = async (domain: string) => {
-  return prisma.scope.delete({
-    where: {
-      domain,
-    },
+export const deleteRootDomain = async (domain: string) => {
+  return prisma.rootDomain.delete({
+    where: { domain },
   })
 }
