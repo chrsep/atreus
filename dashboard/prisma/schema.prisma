@@ -16,7 +16,7 @@ model Company {
   name String
 
   subDomains SubDomain[]
-  rootDomains  RootDomain[]
+  root_domains  RootDomain[]
 }
 
 model RootDomain {

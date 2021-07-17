@@ -8,5 +8,5 @@ edition = "2018"
 
 [dependencies]
 tokio = { version = "1.8.1", features = ["full"] }
-tokio-postgres = "0.7.2"
 dotenv = "0.15.0"
+sqlx = { version = "0.5", features = [ "runtime-tokio-rustls", "postgres", "macros", "chrono" ] }

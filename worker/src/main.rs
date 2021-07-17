@@ -1,32 +1,30 @@
 use std::env;
 
 use dotenv::dotenv;
-use tokio_postgres::{Error, NoTls};
+use sqlx::postgres::PgPoolOptions;
 
 mod amass;
 
 #[tokio::main]
-async fn main() -> Result<(), Error> {
+async fn main() -> Result<(), ()> {
     dotenv().ok();
 
     let db_url = env::var("DATABASE_URL").expect("DATABASE_URL cannot be empty");
+    let pool = PgPoolOptions::new()
+        .max_connections(2)
+        .connect(&db_url)
+        .await
+        .expect("failed to connect to database");
 
-    let (client, connection) = tokio_postgres::connect(&db_url, NoTls).await?;
+    let root_domains = sqlx::query!(r#"SELECT * from "RootDomain""#)
+        .fetch_all(&pool)
+        .await
+        .expect("failed to query root domains");
 
-    tokio::spawn(async move {
-        if let Err(e) = connection.await {
-            eprintln!("connection error: {}", e);
-        }
-    });
-
-    // language=PostgreSQL
-    // let Domains = client.query(r#"SELECT * FROM "Scope""#, &[]).await?;
-
-    // println!("{}", Domains.len());
-
-    // for domain in Domains {
-    //     amass::enumerate(domain.get(""));
-    // }
+    for domain in root_domains {
+        let result = amass::intel(domain.domain);
+        print!("{:?}", result);
+    }
 
     Ok(())
 }
