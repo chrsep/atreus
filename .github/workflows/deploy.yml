@@ -17,7 +17,7 @@ jobs:
           access_token: ${{ github.token }}
 
   deploy-dashboard:
-    name: Deploy proxy
+    name: Deploy dashboard
     runs-on: ubuntu-latest
     steps:
       # This step checks out a copy of your repository.
@@ -31,7 +31,7 @@ jobs:
           args: "deploy"
 
   deploy-worker:
-    name: Deploy proxy
+    name: Deploy worker
     runs-on: ubuntu-latest
     steps:
       # This step checks out a copy of your repository.
