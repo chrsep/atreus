@@ -16,10 +16,10 @@ pub fn enumerate(domain: String) -> String {
     println!("stdout: {}", stdout);
     println!("stderr: {}", stderr);
 
-    return stdout.to_string();
+    stdout.to_string()
 }
 
-pub fn intel(domain: String) -> String {
+pub fn intel(domain: &String) -> Vec<String> {
     let result = amass()
         .args(&["intel", "-d", domain.as_str(), "-whois"])
         .output()
@@ -30,5 +30,5 @@ pub fn intel(domain: String) -> String {
     println!("stdout: {}", stdout);
     println!("stderr: {}", stderr);
 
-    return stdout.to_string();
+    stdout.lines().map(str::to_string).collect()
 }

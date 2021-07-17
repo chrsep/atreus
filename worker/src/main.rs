@@ -22,8 +22,8 @@ async fn main() -> Result<(), ()> {
         .expect("failed to query root domains");
 
     for domain in root_domains {
-        let result = amass::intel(domain.domain);
-        print!("{:?}", result);
+        let result = amass::intel(&domain.domain);
+        print!("{} {:?}", domain.domain, result);
     }
 
     Ok(())
