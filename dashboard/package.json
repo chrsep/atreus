@@ -26,7 +26,7 @@
     "preact-render-to-string": "5.1.19",
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
-    "react-hook-form": "7.10.1",
+    "react-hook-form": "7.11.1",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "redaxios": "0.4.1",
     "swr": "0.5.6",
