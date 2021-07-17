@@ -3,6 +3,8 @@ use std::env;
 use dotenv::dotenv;
 use tokio_postgres::{Error, NoTls};
 
+mod amass;
+
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     dotenv().ok();
@@ -18,9 +20,13 @@ async fn main() -> Result<(), Error> {
     });
 
     // language=PostgreSQL
-    let companies = client.query(r#"SELECT * FROM "Company""#, &[]).await?;
+    // let Domains = client.query(r#"SELECT * FROM "Scope""#, &[]).await?;
 
-    println!("{}", companies.len());
+    // println!("{}", Domains.len());
+
+    // for domain in Domains {
+    //     amass::enumerate(domain.get(""));
+    // }
 
     Ok(())
 }
