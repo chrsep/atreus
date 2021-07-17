@@ -145,9 +145,19 @@ export const getServerSideProps = withPageAuthRequired({
     const { companyId } = ctx.query
     const company = await findCompanyById(parseInt(companyId as string, 10))
 
+    if (company === null) {
+      return { notFound: true }
+    }
+
     return {
       props: {
-        company,
+        company: {
+          ...company,
+          rootDomains: company.rootDomains.map((domain) => ({
+            ...domain,
+            createdAt: domain.createdAt.toString(),
+          })),
+        },
       },
     }
   },

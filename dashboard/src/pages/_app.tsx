@@ -12,7 +12,7 @@ import Icon from "@components/Icon"
 
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
   <UserProvider>
-    <div className="flex h-screen dark:bg-dark-bg-900">
+    <div className="flex dark:bg-dark-bg-900">
       <SideBar />
 
       <div className="w-full">
@@ -29,7 +29,7 @@ const SideBar = () => {
 
   return (
     <>
-      <nav className="border border-opacity-10 w-full h-full w-80 xl:col-span-1 p-4 dark:bg-dark-bg-900">
+      <nav className="border border-opacity-10 w-full w-80 xl:col-span-1 p-4 dark:bg-dark-bg-900 sticky top-0 h-screen">
         <Button
           variant="outline"
           className="ml-auto w-full mb-6 !justify-start leading-tight"

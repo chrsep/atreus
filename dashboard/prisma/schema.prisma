@@ -15,20 +15,25 @@ model Company {
   id   Int    @id @default(autoincrement())
   name String
 
-  subDomains SubDomain[]
-  root_domains  RootDomain[]
+  rootDomains RootDomain[]
 }
 
 model RootDomain {
-  domain String @id
+  domain    String   @id
+  createdAt DateTime @default(now())
+
+  confirmed Boolean @default(false)
 
   company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
   companyId Int
+
+  subDomains SubDomain[]
 }
 
 model SubDomain {
-  name String @id
+  domain    String   @id
+  createdAt DateTime @default(now())
 
-  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
-  companyId Int
+  rootDomain       RootDomain @relation(fields: [rootDomainDomain], references: [domain], onDelete: Cascade)
+  rootDomainDomain String
 }
