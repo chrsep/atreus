@@ -15,7 +15,7 @@ model Company {
   id   Int    @id @default(autoincrement())
   name String
 
-  subDomains Subdomain[]
+  subDomains SubDomain[]
   rootDomains  RootDomain[]
 }
 
@@ -26,7 +26,7 @@ model RootDomain {
   companyId Int
 }
 
-model Subdomain {
+model SubDomain {
   name String @id
 
   company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
