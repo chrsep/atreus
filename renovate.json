@@ -3,5 +3,6 @@
   "automerge": true,
   "dependencyDashboard": true,
   "stabilityDays": 7,
-  "automergeType": "branch"
+  "automergeType": "branch",
+  "prCreation": "not-pending"
 }
