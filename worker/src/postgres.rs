@@ -25,11 +25,11 @@ impl DB {
             .expect("failed to query root domains");
     }
 
-    pub async fn insert_domain(&self, result: Vec<String>, company_id: Vec<i32>) {
+    pub async fn bulk_insert_root_domain(&self, new_domains: Vec<String>, company_id: i32) {
         sqlx::query!(
             r#"insert into "RootDomain" (domain, "companyId") SELECT * FROM UNNEST($1::text[], $2::int[]) ON CONFLICT DO NOTHING"#,
-            &result,
-            &company_id
+            &new_domains,
+            &vec![company_id; new_domains.len()]
         )
             .execute(self.pool.borrow())
             .await
