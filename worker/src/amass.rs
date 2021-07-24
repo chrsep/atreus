@@ -21,7 +21,7 @@ pub fn enumerate(domain: String) -> String {
 
 pub fn intel(domain: &String) -> Vec<String> {
     let result = amass()
-        .args(&["intel", "-d", domain.as_str(), "-whois"])
+        .args(&["intel", "-d", "-dir", "./amass", domain.as_str(), "-whois"])
         .output()
         .expect("failed to execute amass");
 
