@@ -2,4 +2,5 @@ target
 amass/amass.json
 amass/amass.log
 amass/amass.txt
+amass/config.ini
 amass/indexes.bolt
