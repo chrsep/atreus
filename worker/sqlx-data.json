@@ -1,0 +1,52 @@
+{
+  "db": "PostgreSQL",
+  "371c1c7e1986cf69a267c6379beee8bc0efef19aa9758fe20ba7c7a4825c66d3": {
+    "query": "SELECT * from \"RootDomain\" where confirmed",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "domain",
+          "type_info": "Text"
+        },
+        {
+          "ordinal": 1,
+          "name": "companyId",
+          "type_info": "Int4"
+        },
+        {
+          "ordinal": 2,
+          "name": "confirmed",
+          "type_info": "Bool"
+        },
+        {
+          "ordinal": 3,
+          "name": "createdAt",
+          "type_info": "Timestamp"
+        }
+      ],
+      "parameters": {
+        "Left": []
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "6b2d027b5f892e3d944662ee498d2476b8cb4f90f2de4875f37ebe661625cfdd": {
+    "query": "insert into \"RootDomain\" (domain, \"companyId\") SELECT * FROM UNNEST($1::text[], $2::int[]) ON CONFLICT DO NOTHING",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "TextArray",
+          "Int4Array"
+        ]
+      },
+      "nullable": []
+    }
+  }
+}

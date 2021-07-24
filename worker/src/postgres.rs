@@ -1,10 +1,11 @@
 #![allow(non_snake_case)]
+
 use std::borrow::Borrow;
 use std::env;
 
-use sqlx::postgres::PgPoolOptions;
-use sqlx::types::chrono::{NaiveDateTime, Utc};
 use sqlx::{Pool, Postgres};
+use sqlx::postgres::PgPoolOptions;
+use sqlx::types::chrono::{NaiveDateTime};
 
 pub struct RootDomain {
     pub domain: String,
