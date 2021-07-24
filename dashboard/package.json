@@ -13,7 +13,8 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "typecheck": "tsc --noEmit",
-    "prepare": "cd .. && husky install dashboard/.husky"
+    "prepare": "cd .. && husky install dashboard/.husky",
+    "studio": "prisma studio"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "1.5.0",
