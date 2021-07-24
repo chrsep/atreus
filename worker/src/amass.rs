@@ -7,7 +7,7 @@ fn amass() -> Command {
 
 pub fn enumerate(domain: String) -> String {
     let result = amass()
-        .args(&["enum", "-d", domain.as_str()])
+        .args(&["enum", "-active", "-dir", "./amass",  "-d", domain.as_str()])
         .output()
         .expect("failed to execute amass");
 
