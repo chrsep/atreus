@@ -5,6 +5,7 @@ mod postgres;
 
 #[tokio::main]
 async fn main() -> Result<(), ()> {
+    env_logger::init();
     dotenv().ok();
 
     let db = postgres::connect().await;
