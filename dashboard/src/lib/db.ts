@@ -2,7 +2,11 @@ import prisma from "@lib/prisma"
 import { Company } from "@prisma/client"
 
 export const findAllCompanies = async () => {
-  return prisma.company.findMany()
+  return prisma.company.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  })
 }
 
 export const insertNewCompany = async (name: string, rootDomains: string[]) => {
