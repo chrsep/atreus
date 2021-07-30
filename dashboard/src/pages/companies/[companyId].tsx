@@ -62,7 +62,7 @@ const CompanyProfile: FC<
 
       {data?.rootDomains.map((rootDomain) => (
         <div key={rootDomain.domain}>
-          <div className="flex items-center px-6 py-1 dark:bg-dark-bg-800 border-b border-opacity-5">
+          <div className="flex items-center px-6 py-2 dark:bg-dark-bg-800 border-b border-opacity-5">
             <p>{rootDomain.domain}</p>
 
             <RootDomainMoreMenu

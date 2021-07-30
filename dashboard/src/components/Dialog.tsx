@@ -1,12 +1,19 @@
-import React, { FC, Fragment } from "react"
+import React, { FC, Fragment, RefObject } from "react"
 import { Transition, Dialog as BaseDialog } from "@headlessui/react"
 
 interface Props {
   className?: string
   open: boolean
   setOpen: (value: boolean) => void
+  initialFocus?: RefObject<HTMLInputElement>
 }
-const Dialog: FC<Props> = ({ open, setOpen, children, className }) => {
+const Dialog: FC<Props> = ({
+  open,
+  setOpen,
+  children,
+  className,
+  initialFocus,
+}) => {
   return (
     <Transition.Root show={open} as={Fragment}>
       <BaseDialog
@@ -15,6 +22,7 @@ const Dialog: FC<Props> = ({ open, setOpen, children, className }) => {
         className="fixed z-10 inset-0 overflow-y-auto"
         open={open}
         onClose={setOpen}
+        initialFocus={initialFocus}
       >
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child

@@ -24,7 +24,7 @@ const Button: FC<Props> = ({
   switch (variant) {
     case "icon":
       baseClassName =
-        "!p-3 text-gray-200 hover:text-gray-500  hover:bg-dark-bg-700 hover:bg-opacity-70"
+        "!p-1 text-gray-200 hover:text-gray-500  hover:bg-dark-bg-700 hover:bg-opacity-70"
       break
     case "secondary":
       baseClassName = "text-gray-200 hover:text-gray-500"

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import React, { FC, MutableRefObject, useRef, useState } from "react"
 import Dialog from "@components/Dialog"
 import Button from "@components/Button"
 import Icon from "@components/Icon"
@@ -15,6 +15,8 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
   const [rootDomains, setRootDomains] = useState<string[]>([])
   const [rootDomain, setRootDomain] = useState("")
 
+  const domainField: MutableRefObject<HTMLInputElement | null> = useRef(null)
+
   const handleSubmit = async () => {
     const result = await axios.post(
       `/api/companies/${companyId}/scopes`,
@@ -29,7 +31,7 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
   }
 
   return (
-    <Dialog open={open} setOpen={setOpen}>
+    <Dialog open={open} setOpen={setOpen} initialFocus={domainField}>
       <div className="flex items-center p-4">
         <Icon
           src="/icons/Streaming-White.svg"
@@ -43,7 +45,7 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
           variant="icon"
           onClick={() => setOpen(false)}
         >
-          <Icon src="/icons/Close-White.svg" className="opacity-60 w-6 h-6" />
+          <Icon src="/icons/Close-White.svg" className="opacity-60 !w-6 !h-6" />
         </Button>
       </div>
 
@@ -78,6 +80,7 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
           value={rootDomain}
           className="bg-dark-bg-800 w-full !outline-none text-base py-2"
           placeholder="New root domain"
+          ref={domainField}
         />
 
         <Button variant="outline" className="ml-4" type="submit">

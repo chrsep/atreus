@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, MutableRefObject, useRef } from "react"
 import Button from "@components/Button"
 import { useForm } from "react-hook-form"
 import { mutate } from "swr"
@@ -21,6 +21,9 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
       name: company.name,
     },
   })
+
+  const nameField: MutableRefObject<HTMLInputElement | null> = useRef(null)
+  const { ref: nameRef, ...name } = register("name")
 
   const onSubmit = handleSubmit(async (data) => {
     const result = await fetch(`/api/companies/${company.id}`, {
@@ -50,7 +53,7 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
   }
 
   return (
-    <Dialog open={open} setOpen={setOpen}>
+    <Dialog open={open} setOpen={setOpen} initialFocus={nameField}>
       <div className="flex items-center p-4">
         <Icon src="/icons/Shop-White.svg" className="mr-3 w-6 h-6 opacity-40" />
         <h2 className="text-xs">Edit company</h2>
@@ -61,13 +64,20 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
           variant="icon"
           onClick={() => setOpen(false)}
         >
-          <Icon src="/icons/Close-White.svg" className="opacity-60 w-6 h-6" />
+          <Icon src="/icons/Close-White.svg" className="opacity-60 !w-6 !h-6" />
         </Button>
       </div>
 
       <form onSubmit={onSubmit}>
         <div className="px-4 pb-2">
-          <TextField label="Name" {...register("name")} />
+          <TextField
+            label="Name"
+            ref={(e) => {
+              nameRef(e)
+              nameField.current = e
+            }}
+            {...name}
+          />
         </div>
 
         <div className="flex items-center">
