@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useState } from "react"
+import React, { FC, Fragment, ReactNode, useState } from "react"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 import { InferGetServerSidePropsType } from "next"
 import { findCompanyById } from "@lib/db"
@@ -7,10 +7,17 @@ import Icon from "@components/Icon"
 import EditCompanyDialog from "@components/EditCompanyDialog"
 import useGetCompanyById from "@lib/companies/useGetCompany"
 import AddRootDomainDialog from "@components/AddRootDomainDialog"
-import { Menu, Transition } from "@headlessui/react"
+import { Menu, Tab, Transition } from "@headlessui/react"
 import axios from "redaxios"
 import { mutate } from "swr"
 import { CompanyWithRootDomains } from "@lib/model"
+import clsx from "clsx"
+import { RootDomain } from "@prisma/client"
+
+enum TabOptions {
+  Confirmed = "Confirmed",
+  Other = "Other",
+}
 
 const CompanyProfile: FC<
   InferGetServerSidePropsType<typeof getServerSideProps> & {
@@ -24,7 +31,7 @@ const CompanyProfile: FC<
   return (
     <div>
       <div className="flex items-center border-b border-opacity-10 w-full">
-        <h1 className="m-6">{data?.name}</h1>
+        <h1 className="m-6 font-bold">{data?.name}</h1>
 
         <Button
           variant="outline"
@@ -60,25 +67,58 @@ const CompanyProfile: FC<
         )}
       </div>
 
-      {data?.rootDomains.map((rootDomain) => (
-        <div key={rootDomain.domain}>
-          <div className="flex items-center px-6 py-2 dark:bg-dark-bg-800 border-b border-opacity-5">
-            <p>{rootDomain.domain}</p>
-
-            <RootDomainMoreMenu
-              domain={rootDomain.domain}
-              companyId={company.id}
-            />
-          </div>
-
-          <p className="px-6 py-3 border-b border-opacity-10">
-            no domain found
-          </p>
-        </div>
-      ))}
+      <Tabs
+        panels={[
+          <ConfirmedDomains
+            companyId={company.id}
+            rootDomains={data?.rootDomains.filter(({ confirmed }) => confirmed)}
+          />,
+          <OtherDomains
+            rootDomains={data?.rootDomains.filter(
+              ({ confirmed }) => !confirmed
+            )}
+          />,
+        ]}
+      />
     </div>
   )
 }
+
+const ConfirmedDomains: FC<{
+  companyId: number
+  rootDomains?: RootDomain[]
+}> = ({ companyId, rootDomains = [] }) => (
+  <>
+    {rootDomains.map((rootDomain) => (
+      <div key={rootDomain.domain}>
+        <div className="flex items-center px-6 py-2 dark:bg-dark-bg-800 border-b border-opacity-5">
+          <p>{rootDomain.domain}</p>
+
+          <RootDomainMoreMenu
+            domain={rootDomain.domain}
+            companyId={companyId}
+          />
+        </div>
+
+        <p className="px-6 py-3 border-b border-opacity-10">no domain found</p>
+      </div>
+    ))}
+  </>
+)
+
+const OtherDomains: FC<{ rootDomains?: RootDomain[] }> = ({
+  rootDomains = [],
+}) => (
+  <>
+    {rootDomains.map((rootDomain) => (
+      <div key={rootDomain.domain}>
+        <div className="flex items-center px-6 py-2 border-b border-opacity-5">
+          <p>{rootDomain.domain}</p>
+        </div>
+      </div>
+    ))}
+  </>
+)
 
 const RootDomainMoreMenu: FC<{
   domain: string
@@ -139,6 +179,41 @@ const RootDomainMoreMenu: FC<{
     </div>
   )
 }
+
+const Tabs: FC<{
+  panels: ReactNode[]
+}> = ({ panels }) => (
+  <div className="w-full ">
+    <Tab.Group>
+      <div className="border-b border-opacity-10 p-2">
+        <Tab.List className="flex p-1 space-x-1 bg-primary rounded-xl dark:bg-dark-bg-800 max-w-[200px]">
+          {Object.keys(TabOptions).map((option) => (
+            <Tab
+              key={option}
+              className={({ selected }) =>
+                clsx(
+                  "w-full py-2 leading-5 font-medium text-primary-200 rounded-lg text-xs !font-bold",
+                  "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60",
+                  selected
+                    ? "bg-white dark:bg-dark-bg-700 shadow "
+                    : "!text-blue-100 hover:bg-white/[0.04] hover:text-white"
+                )
+              }
+            >
+              {option}
+            </Tab>
+          ))}
+        </Tab.List>
+      </div>
+
+      <Tab.Panels>
+        {panels.map((node) => (
+          <Tab.Panel>{node}</Tab.Panel>
+        ))}
+      </Tab.Panels>
+    </Tab.Group>
+  </div>
+)
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(ctx) {

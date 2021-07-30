@@ -11,7 +11,7 @@ export const insertNewCompany = async (name: string, rootDomains: string[]) => {
       name,
       rootDomains: {
         createMany: {
-          data: rootDomains.map((domain) => ({ domain })),
+          data: rootDomains.map((domain) => ({ domain, confirmed: true })),
         },
       },
     },
@@ -23,8 +23,8 @@ export const findCompanyById = async (id: number) => {
     where: { id },
     include: {
       rootDomains: {
-        where: {
-          confirmed: true,
+        include: {
+          subDomains: true,
         },
       },
     },
