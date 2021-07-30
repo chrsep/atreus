@@ -113,7 +113,12 @@ const OtherDomains: FC<{ rootDomains?: RootDomain[] }> = ({
     {rootDomains.map((rootDomain) => (
       <div key={rootDomain.domain}>
         <div className="flex items-center px-6 py-2 border-b border-opacity-5">
-          <p>{rootDomain.domain}</p>
+          <p className="mr-auto">{rootDomain.domain}</p>
+
+          <Button variant="outline">
+            <Icon src="/icons/Check-light.svg" className="mr-1" />
+            Confirm
+          </Button>
         </div>
       </div>
     ))}
