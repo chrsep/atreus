@@ -8,9 +8,7 @@ const PostBody = array(string())
 const post: NextApiHandler = async (req, res) => {
   const companyId = string().parse(req.query.companyId)
   const body = PostBody.parse(req.body)
-
   const company = await addRootDomainsByCompanyId(parseInt(companyId, 10), body)
-
   res.json(company)
 }
 

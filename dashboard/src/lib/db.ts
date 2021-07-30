@@ -59,7 +59,7 @@ export const addRootDomainsByCompanyId = async (
     data: {
       rootDomains: {
         createMany: {
-          data: rootDomains.map((domain) => ({ domain })),
+          data: rootDomains.map((domain) => ({ domain, confirmed: true })),
         },
       },
     },
