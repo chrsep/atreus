@@ -125,7 +125,7 @@ const RootDomainMoreMenu: FC<{
   companyId: number
 }> = ({ companyId, domain }) => {
   const handleDelete = async () => {
-    const result = await axios.delete(`/api/scopes/${domain}`)
+    const result = await axios.delete(`/api/root-domains/${domain}`)
 
     if (result.status === 200) {
       await mutate(`/api/companies/${companyId}`)

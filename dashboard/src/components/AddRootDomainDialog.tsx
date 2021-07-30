@@ -19,7 +19,7 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
 
   const handleSubmit = async () => {
     const result = await axios.post(
-      `/api/companies/${companyId}/scopes`,
+      `/api/companies/${companyId}/root-domains`,
       rootDomains
     )
 
