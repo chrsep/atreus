@@ -3,12 +3,12 @@ import { FC, useState } from "react"
 import { AppProps } from "next/app"
 import { UserProvider } from "@auth0/nextjs-auth0"
 import Button from "@components/Button"
-import useGetCompanies from "@lib/companies/useGetCompanies"
 import NewCompanyDialog from "@components/NewCompanyDialog"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import Icon from "@components/Icon"
 import clsx from "clsx"
+import { useGetCompanies } from "@lib/api-hooks"
 
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
   <UserProvider>

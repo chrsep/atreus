@@ -26,11 +26,7 @@ export const findCompanyById = async (id: number) => {
   return prisma.company.findUnique({
     where: { id },
     include: {
-      rootDomains: {
-        include: {
-          subDomains: true,
-        },
-      },
+      rootDomains: true,
     },
   })
 }
@@ -73,5 +69,18 @@ export const addRootDomainsByCompanyId = async (
 export const deleteRootDomain = async (domain: string) => {
   return prisma.rootDomain.delete({
     where: { domain },
+  })
+}
+
+export const findRootDomainById = async (domain: string) => {
+  return prisma.rootDomain.findUnique({
+    where: { domain },
+    include: {
+      subDomains: {
+        include: {
+          IpAddress: true,
+        },
+      },
+    },
   })
 }

@@ -5,7 +5,6 @@ import { findCompanyById } from "@lib/db"
 import Button from "@components/Button"
 import Icon from "@components/Icon"
 import EditCompanyDialog from "@components/EditCompanyDialog"
-import useGetCompanyById from "@lib/companies/useGetCompany"
 import AddRootDomainDialog from "@components/AddRootDomainDialog"
 import { Menu, Tab, Transition } from "@headlessui/react"
 import axios from "redaxios"
@@ -13,6 +12,7 @@ import { mutate } from "swr"
 import { CompanyWithRootDomains } from "@lib/model"
 import clsx from "clsx"
 import { RootDomain } from "@prisma/client"
+import { useGetCompanyById } from "@lib/api-hooks"
 
 enum TabOptions {
   Confirmed = "Confirmed",
