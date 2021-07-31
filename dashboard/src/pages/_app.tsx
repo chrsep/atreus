@@ -9,6 +9,7 @@ import { useRouter } from "next/router"
 import Icon from "@components/Icon"
 import clsx from "clsx"
 import { useGetCompanies } from "@lib/api-hooks"
+import FaviconImage from "@components/FaviconImage"
 
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
   <UserProvider>
@@ -51,14 +52,12 @@ const SideBar = () => {
                 )}
               >
                 {rootDomains.length > 0 ? (
-                  <img
-                    src={`https://${rootDomains[0].domain}/favicon.ico`}
-                    alt=""
-                    className="w-6 h-6 mr-4 rounded-lg bg-white p-1"
-                    referrerPolicy="no-referrer"
+                  <FaviconImage
+                    domain={rootDomains[0].domain}
+                    className="w-6 h-6 mr-4 rounded-lg bg-gray-700 p-1"
                   />
                 ) : (
-                  <div className="w-6 h-6 mr-4 rounded-lg bg-gray-700 " />
+                  <div className="w-6 h-6 mr-4 rounded-lg bg-gray-700" />
                 )}
                 <p className="truncate">{name}</p>
               </a>

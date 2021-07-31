@@ -12,6 +12,7 @@ import clsx from "clsx"
 import { RootDomain } from "@prisma/client"
 import { mutateApi, useGetCompanyById } from "@lib/api-hooks"
 import { del, patch } from "@lib/api"
+import FaviconImage from "@components/FaviconImage"
 
 enum TabOptions {
   Confirmed = "Confirmed",
@@ -29,8 +30,16 @@ const CompanyProfile: FC<
 
   return (
     <div>
-      <div className="flex items-center border-b border-opacity-10 w-full">
-        <h1 className="m-6 font-bold">{data?.name}</h1>
+      <div className="flex items-center border-b border-opacity-10 w-full py-4 pl-6">
+        {data?.rootDomains && data?.rootDomains?.length > 0 ? (
+          <FaviconImage
+            domain={data.rootDomains[0].domain}
+            className="w-8 h-8 mr-4 rounded-lg bg-white p-1"
+          />
+        ) : (
+          <div className="w-8 h-8 mr-4 rounded-lg bg-gray-700 " />
+        )}
+        <h1 className="font-bold">{data?.name}</h1>
 
         <Button
           variant="outline"
