@@ -1,12 +1,13 @@
 import React, { FC, MutableRefObject, useRef } from "react"
 import Button from "@components/Button"
 import { useForm } from "react-hook-form"
-import { mutate } from "swr"
 import { Company, RootDomain } from "@prisma/client"
 import Icon from "@components/Icon"
 import Dialog from "@components/Dialog"
 import { useRouter } from "next/router"
 import TextField from "@components/TextField"
+import { del, patch } from "@lib/api"
+import { mutateApi } from "@lib/api-hooks"
 
 interface Props {
   open: boolean
@@ -26,27 +27,19 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
   const { ref: nameRef, ...name } = register("name")
 
   const onSubmit = handleSubmit(async (data) => {
-    const result = await fetch(`/api/companies/${company.id}`, {
-      method: "PATCH",
-      credentials: "include",
-      body: JSON.stringify(data),
-    })
-
+    const result = await patch(`/companies/${company.id}`, data)
     if (result.ok) {
-      await mutate("/api/companies")
-      await mutate(`/api/companies/${company.id}`)
+      await mutateApi("/companies")
+      await mutateApi(`/companies/${company.id}`)
       setOpen(false)
     }
   })
 
   const onDelete = async () => {
-    const result = await fetch(`/api/companies/${company.id}`, {
-      method: "DELETE",
-      credentials: "include",
-    })
+    const result = await del(`/companies/${company.id}`)
 
     if (result.ok) {
-      await mutate("/api/companies")
+      await mutateApi("/companies")
       await router.push("/")
       setOpen(false)
     }

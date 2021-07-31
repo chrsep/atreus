@@ -1,4 +1,4 @@
-import useSWR from "swr"
+import useSWR, { mutate } from "swr"
 import { CompanyWithRootDomains } from "@lib/model"
 
 export const useGetCompanies = () => {
@@ -8,7 +8,16 @@ export const useGetCompanies = () => {
 export const useGetCompanyById = (
   id: number,
   company: CompanyWithRootDomains
-) =>
-  useSWR<CompanyWithRootDomains>(`/api/companies/${id}`, {
+) => {
+  return useSWR<CompanyWithRootDomains>(`/api/companies/${id}`, {
     initialData: company,
   })
+}
+
+export const mutateApi = async (
+  url: string,
+  data?: unknown,
+  shouldRevalidate?: boolean
+) => {
+  await mutate(`/api${url}`, data, shouldRevalidate)
+}

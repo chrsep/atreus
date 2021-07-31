@@ -1,7 +1,7 @@
 /* eslint-disable no-fallthrough */
 // noinspection FallThroughInSwitchStatementJS
 
-import { NextApiHandler } from "next"
+import { NextApiHandler, NextApiResponse } from "next"
 
 interface Handler {
   get?: NextApiHandler
@@ -14,39 +14,53 @@ interface Handler {
 /** handles requests based on their methods */
 export function createHandler(handlers: Handler): NextApiHandler {
   return async (req, res) => {
-    switch (req.method) {
+    switch (req.method?.toUpperCase()) {
       case "POST":
         if (handlers.post) {
           await handlers.post(req, res)
-          break
+        } else {
+          methodNotAllowed(res)
         }
+        break
       case "GET":
         if (handlers.get) {
           await handlers.get(req, res)
-          break
+        } else {
+          methodNotAllowed(res)
         }
-      case "PUT":
-        if (handlers.put) {
-          await handlers.put(req, res)
-          break
-        }
+        break
       case "PATCH":
         if (handlers.patch) {
           await handlers.patch(req, res)
-          break
+        } else {
+          methodNotAllowed(res)
         }
+        break
+      case "PUT":
+        if (handlers.put) {
+          await handlers.put(req, res)
+        } else {
+          methodNotAllowed(res)
+        }
+        break
       case "DELETE":
         if (handlers.del) {
           await handlers.del(req, res)
-          break
+        } else {
+          methodNotAllowed(res)
         }
+        break
       default: {
-        res.status(401).json({
-          error: "not_authenticated",
-          description:
-            "The user does not have an active session or is not authenticated",
-        })
+        methodNotAllowed(res)
       }
     }
   }
+}
+
+const methodNotAllowed = (res: NextApiResponse) => {
+  res.status(405).json({
+    error: "method_not_allowed",
+    description:
+      "The user does not have an active session or is not authenticated",
+  })
 }

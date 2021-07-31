@@ -1,10 +1,11 @@
 import React, { FC, MutableRefObject, useRef, useState } from "react"
 import Button from "@components/Button"
 import { useForm } from "react-hook-form"
-import { mutate } from "swr"
 import Dialog from "@components/Dialog"
 import TextField from "@components/TextField"
 import Icon from "@components/Icon"
+import { post } from "@lib/api"
+import { mutateApi } from "@lib/api-hooks"
 
 interface Props {
   open: boolean
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
-  const { register, handleSubmit } = useForm<{ name: string }>()
+  const { reset, register, handleSubmit } = useForm<{ name: string }>()
 
   const [rootDomains, setRootDomains] = useState<string[]>([])
   const [rootDomain, setRootDomain] = useState("")
@@ -21,18 +22,14 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
   const { ref: nameRef, ...name } = register("name")
 
   const onSubmit = handleSubmit(async (data) => {
-    const result = await fetch("/api/companies", {
-      method: "POST",
-      credentials: "include",
-      body: JSON.stringify({
-        ...data,
-        rootDomains,
-      }),
-    })
+    const result = await post("/companies", { ...data, rootDomains })
 
     if (result.ok) {
-      await mutate("/api/companies")
+      await mutateApi("/companies")
       setOpen(false)
+      setRootDomains([])
+      setRootDomain("")
+      reset()
     }
   })
 

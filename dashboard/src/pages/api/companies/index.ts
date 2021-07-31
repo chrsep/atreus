@@ -14,7 +14,7 @@ const postBody = object({
   rootDomains: array(string()).min(1),
 })
 const post: NextApiHandler = async (req, res) => {
-  const body = postBody.parse(JSON.parse(req.body))
+  const body = postBody.parse(req.body)
   const newCompany = await insertNewCompany(body.name, body.rootDomains)
   res.json(newCompany)
 }

@@ -10,7 +10,7 @@ const PatchBody = object({
 const patch: NextApiHandler = async (req, res) => {
   const { companyId } = req.query
 
-  const body = PatchBody.parse(JSON.parse(req.body))
+  const body = PatchBody.parse(req.body)
   const companies = await patchCompanyById(
     parseInt(companyId as string, 10),
     body

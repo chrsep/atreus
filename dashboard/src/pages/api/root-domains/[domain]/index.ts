@@ -1,6 +1,6 @@
-import { string } from "zod"
+import { boolean, object, string, TypeOf } from "zod"
 import { NextApiHandler } from "next"
-import { deleteRootDomain, findRootDomainById } from "@lib/db"
+import { deleteRootDomain, findRootDomainById, updateRootDomain } from "@lib/db"
 import { withApiAuthRequired } from "@auth0/nextjs-auth0"
 import { createHandler } from "@lib/rest"
 
@@ -16,4 +16,18 @@ const get: NextApiHandler = async (req, res) => {
   res.json(company)
 }
 
-export default withApiAuthRequired(createHandler({ del, get }))
+const PatchBody = object({
+  confirmed: boolean(),
+})
+
+export type PatchRootDomainBody = TypeOf<typeof PatchBody>
+
+const patch: NextApiHandler = async (req, res) => {
+  const domain = string().parse(req.query.domain)
+  let body = PatchBody.parse(req.body)
+
+  body = await updateRootDomain(domain, body.confirmed)
+  res.json(body)
+}
+
+export default withApiAuthRequired(createHandler({ del, get, patch }))

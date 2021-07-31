@@ -2,8 +2,8 @@ import React, { FC, MutableRefObject, useRef, useState } from "react"
 import Dialog from "@components/Dialog"
 import Button from "@components/Button"
 import Icon from "@components/Icon"
-import axios from "redaxios"
-import { mutate } from "swr"
+import { post } from "@lib/api"
+import { mutateApi } from "@lib/api-hooks"
 
 interface Props {
   open: boolean
@@ -18,13 +18,13 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
   const domainField: MutableRefObject<HTMLInputElement | null> = useRef(null)
 
   const handleSubmit = async () => {
-    const result = await axios.post(
-      `/api/companies/${companyId}/root-domains`,
+    const result = await post(
+      `/companies/${companyId}/root-domains`,
       rootDomains
     )
 
     if (result.status === 200) {
-      await mutate(`/api/companies/${companyId}`, result.data)
+      await mutateApi(`/companies/${companyId}`, result.data)
       setOpen(false)
       setRootDomains([])
     }

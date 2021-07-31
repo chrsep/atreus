@@ -91,3 +91,10 @@ export const findRootDomainById = async (domain: string) => {
     },
   })
 }
+
+export const updateRootDomain = async (domain: string, confirmed: boolean) => {
+  return prisma.rootDomain.update({
+    where: { domain },
+    data: { confirmed },
+  })
+}

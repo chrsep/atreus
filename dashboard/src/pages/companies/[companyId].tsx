@@ -7,12 +7,11 @@ import Icon from "@components/Icon"
 import EditCompanyDialog from "@components/EditCompanyDialog"
 import AddRootDomainDialog from "@components/AddRootDomainDialog"
 import { Menu, Tab, Transition } from "@headlessui/react"
-import axios from "redaxios"
-import { mutate } from "swr"
 import { CompanyWithRootDomains } from "@lib/model"
 import clsx from "clsx"
 import { RootDomain } from "@prisma/client"
-import { useGetCompanyById } from "@lib/api-hooks"
+import { mutateApi, useGetCompanyById } from "@lib/api-hooks"
+import { del, patch } from "@lib/api"
 
 enum TabOptions {
   Confirmed = "Confirmed",
@@ -108,32 +107,43 @@ const ConfirmedDomains: FC<{
 
 const OtherDomains: FC<{ rootDomains?: RootDomain[] }> = ({
   rootDomains = [],
-}) => (
-  <>
-    {rootDomains.map((rootDomain) => (
-      <div key={rootDomain.domain}>
-        <div className="flex items-center px-6 py-2 border-b border-opacity-5">
-          <p className="mr-auto">{rootDomain.domain}</p>
+}) => {
+  const handleConfirm = async (domain: string) => {
+    await patch(`/root-domains/${encodeURIComponent(domain)}`, {
+      confirmed: true,
+    })
+  }
 
-          <Button variant="outline">
-            <Icon src="/icons/Check-light.svg" className="mr-1" />
-            Confirm
-          </Button>
+  return (
+    <>
+      {rootDomains.map((rootDomain) => (
+        <div key={rootDomain.domain}>
+          <div className="flex items-center px-6 py-2 border-b border-opacity-5">
+            <p className="mr-auto">{rootDomain.domain}</p>
+
+            <Button
+              variant="outline"
+              onClick={() => handleConfirm(rootDomain.domain)}
+            >
+              <Icon src="/icons/Check-light.svg" className="mr-1" />
+              Confirm
+            </Button>
+          </div>
         </div>
-      </div>
-    ))}
-  </>
-)
+      ))}
+    </>
+  )
+}
 
 const RootDomainMoreMenu: FC<{
   domain: string
   companyId: number
 }> = ({ companyId, domain }) => {
   const handleDelete = async () => {
-    const result = await axios.delete(`/api/root-domains/${domain}`)
+    const result = await del(`/root-domains/${domain}`)
 
-    if (result.status === 200) {
-      await mutate(`/api/companies/${companyId}`)
+    if (result.ok) {
+      await mutateApi(`/companies/${companyId}`)
     }
   }
 

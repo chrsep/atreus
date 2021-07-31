@@ -9,7 +9,6 @@ import { useRouter } from "next/router"
 import Icon from "@components/Icon"
 import clsx from "clsx"
 import { useGetCompanies } from "@lib/api-hooks"
-import { log } from "util"
 
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
   <UserProvider>
@@ -27,8 +26,6 @@ const SideBar = () => {
   const router = useRouter()
   const [showNewCompany, setShowNewCompany] = useState(false)
   const companies = useGetCompanies()
-
-  console.log(companies.data)
 
   return (
     <>
@@ -48,7 +45,7 @@ const SideBar = () => {
             <Link href={href}>
               <a
                 className={clsx(
-                  "flex rounded-lg px-4 py-2 dark:hover:bg-dark-bg-800 my-1 text-xs",
+                  "flex items-center rounded-xl p-2 dark:hover:bg-dark-bg-800 my-1 text-xs",
                   router.asPath === href &&
                     "dark:bg-primary-300 !bg-opacity-20 dark:hover:bg-primary-400 ring-primary-400 ring-1 ring-opacity-30"
                 )}
@@ -57,13 +54,13 @@ const SideBar = () => {
                   <img
                     src={`https://${rootDomains[0].domain}/favicon.ico`}
                     alt=""
-                    className="w-4 h-4 mr-2"
+                    className="w-6 h-6 mr-4 rounded-lg bg-white p-1"
                     referrerPolicy="no-referrer"
                   />
                 ) : (
-                  <div className="w-4 h-4 mr-2" />
+                  <div className="w-6 h-6 mr-4 rounded-lg bg-gray-700 " />
                 )}
-                <p>{name}</p>
+                <p className="truncate">{name}</p>
               </a>
             </Link>
           )
