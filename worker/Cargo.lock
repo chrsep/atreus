@@ -1384,6 +1384,8 @@ dependencies = [
  "dotenv",
  "env_logger",
  "log",
+ "serde",
+ "serde_json",
  "sqlx",
  "tokio",
 ]

@@ -48,5 +48,36 @@
       },
       "nullable": []
     }
+  },
+  "a9c77f365e364689f86e4c51f04f84e12372fdc98af7802fe5448c0dc6f8c572": {
+    "query": "\n                insert into \"IpAddress\"(\"subDomainDomain\", ip, cidr, asn, \"desc\")\n                values ($1, $2, $3, $4, $5)\n                ",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "Text",
+          "Text",
+          "Text",
+          "Int4",
+          "Text"
+        ]
+      },
+      "nullable": []
+    }
+  },
+  "c678e0f436826cf8dc48575fe3b251920d08a5fce6786121bf6914e3a22892a0": {
+    "query": "\n            insert into \"SubDomain\"(domain, \"amassTag\",  \"rootDomainDomain\", sources)\n            values ($1, $2, $3, $4)\n            ",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "Text",
+          "Text",
+          "Text",
+          "TextArray"
+        ]
+      },
+      "nullable": []
+    }
   }
 }

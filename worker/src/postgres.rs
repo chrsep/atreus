@@ -3,9 +3,10 @@
 use std::borrow::Borrow;
 use std::env;
 
-use sqlx::{Pool, Postgres};
+use crate::amass::AmassEnumResult;
 use sqlx::postgres::PgPoolOptions;
-use sqlx::types::chrono::{NaiveDateTime};
+use sqlx::types::chrono::NaiveDateTime;
+use sqlx::{Pool, Postgres};
 
 pub struct RootDomain {
     pub domain: String,
@@ -19,6 +20,41 @@ pub struct DB {
 }
 
 impl DB {
+    pub async fn insert_subdomain(&self, subdomain: &AmassEnumResult) {
+        sqlx::query!(
+            // language=PostgreSQL
+            r#"
+            insert into "SubDomain"(domain, "amassTag",  "rootDomainDomain", sources)
+            values ($1, $2, $3, $4)
+            "#,
+            &subdomain.name,
+            &subdomain.tag,
+            &subdomain.domain,
+            &subdomain.sources
+        )
+        .execute(self.pool.borrow())
+        .await
+        .expect("failed to save new domain");
+
+        for address in subdomain.addresses.as_slice() {
+            sqlx::query!(
+                // language=PostgreSQL
+                r#"
+                insert into "IpAddress"("subDomainDomain", ip, cidr, asn, "desc")
+                values ($1, $2, $3, $4, $5)
+                "#,
+                &subdomain.name,
+                &address.ip,
+                &address.cidr,
+                &address.asn,
+                &address.desc,
+            )
+            .execute(self.pool.borrow())
+            .await
+            .expect("failed to save new domain");
+        }
+    }
+
     pub async fn find_confirmed_domain(&self) -> Vec<RootDomain> {
         return sqlx::query_as!(RootDomain, r#"SELECT * from "RootDomain" where confirmed"#)
             .fetch_all(self.pool.borrow())
