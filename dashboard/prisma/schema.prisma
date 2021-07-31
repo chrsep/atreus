@@ -31,9 +31,30 @@ model RootDomain {
 }
 
 model SubDomain {
-  domain    String   @id
-  createdAt DateTime @default(now())
+  domain String @id
 
-  rootDomain       RootDomain @relation(fields: [rootDomainDomain], references: [domain], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  rootDomain       RootDomain  @relation(fields: [rootDomainDomain], references: [domain], onDelete: Cascade)
   rootDomainDomain String
+  IpAddress        IpAddress[]
+
+  amassTag String
+  sources  String[]
+}
+
+model IpAddress {
+  subDomain       SubDomain @relation(fields: [subDomainDomain], references: [domain])
+  subDomainDomain String
+
+  ip   String
+  cidr String
+  asn  Int
+  desc String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@id([ip, subDomainDomain])
 }
