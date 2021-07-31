@@ -10,7 +10,7 @@ import { Menu, Tab, Transition } from "@headlessui/react"
 import { CompanyWithRootDomains } from "@lib/model"
 import clsx from "clsx"
 import { RootDomain } from "@prisma/client"
-import { mutateApi, useGetCompanyById } from "@lib/api-hooks"
+import { mutateApi, useGetCompanyById, useGetRootDomain } from "@lib/api-hooks"
 import { del, patch } from "@lib/api"
 import FaviconImage from "@components/FaviconImage"
 
@@ -108,11 +108,40 @@ const ConfirmedDomains: FC<{
           />
         </div>
 
-        <p className="px-6 py-3 border-b border-opacity-10">no domain found</p>
+        <SubDomains rootDomain={rootDomain.domain} />
       </div>
     ))}
   </>
 )
+
+const SubDomains: FC<{ rootDomain: string }> = ({ rootDomain }) => {
+  const { data } = useGetRootDomain(rootDomain)
+
+  return (
+    <>
+      {data?.subDomains.length === 0 && (
+        <p className="px-6 py-3 border-b border-opacity-10">no domain found</p>
+      )}
+
+      <table className="w-full">
+        {data?.subDomains &&
+          data?.subDomains?.length > 0 &&
+          data?.subDomains.map((domain) => (
+            <tr className="flex items-center border-b border-opacity-10 text-xs">
+              <td className="px-6 py-3 w-1/4">{domain.domain}</td>
+              <td className="w-1/2">
+                {domain.ipAddresses?.map((address) => (
+                  <p className="py-1 w-[90px] flex-shrink-0">{address.ip}</p>
+                ))}
+              </td>
+              <td>{domain.ipAddresses[0].cidr}</td>
+              <td className="ml-auto mr-3">{domain.updatedAt}</td>
+            </tr>
+          ))}
+      </table>
+    </>
+  )
+}
 
 const OtherDomains: FC<{ rootDomains?: RootDomain[] }> = ({
   rootDomains = [],

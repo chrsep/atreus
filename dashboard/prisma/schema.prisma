@@ -38,7 +38,7 @@ model SubDomain {
 
   rootDomain       RootDomain  @relation(fields: [rootDomainDomain], references: [domain], onDelete: Cascade)
   rootDomainDomain String
-  IpAddress        IpAddress[]
+  ipAddresses        IpAddress[]
 
   amassTag String
   sources  String[]
