@@ -7,12 +7,13 @@ import Icon from "@components/Icon"
 import EditCompanyDialog from "@components/EditCompanyDialog"
 import AddRootDomainDialog from "@components/AddRootDomainDialog"
 import { Menu, Tab, Transition } from "@headlessui/react"
-import { CompanyWithRootDomains } from "@lib/model"
+import { CompanyWithRootDomains, SubDomainWithIpAddress } from "@lib/model"
 import clsx from "clsx"
 import { RootDomain } from "@prisma/client"
 import { mutateApi, useGetCompanyById, useGetRootDomain } from "@lib/api-hooks"
 import { del, patch } from "@lib/api"
 import FaviconImage from "@components/FaviconImage"
+import dayjs from "dayjs"
 
 enum TabOptions {
   Confirmed = "Confirmed",
@@ -127,24 +128,48 @@ const SubDomains: FC<{ rootDomain: string }> = ({ rootDomain }) => {
         {data?.subDomains &&
           data?.subDomains?.length > 0 &&
           data?.subDomains.map((domain) => (
-            <tr className="flex items-center border-b border-opacity-10 ">
-              <td className="px-6 py-3 w-1/4">
-                <span className="font-bold">
-                  {domain.domain.replace(rootDomain, "")}
-                </span>
-                <span className="opacity-30">{rootDomain}</span>
-              </td>
-              <td className="w-1/2 text-xs">
-                {domain.ipAddresses?.map((address) => (
-                  <p className="py-1 w-[90px] flex-shrink-0">{address.ip}</p>
-                ))}
-              </td>
-              <td className="text-xs">{domain.ipAddresses[0].cidr}</td>
-              <td className="ml-auto mr-3 text-xs">{domain.updatedAt}</td>
-            </tr>
+            <SubDomain
+              key={domain.domain}
+              domain={domain}
+              rootDomain={rootDomain}
+            />
           ))}
       </table>
     </>
+  )
+}
+
+const SubDomain: FC<{
+  domain: SubDomainWithIpAddress
+  rootDomain: string
+}> = ({
+  domain: { domain, ipAddresses, updatedAt, createdAt },
+  rootDomain,
+}) => {
+  const updated = dayjs(updatedAt)
+  const created = dayjs(createdAt)
+
+  return (
+    <tr className="flex items-center border-b border-opacity-10 ">
+      <td className="px-6 py-3 w-1/4">
+        <span className="font-bold">{domain.replace(rootDomain, "")}</span>
+        <span className="opacity-30">{rootDomain}</span>
+      </td>
+      <td className="w-1/2 text-xs">
+        {ipAddresses?.map((address) => (
+          <p className="py-1 w-[90px] flex-shrink-0">{address.ip}</p>
+        ))}
+      </td>
+      <td className="text-xs">{ipAddresses[0].cidr}</td>
+      <td className="ml-auto text-xs">
+        {created.format("DD MMM YYYY")}
+        <span className="ml-2 opacity-30">{created.format("HH:mm")}</span>
+      </td>
+      <td className="ml-auto mr-3 text-xs">
+        {updated.format("DD MMM YYYY")}
+        <span className="ml-2 opacity-30">{updated.format("HH:mm")}</span>
+      </td>
+    </tr>
   )
 }
 

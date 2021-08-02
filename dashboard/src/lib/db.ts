@@ -84,6 +84,9 @@ export const findRootDomainById = async (domain: string) => {
     where: { domain },
     include: {
       subDomains: {
+        orderBy: {
+          updatedAt: "desc",
+        },
         include: {
           ipAddresses: true,
         },
