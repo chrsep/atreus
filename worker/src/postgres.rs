@@ -26,6 +26,7 @@ impl DB {
             r#"
             insert into "SubDomain"(domain, "amassTag",  "rootDomainDomain", sources)
             values ($1, $2, $3, $4)
+            on conflict do nothing
             "#,
             &subdomain.name,
             &subdomain.tag,
@@ -42,6 +43,7 @@ impl DB {
                 r#"
                 insert into "IpAddress"("subDomainDomain", ip, cidr, asn, "desc")
                 values ($1, $2, $3, $4, $5)
+                on conflict do nothing
                 "#,
                 &subdomain.name,
                 &address.ip,
@@ -64,7 +66,12 @@ impl DB {
 
     pub async fn bulk_insert_root_domain(&self, new_domains: Vec<String>, company_id: i32) {
         sqlx::query!(
-            r#"insert into "RootDomain" (domain, "companyId") SELECT * FROM UNNEST($1::text[], $2::int[]) ON CONFLICT DO NOTHING"#,
+            // language=PostgreSQL
+            r#"
+            insert into "RootDomain" (domain, "companyId")
+            select * from unnest($1::text[], $2::int[])
+            on conflict do nothing
+            "#,
             &new_domains,
             &vec![company_id; new_domains.len()]
         )

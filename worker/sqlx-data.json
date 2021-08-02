@@ -36,21 +36,8 @@
       ]
     }
   },
-  "6b2d027b5f892e3d944662ee498d2476b8cb4f90f2de4875f37ebe661625cfdd": {
-    "query": "insert into \"RootDomain\" (domain, \"companyId\") SELECT * FROM UNNEST($1::text[], $2::int[]) ON CONFLICT DO NOTHING",
-    "describe": {
-      "columns": [],
-      "parameters": {
-        "Left": [
-          "TextArray",
-          "Int4Array"
-        ]
-      },
-      "nullable": []
-    }
-  },
-  "a9c77f365e364689f86e4c51f04f84e12372fdc98af7802fe5448c0dc6f8c572": {
-    "query": "\n                insert into \"IpAddress\"(\"subDomainDomain\", ip, cidr, asn, \"desc\")\n                values ($1, $2, $3, $4, $5)\n                ",
+  "46a708b6fa26b4142593b66e22a66dcd02d911ef5f6042905e0f252c77d60383": {
+    "query": "\n                insert into \"IpAddress\"(\"subDomainDomain\", ip, cidr, asn, \"desc\")\n                values ($1, $2, $3, $4, $5)\n                on conflict do nothing\n                ",
     "describe": {
       "columns": [],
       "parameters": {
@@ -65,8 +52,21 @@
       "nullable": []
     }
   },
-  "c678e0f436826cf8dc48575fe3b251920d08a5fce6786121bf6914e3a22892a0": {
-    "query": "\n            insert into \"SubDomain\"(domain, \"amassTag\",  \"rootDomainDomain\", sources)\n            values ($1, $2, $3, $4)\n            ",
+  "b9f81d45fcb25deccab6add40663e54f8c8ce287aa315c9dd84cd0dc94017ec7": {
+    "query": "\n            insert into \"RootDomain\" (domain, \"companyId\")\n            select * from unnest($1::text[], $2::int[])\n            on conflict do nothing\n            ",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "TextArray",
+          "Int4Array"
+        ]
+      },
+      "nullable": []
+    }
+  },
+  "ede4e595bf849a32c337b1ac5b12893ca34612446b7bc75c8e7254993a3f2407": {
+    "query": "\n            insert into \"SubDomain\"(domain, \"amassTag\",  \"rootDomainDomain\", sources)\n            values ($1, $2, $3, $4)\n            on conflict do nothing\n            ",
     "describe": {
       "columns": [],
       "parameters": {
