@@ -46,7 +46,7 @@ const Button: FC<Props> = ({
       className={tw(
         className,
         baseClassName,
-        "!text-xs flex items-center rounded-md py-2 px-4 justify-center",
+        "!text-xs flex items-center rounded-lg py-2 px-4 justify-center",
         "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-300",
         "disabled:opacity-40",
         "transition-color"

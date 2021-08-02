@@ -127,15 +127,20 @@ const SubDomains: FC<{ rootDomain: string }> = ({ rootDomain }) => {
         {data?.subDomains &&
           data?.subDomains?.length > 0 &&
           data?.subDomains.map((domain) => (
-            <tr className="flex items-center border-b border-opacity-10 text-xs">
-              <td className="px-6 py-3 w-1/4">{domain.domain}</td>
-              <td className="w-1/2">
+            <tr className="flex items-center border-b border-opacity-10 ">
+              <td className="px-6 py-3 w-1/4">
+                <span className="font-bold">
+                  {domain.domain.replace(rootDomain, "")}
+                </span>
+                <span className="opacity-30">{rootDomain}</span>
+              </td>
+              <td className="w-1/2 text-xs">
                 {domain.ipAddresses?.map((address) => (
                   <p className="py-1 w-[90px] flex-shrink-0">{address.ip}</p>
                 ))}
               </td>
-              <td>{domain.ipAddresses[0].cidr}</td>
-              <td className="ml-auto mr-3">{domain.updatedAt}</td>
+              <td className="text-xs">{domain.ipAddresses[0].cidr}</td>
+              <td className="ml-auto mr-3 text-xs">{domain.updatedAt}</td>
             </tr>
           ))}
       </table>
