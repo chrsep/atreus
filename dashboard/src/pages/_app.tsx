@@ -72,12 +72,14 @@ const NavigationLink: FC<{
     <Link href={href}>
       <a
         className={clsx(
-          "flex items-center px-3 py-2 mb-2 dark:hover:bg-dark-bg-800 rounded-lg font-bold",
+          "flex items-center px-2 py-2 mb-2 dark:hover:bg-dark-bg-800 rounded-lg font-bold",
           asPath === href &&
             "dark:bg-primary-300 !bg-opacity-20 dark:hover:bg-primary-400 ring-primary-400 ring-1 ring-opacity-30"
         )}
       >
-        <Icon src={iconSrc} className="mr-5 !bg-white" />
+        <div className="bg-primary-600 mr-4  rounded-[6px] p-1">
+          <Icon src={iconSrc} className="!bg-white" />
+        </div>
         {text}
       </a>
     </Link>
