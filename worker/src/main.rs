@@ -1,13 +1,14 @@
 use crate::postgres::DB;
-use dotenv::dotenv;
 
 mod amass;
 mod postgres;
 
 #[tokio::main]
 async fn main() -> Result<(), ()> {
+    load_env();
     env_logger::init();
-    dotenv().ok();
+
+    amass::generate_config();
 
     let db = postgres::connect().await;
     find_other_root_domains(&db).await;
@@ -30,4 +31,9 @@ async fn find_other_root_domains(db: &DB) {
         db.bulk_insert_root_domain(new_domains, domain.companyId)
             .await;
     }
+}
+
+fn load_env() {
+    dotenv::from_filename(".env.local").ok();
+    dotenv::dotenv().ok();
 }

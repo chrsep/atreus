@@ -1,7 +1,8 @@
 use log::{error, info};
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::process::Command;
-use std::{fs, str};
+use std::{env, fs, str};
 
 #[derive(Serialize, Deserialize)]
 pub struct AmassEnumResult {
@@ -19,7 +20,6 @@ pub struct Address {
     pub asn: i32,
     pub desc: String,
 }
-
 
 fn amass() -> Command {
     Command::new("amass/amass")
@@ -61,10 +61,8 @@ pub fn intel(domain: &String) -> Vec<String> {
     stdout.lines().map(str::to_string).collect()
 }
 
-
 fn read_enum_result(file_path: &str) -> Vec<AmassEnumResult> {
-    let contents =
-        fs::read_to_string(file_path).expect("failed to read amass result file");
+    let contents = fs::read_to_string(file_path).expect("failed to read amass result file");
 
     let lines: Vec<&str> = contents.lines().collect();
 
@@ -74,16 +72,74 @@ fn read_enum_result(file_path: &str) -> Vec<AmassEnumResult> {
         subdomains.push(subdomain);
     }
 
-    return subdomains
+    return subdomains;
+}
+
+pub fn generate_config() {
+    let current_dir = env::current_dir().expect("can't get current_dir");
+    let dns_1 = format!("{}/wordlist/dns-1.txt", current_dir.display());
+    let dns_2 = format!("{}/wordlist/dns-2.txt", current_dir.display());
+    let dns_3 = format!("{}/wordlist/dns-3.txt", current_dir.display());
+    let dns_4 = format!("{}/wordlist/dns-4.txt", current_dir.display());
+    let dns_5 = format!("{}/wordlist/dns-5.txt", current_dir.display());
+
+    let alientvault_key = env::var("ALIENTVAULT_KEY").expect("alientvault_key is invalid");
+    let binaryedge_key = env::var("BINARYEDGE_KEY").expect("binaryedge_key is invalid");
+    let chaos_key = env::var("CHAOS_KEY").expect("chaos_key is invalid");
+    let cloudflare_key = env::var("CLOUDFLARE_KEY").expect("cloudflare_key is invalid");
+    let hunter_key = env::var("HUNTER_KEY").expect("hunter_key is invalid");
+    let ipinfo_key = env::var("IPINFO_KEY").expect("ipinfo_key is invalid");
+    let networksdb_key = env::var("NETWORKSDB_KEY").expect("networksdb_key is invalid");
+    let shodan_key = env::var("SHODAN_KEY").expect("shodan_key is invalid");
+    let urlscan_key = env::var("URLSCAN_KEY").expect("urlscan_key is invalid");
+    let virustotal_key = env::var("VIRUSTOTAL_KEY").expect("virustotal_key is invalid");
+    let whoisxmlapi_key = env::var("WHOISXMLAPI_KEY").expect("whoisxmlapi_key is invalid");
+
+    let mut keys = HashMap::new();
+    keys.insert("alienvault_key".to_string(), alientvault_key);
+    keys.insert("binaryedge_key".to_string(), binaryedge_key);
+    keys.insert("chaos_key".to_string(), chaos_key);
+    keys.insert("cloudflare_key".to_string(), cloudflare_key);
+    keys.insert("hunter_key".to_string(), hunter_key);
+    keys.insert("ipinfo_key".to_string(), ipinfo_key);
+    keys.insert("networksdb_key".to_string(), networksdb_key);
+    keys.insert("shodan_key".to_string(), shodan_key);
+    keys.insert("urlscan_key".to_string(), urlscan_key);
+    keys.insert("virustotal_key".to_string(), virustotal_key);
+    keys.insert("whoisxmlapi_key".to_string(), whoisxmlapi_key);
+    keys.insert("dns_wordlist_1".to_string(), dns_1);
+    keys.insert("dns_wordlist_2".to_string(), dns_2);
+    keys.insert("dns_wordlist_3".to_string(), dns_3);
+    keys.insert("dns_wordlist_4".to_string(), dns_4);
+    keys.insert("dns_wordlist_5".to_string(), dns_5);
+
+    let config =
+        fs::read_to_string("./amass/example.config.ini").expect("failed to read amass result file");
+    let final_config = envsubst::substitute(config, &keys).expect("key substitution failed");
+    fs::write("./amass/config.ini", final_config).expect("write config.ini failed");
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::amass::read_enum_result;
+    use crate::amass::{generate_config, read_enum_result};
+    use dotenv::dotenv;
+    use std::fs;
 
     #[test]
-    fn test_read_enum_result() {
+    fn can_read_enum_result() {
         let subdomains = read_enum_result("./test_fixtures/amass.json");
         assert_eq!(subdomains.len(), 6)
+    }
+
+    #[test]
+    fn can_insert_api_key_to_config() {
+        dotenv().ok();
+        generate_config();
+
+        let config =
+            fs::read_to_string("./amass/config.ini").expect("failed to read amass result file");
+
+        // all template should be replaced
+        assert!(!envsubst::is_templated(&config));
     }
 }

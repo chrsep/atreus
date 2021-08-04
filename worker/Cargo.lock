@@ -251,6 +251,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "envsubst"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "87bf9e478f69f88f589c11ddc017e4ddfcfd196ee2c9a4249074c83ddf544162"
+dependencies = [
+ "thiserror",
+]
+
+[[package]]
 name = "form_urlencoded"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1383,6 +1392,7 @@ version = "0.1.0"
 dependencies = [
  "dotenv",
  "env_logger",
+ "envsubst",
  "log",
  "serde",
  "serde_json",
