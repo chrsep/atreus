@@ -36,8 +36,8 @@
       ]
     }
   },
-  "46a708b6fa26b4142593b66e22a66dcd02d911ef5f6042905e0f252c77d60383": {
-    "query": "\n                insert into \"IpAddress\"(\"subDomainDomain\", ip, cidr, asn, \"desc\")\n                values ($1, $2, $3, $4, $5)\n                on conflict do nothing\n                ",
+  "a1b3bb3d6a2266c43900a7990262e2fae6b46da31b981bcbb06b19ad974cdb58": {
+    "query": "\n                insert into \"IpAddress\"(\"subDomainDomain\", ip, cidr, asn, \"desc\", \"updatedAt\")\n                values ($1, $2, $3, $4, $5, now())\n                on conflict do nothing\n                ",
     "describe": {
       "columns": [],
       "parameters": {
@@ -52,21 +52,8 @@
       "nullable": []
     }
   },
-  "b9f81d45fcb25deccab6add40663e54f8c8ce287aa315c9dd84cd0dc94017ec7": {
-    "query": "\n            insert into \"RootDomain\" (domain, \"companyId\")\n            select * from unnest($1::text[], $2::int[])\n            on conflict do nothing\n            ",
-    "describe": {
-      "columns": [],
-      "parameters": {
-        "Left": [
-          "TextArray",
-          "Int4Array"
-        ]
-      },
-      "nullable": []
-    }
-  },
-  "ede4e595bf849a32c337b1ac5b12893ca34612446b7bc75c8e7254993a3f2407": {
-    "query": "\n            insert into \"SubDomain\"(domain, \"amassTag\",  \"rootDomainDomain\", sources)\n            values ($1, $2, $3, $4)\n            on conflict do nothing\n            ",
+  "a3be716bbc11e4bd5308926f0c7980a101e2e1626a75199daa4ed3cca6db13e5": {
+    "query": "\n            insert into \"SubDomain\"(domain, \"amassTag\",  \"rootDomainDomain\", sources, \"updatedAt\")\n            values ($1, $2, $3, $4, now())\n            on conflict do nothing\n            ",
     "describe": {
       "columns": [],
       "parameters": {
@@ -75,6 +62,19 @@
           "Text",
           "Text",
           "TextArray"
+        ]
+      },
+      "nullable": []
+    }
+  },
+  "b9f81d45fcb25deccab6add40663e54f8c8ce287aa315c9dd84cd0dc94017ec7": {
+    "query": "\n            insert into \"RootDomain\" (domain, \"companyId\")\n            select * from unnest($1::text[], $2::int[])\n            on conflict do nothing\n            ",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Left": [
+          "TextArray",
+          "Int4Array"
         ]
       },
       "nullable": []

@@ -24,8 +24,8 @@ impl DB {
         sqlx::query!(
             // language=PostgreSQL
             r#"
-            insert into "SubDomain"(domain, "amassTag",  "rootDomainDomain", sources)
-            values ($1, $2, $3, $4)
+            insert into "SubDomain"(domain, "amassTag",  "rootDomainDomain", sources, "updatedAt")
+            values ($1, $2, $3, $4, now())
             on conflict do nothing
             "#,
             &subdomain.name,
@@ -41,8 +41,8 @@ impl DB {
             sqlx::query!(
                 // language=PostgreSQL
                 r#"
-                insert into "IpAddress"("subDomainDomain", ip, cidr, asn, "desc")
-                values ($1, $2, $3, $4, $5)
+                insert into "IpAddress"("subDomainDomain", ip, cidr, asn, "desc", "updatedAt")
+                values ($1, $2, $3, $4, $5, now())
                 on conflict do nothing
                 "#,
                 &subdomain.name,
