@@ -77,7 +77,11 @@ fn read_enum_result(file_path: &str) -> Vec<AmassEnumResult> {
 
 pub fn generate_config() {
     let current_dir = env::current_dir().expect("can't get current_dir");
-    let dns_wordlist = format!("{}/wordlist/dns.txt", current_dir.display());
+    let dns_1 = format!("{}/wordlist/dns-1.txt", current_dir.display());
+    let dns_2 = format!("{}/wordlist/dns-2.txt", current_dir.display());
+    let dns_3 = format!("{}/wordlist/dns-3.txt", current_dir.display());
+    let dns_4 = format!("{}/wordlist/dns-4.txt", current_dir.display());
+    let dns_5 = format!("{}/wordlist/dns-5.txt", current_dir.display());
 
     let alientvault_key = env::var("ALIENTVAULT_KEY").expect("alientvault_key is invalid");
     let binaryedge_key = env::var("BINARYEDGE_KEY").expect("binaryedge_key is invalid");
@@ -103,7 +107,11 @@ pub fn generate_config() {
     keys.insert("urlscan_key".to_string(), urlscan_key);
     keys.insert("virustotal_key".to_string(), virustotal_key);
     keys.insert("whoisxmlapi_key".to_string(), whoisxmlapi_key);
-    keys.insert("dns_wordlist".to_string(), dns_wordlist);
+    keys.insert("dns_wordlist_1".to_string(), dns_1);
+    keys.insert("dns_wordlist_2".to_string(), dns_2);
+    keys.insert("dns_wordlist_3".to_string(), dns_3);
+    keys.insert("dns_wordlist_4".to_string(), dns_4);
+    keys.insert("dns_wordlist_5".to_string(), dns_5);
 
     let config =
         fs::read_to_string("./amass/example.config.ini").expect("failed to read amass result file");
