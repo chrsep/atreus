@@ -5,3 +5,5 @@ amass/amass.log
 amass/amass.txt
 amass/config.ini
 amass/indexes.bolt
+
+.env.local
