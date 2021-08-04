@@ -12,8 +12,10 @@ generator client {
 }
 
 model Company {
-  id   Int    @id @default(autoincrement())
-  name String
+  id          Int    @id @default(autoincrement())
+  name        String
+  bountyLink  String @default("")
+  bountyRules String @default("")
 
   rootDomains RootDomain[]
 }
