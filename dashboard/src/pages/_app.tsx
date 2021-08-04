@@ -29,7 +29,7 @@ const SideBar = () => {
 
   return (
     <>
-      <nav className="border border-opacity-10 w-full w-80 xl:col-span-1 py-4 dark:bg-dark-bg-900 sticky top-0 h-screen">
+      <nav className="border border-opacity-10 w-full w-60 xl:col-span-1 py-4 dark:bg-dark-bg-900 sticky top-0 h-screen flex-shrink-0">
         <div className="mx-4 mb-8">
           <NavigationLink href="/" iconSrc="/icons/Home.svg" text="Home" />
         </div>
