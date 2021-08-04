@@ -88,7 +88,11 @@ export const findRootDomainById = async (domain: string) => {
           updatedAt: "desc",
         },
         include: {
-          ipAddresses: true,
+          ipAddresses: {
+            orderBy: {
+              ip: "asc",
+            },
+          },
         },
       },
     },
