@@ -9,6 +9,8 @@ async fn main() -> Result<(), ()> {
     env_logger::init();
     dotenv().ok();
 
+    amass::generate_config();
+
     let db = postgres::connect().await;
     find_other_root_domains(&db).await;
 
