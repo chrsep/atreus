@@ -1,3 +1,7 @@
+use log::info;
+use std::thread;
+use std::time::Duration;
+
 use crate::postgres::DB;
 
 mod amass;
@@ -19,6 +23,11 @@ async fn main() -> Result<(), ()> {
         for subdomain in subdomains {
             db.insert_subdomain(&subdomain).await
         }
+    }
+
+    for n in 0..360 {
+        info!("sleeping: running again in {}s", n * 10);
+        thread::sleep(Duration::from_secs(10));
     }
 
     Ok(())
