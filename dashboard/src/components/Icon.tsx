@@ -9,7 +9,7 @@ const Icon: FC<Props> = ({ className, src }) => (
   <div
     role="img"
     aria-hidden="true"
-    className={`w-4 h-4 bg-black ${className}`}
+    className={`w-4 h-4 bg-black dark:bg-white ${className}`}
     style={{
       maskImage: `url(${src})`,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
