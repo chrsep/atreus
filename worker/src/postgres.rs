@@ -21,6 +21,7 @@ pub struct DB {
 
 impl DB {
     pub async fn insert_subdomain(&self, subdomain: &AmassEnumResult) {
+        let mut tx = self.pool.begin().await.expect("begin transaction failed");
         sqlx::query!(
             // language=PostgreSQL
             r#"
@@ -33,7 +34,7 @@ impl DB {
             &subdomain.domain,
             &subdomain.sources
         )
-        .execute(self.pool.borrow())
+        .execute(&mut tx)
         .await
         .expect("failed to save new domain");
 
@@ -51,10 +52,12 @@ impl DB {
                 &address.asn,
                 &address.desc,
             )
-            .execute(self.pool.borrow())
+            .execute(&mut tx)
             .await
             .expect("failed to save new domain");
         }
+
+        tx.commit().await.expect("commit transaction failed");
     }
 
     pub async fn find_confirmed_domain(&self) -> Vec<RootDomain> {
@@ -75,9 +78,9 @@ impl DB {
             &new_domains,
             &vec![company_id; new_domains.len()]
         )
-            .execute(self.pool.borrow())
-            .await
-            .expect("failed to save new domain");
+        .execute(self.pool.borrow())
+        .await
+        .expect("failed to save new domain");
     }
 }
 
