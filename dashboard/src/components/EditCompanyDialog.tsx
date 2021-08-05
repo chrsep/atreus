@@ -17,9 +17,13 @@ interface Props {
 
 const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
   const router = useRouter()
-  const { register, handleSubmit } = useForm<{ name: string }>({
+  const { register, handleSubmit } = useForm<{
+    name: string
+    bountyLink: string
+  }>({
     defaultValues: {
       name: company.name,
+      bountyLink: company.bountyLink,
     },
   })
 
@@ -70,6 +74,12 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
               nameField.current = e
             }}
             {...name}
+          />
+
+          <TextField
+            label="Bounty Link"
+            containerClassName="mt-4"
+            {...register("bountyLink")}
           />
         </div>
 

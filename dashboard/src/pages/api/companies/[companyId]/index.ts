@@ -6,7 +6,8 @@ import { object, string } from "zod"
 
 const PatchBody = object({
   name: string(),
-})
+  bountyLink: string(),
+}).partial()
 const patch: NextApiHandler = async (req, res) => {
   const { companyId } = req.query
 
