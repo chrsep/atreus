@@ -157,7 +157,7 @@ const SubDomain: FC<{
   domain: SubDomainWithIpAddress
   rootDomain: string
 }> = ({
-  domain: { domain, ipAddresses, updatedAt, createdAt },
+  domain: { domain, ipAddresses, updatedAt, createdAt, amassTag },
   rootDomain,
 }) => {
   const updated = dayjs(updatedAt)
@@ -165,20 +165,18 @@ const SubDomain: FC<{
 
   return (
     <tr className="flex items-center border-b border-opacity-10 ">
-      <td className="px-6 py-3 w-1/4">
+      <td className="px-6 py-3 w-1/6">
         <span className="font-bold">{domain.replace(rootDomain, "")}</span>
         <span className="opacity-30">{rootDomain}</span>
       </td>
-      <td className="w-1/2 text-xs">
-        {ipAddresses?.map((address) => (
-          <p className="py-1 w-[90px] flex-shrink-0">{address.ip}</p>
-        ))}
-      </td>
-      <td className="text-xs">{ipAddresses[0].cidr}</td>
-      <td className="ml-auto text-xs">
-        {created.format("DD MMM YYYY")}
-        <span className="ml-2 opacity-30">{created.format("HH:mm")}</span>
-      </td>
+      {/* <td className="w-1/2 text-xs"> */}
+      {/*  {ipAddresses?.map((address) => ( */}
+      {/*    <p className="py-1 w-[90px] flex-shrink-0">{address.ip}</p> */}
+      {/*  ))} */}
+      {/* </td> */}
+      <td className="text-xs w-1/6">{ipAddresses[0].cidr}</td>
+      <td className="text-xs w-1/6">{ipAddresses[0].asn}</td>
+      <td className="text-xs w-1/6">{amassTag}</td>
       <td className="ml-auto mr-3 text-xs">
         {updated.format("DD MMM YYYY")}
         <span className="ml-2 opacity-30">{updated.format("HH:mm")}</span>
