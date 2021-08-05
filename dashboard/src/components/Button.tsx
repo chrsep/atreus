@@ -27,7 +27,8 @@ const Button: FC<Props> = ({
         "!p-1 text-gray-200 hover:text-gray-500  hover:bg-dark-bg-700 hover:bg-opacity-70"
       break
     case "secondary":
-      baseClassName = "text-gray-200 hover:text-gray-500"
+      baseClassName =
+        "text-gray-200 hover:text-gray-300 dark:hover:bg-dark-bg-700"
       break
     case "outline":
       baseClassName =
@@ -49,7 +50,7 @@ const Button: FC<Props> = ({
         "!text-xs flex items-center rounded-lg py-2 px-4 justify-center",
         "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-300",
         "disabled:opacity-40",
-        "transition-color"
+        "transition-colors"
       )}
     >
       {children}

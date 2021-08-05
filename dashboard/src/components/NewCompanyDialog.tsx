@@ -64,6 +64,7 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
         <TextField
           label="Bounty info URL"
           containerClassName="px-4 mt-4"
+          type="url"
           {...register("bountyLink")}
         />
 

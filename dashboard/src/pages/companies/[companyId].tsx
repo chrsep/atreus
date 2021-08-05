@@ -29,6 +29,9 @@ const CompanyProfile: FC<
   const [editCompany, setEditCompany] = useState(false)
   const [addRootDomain, setAddRootDomain] = useState(false)
 
+  const showAddDomainDialog = () => setAddRootDomain(true)
+  const showEditCompanyDialog = () => setEditCompany(true)
+
   return (
     <div>
       <div className="flex items-center border-b border-opacity-10 w-full py-4 pl-6">
@@ -40,12 +43,21 @@ const CompanyProfile: FC<
         ) : (
           <div className="w-8 h-8 mr-4 rounded-lg bg-gray-700 " />
         )}
-        <h1 className="font-bold">{data?.name}</h1>
+        <h1 className="font-bold mr-auto">{data?.name}</h1>
+
+        {company.bountyLink && (
+          <a href={company.bountyLink}>
+            <Button variant="secondary" className="mr-3 !p-2">
+              <Icon src="/icons/Link.svg" className="mr-2" />
+              Bounty
+            </Button>
+          </a>
+        )}
 
         <Button
           variant="outline"
-          className="ml-auto mr-3 !p-2"
-          onClick={() => setAddRootDomain(true)}
+          className="mr-3 !p-2"
+          onClick={showAddDomainDialog}
         >
           <Icon src="/icons/Streaming-White.svg" className="mr-2" />
           Add root domains
@@ -54,7 +66,7 @@ const CompanyProfile: FC<
         <Button
           variant="outline"
           className="mr-6 !p-2"
-          onClick={() => setEditCompany(true)}
+          onClick={showEditCompanyDialog}
         >
           <Icon src="/icons/Edit-White.svg" />
         </Button>
