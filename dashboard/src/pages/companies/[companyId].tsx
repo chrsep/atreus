@@ -47,7 +47,7 @@ const CompanyProfile: FC<
         <h1 className="font-bold mr-auto">{data?.name}</h1>
 
         {company.bountyLink && (
-          <a href={company.bountyLink}>
+          <a href={company.bountyLink} target="_blank" rel="noreferrer">
             <Button variant="secondary" className="mr-3 !p-2">
               <Icon src="/icons/Link.svg" className="mr-2" />
               Bounty
