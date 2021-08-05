@@ -30,8 +30,9 @@ model RootDomain {
   companyId Int
 
 
-  createdAt    DateTime @default(now())
-  lastDNSRecon DateTime @default(now())
+  createdAt         DateTime @default(now())
+  lastDNSRecon      DateTime @default(now())
+  isDNSReconRunning Boolean @default(false)
 
   subDomains SubDomain[]
 }
