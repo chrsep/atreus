@@ -19,12 +19,14 @@ export const findAllCompanies = async () => {
 export const insertNewCompany = async (
   name: string,
   rootDomains: string[],
-  bountyLink: string
+  bountyLink: string,
+  icon: string
 ) => {
   return prisma.company.create({
     data: {
       name,
       bountyLink,
+      icon,
       rootDomains: {
         createMany: {
           data: rootDomains.map((domain) => ({ domain, confirmed: true })),

@@ -13,13 +13,15 @@ const postBody = object({
   name: string(),
   rootDomains: array(string()).min(1),
   bountyLink: string(),
+  icon: string(),
 })
 const post: NextApiHandler = async (req, res) => {
   const body = postBody.parse(req.body)
   const newCompany = await insertNewCompany(
     body.name,
     body.rootDomains,
-    body.bountyLink
+    body.bountyLink,
+    body.icon
   )
   res.json(newCompany)
 }

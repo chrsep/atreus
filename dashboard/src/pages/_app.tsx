@@ -46,11 +46,12 @@ const SideBar = () => {
         </div>
 
         <div className="p-4">
-          {companies.data?.map(({ id, name, rootDomains }) => (
+          {companies.data?.map(({ id, name, rootDomains, icon }) => (
             <CompanyLink
               companyId={id}
               name={name}
               domain={rootDomains[0]?.domain}
+              icon={icon}
             />
           ))}
         </div>
@@ -88,9 +89,10 @@ const NavigationLink: FC<{
 
 const CompanyLink: FC<{
   companyId: number
-  domain?: string
   name: string
-}> = ({ companyId, domain, name }) => {
+  icon: string
+  domain?: string
+}> = ({ companyId, domain, name, icon }) => {
   const { asPath } = useRouter()
   const href = `/companies/${companyId}`
 
@@ -105,6 +107,7 @@ const CompanyLink: FC<{
       >
         {domain ? (
           <FaviconImage
+            altIcon={icon}
             domain={domain}
             className="w-6 h-6 mr-4 rounded-lg bg-gray-700 p-1"
           />

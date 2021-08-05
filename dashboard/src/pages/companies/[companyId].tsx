@@ -37,6 +37,7 @@ const CompanyProfile: FC<
       <div className="flex items-center border-b border-opacity-10 w-full py-4 pl-6">
         {data?.rootDomains && data?.rootDomains?.length > 0 ? (
           <FaviconImage
+            altIcon={data.icon}
             domain={data.rootDomains[0].domain}
             className="w-8 h-8 mr-4 rounded-lg bg-white p-1"
           />
@@ -327,6 +328,7 @@ export const getServerSideProps = withPageAuthRequired({
           rootDomains: company.rootDomains.map((domain) => ({
             ...domain,
             createdAt: domain.createdAt.toString(),
+            lastDNSRecon: domain.lastDNSRecon.toString(),
           })),
         },
       },

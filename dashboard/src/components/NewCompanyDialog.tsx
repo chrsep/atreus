@@ -13,8 +13,11 @@ interface Props {
 }
 
 const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
-  const { reset, register, handleSubmit } =
-    useForm<{ name: string; bountyLink: string }>()
+  const { reset, register, handleSubmit } = useForm<{
+    name: string
+    bountyLink: string
+    icon: string
+  }>()
 
   const [rootDomains, setRootDomains] = useState<string[]>([])
   const [rootDomain, setRootDomain] = useState("")
@@ -66,6 +69,13 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
           containerClassName="px-4 mt-4"
           type="url"
           {...register("bountyLink")}
+        />
+
+        <TextField
+          label="Icon"
+          containerClassName="px-4 mt-4"
+          type="url"
+          {...register("icon")}
         />
 
         <h2 className="mt-8 mb-3 mx-4 font-bold">Root domains</h2>

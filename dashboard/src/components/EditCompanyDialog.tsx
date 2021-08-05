@@ -20,10 +20,12 @@ const EditCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
   const { register, handleSubmit } = useForm<{
     name: string
     bountyLink: string
+    icon: string
   }>({
     defaultValues: {
       name: company.name,
       bountyLink: company.bountyLink,
+      icon: company.icon,
     },
   })
 
@@ -81,6 +83,13 @@ const EditCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
             containerClassName="mt-4"
             type="url"
             {...register("bountyLink")}
+          />
+
+          <TextField
+            label="Icon"
+            containerClassName="mt-4"
+            type="url"
+            {...register("icon")}
           />
         </div>
 
