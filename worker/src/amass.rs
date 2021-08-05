@@ -94,6 +94,7 @@ pub fn generate_config() {
     let urlscan_key = env::var("URLSCAN_KEY").expect("urlscan_key is invalid");
     let virustotal_key = env::var("VIRUSTOTAL_KEY").expect("virustotal_key is invalid");
     let whoisxmlapi_key = env::var("WHOISXMLAPI_KEY").expect("whoisxmlapi_key is invalid");
+    let securitytrails_key = env::var("SECURITYTRAILS_KEY").expect("securitytrails_key is invalid");
 
     let mut keys = HashMap::new();
     keys.insert("alienvault_key".to_string(), alientvault_key);
@@ -107,6 +108,7 @@ pub fn generate_config() {
     keys.insert("urlscan_key".to_string(), urlscan_key);
     keys.insert("virustotal_key".to_string(), virustotal_key);
     keys.insert("whoisxmlapi_key".to_string(), whoisxmlapi_key);
+    keys.insert("securitytrails_key".to_string(), securitytrails_key);
     keys.insert("dns_wordlist_1".to_string(), dns_1);
     keys.insert("dns_wordlist_2".to_string(), dns_2);
     keys.insert("dns_wordlist_3".to_string(), dns_3);
