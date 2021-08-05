@@ -15,7 +15,7 @@ interface Props {
   company: Company & { rootDomains: RootDomain[] }
 }
 
-const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
+const EditCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
   const router = useRouter()
   const { register, handleSubmit } = useForm<{
     name: string
@@ -97,4 +97,4 @@ const NewCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
   )
 }
 
-export default NewCompanyDialog
+export default EditCompanyDialog

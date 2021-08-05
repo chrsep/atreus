@@ -16,6 +16,7 @@ model Company {
   name        String
   bountyLink  String @default("")
   bountyRules String @default("")
+  icon        String @default("")
 
   rootDomains RootDomain[]
 }

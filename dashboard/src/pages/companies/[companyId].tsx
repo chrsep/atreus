@@ -73,6 +73,7 @@ const CompanyProfile: FC<
 
         {data && (
           <EditCompanyDialog
+            key={data.id}
             open={editCompany}
             setOpen={setEditCompany}
             company={data}
