@@ -22,12 +22,15 @@ model Company {
 
 model RootDomain {
   domain    String   @id
-  createdAt DateTime @default(now())
 
   confirmed Boolean @default(false)
 
   company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
   companyId Int
+
+
+  createdAt    DateTime @default(now())
+  lastDNSRecon DateTime @default(now())
 
   subDomains SubDomain[]
 }
