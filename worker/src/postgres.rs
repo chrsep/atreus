@@ -8,11 +8,14 @@ use sqlx::postgres::PgPoolOptions;
 use sqlx::types::chrono::NaiveDateTime;
 use sqlx::{Pool, Postgres};
 
+#[derive(Clone)]
 pub struct RootDomain {
     pub domain: String,
     pub confirmed: bool,
     pub companyId: i32,
     pub createdAt: NaiveDateTime,
+    pub lastDNSRecon: NaiveDateTime,
+    pub isDNSReconRunning: bool,
 }
 
 pub struct DB {
@@ -60,11 +63,17 @@ impl DB {
         tx.commit().await.expect("commit transaction failed");
     }
 
-    pub async fn find_confirmed_domain(&self) -> Vec<RootDomain> {
-        return sqlx::query_as!(RootDomain, r#"SELECT * from "RootDomain" where confirmed"#)
-            .fetch_all(self.pool.borrow())
-            .await
-            .expect("failed to query root domains");
+    pub async fn find_stale_confirmed_domain(&self) -> Vec<RootDomain> {
+        return sqlx::query_as!(
+            RootDomain,
+            // language=PostgreSQL
+            r#"
+            SELECT *  from "RootDomain" 
+            where confirmed and now() -"lastDNSRecon"  > interval '5 hour' "#
+        )
+        .fetch_all(self.pool.borrow())
+        .await
+        .expect("failed to query root domains");
     }
 
     pub async fn bulk_insert_root_domain(&self, new_domains: Vec<String>, company_id: i32) {
@@ -81,6 +90,37 @@ impl DB {
         .execute(self.pool.borrow())
         .await
         .expect("failed to save new domain");
+    }
+
+    pub async fn update_root_domain_recon_time(&self, domain: String) {
+        sqlx::query!(
+            // language=PostgreSQL
+            r#"
+            update "RootDomain"
+            set "lastDNSRecon" = now()
+            where "domain" = $1::text
+            "#,
+            &domain
+        )
+        .execute(self.pool.borrow())
+        .await
+        .expect("failed to save new domain");
+    }
+
+    pub async fn update_root_domain_recon_state(&self, domain: String, state: bool) {
+        sqlx::query!(
+            // language=PostgreSQL
+            r#"
+            update "RootDomain"
+            set "isDNSReconRunning" = $1::bool
+            where "domain" = $2::text
+            "#,
+            state,
+            &domain
+        )
+            .execute(self.pool.borrow())
+            .await
+            .expect("failed to save new domain");
     }
 }
 

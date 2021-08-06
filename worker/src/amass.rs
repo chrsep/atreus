@@ -47,7 +47,7 @@ pub fn enumerate(domain: &String) -> Vec<AmassEnumResult> {
 pub fn intel(domain: &String) -> Vec<String> {
     info!("amass: running intel");
     let result = amass()
-        .args(&["intel", "-d", domain.as_str(), "-whois"])
+        .args(&["intel", "-nolocaldb", "-d", "-active", domain.as_str(), "-whois"])
         .output()
         .expect("failed to execute amass");
     info!("amass: intel finished");

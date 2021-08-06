@@ -1,3 +1,8 @@
+use crate::postgres::DB;
+use log::info;
+use std::thread::sleep;
+use std::time::Duration;
+
 mod amass;
 mod postgres;
 mod recon;
@@ -5,13 +10,19 @@ mod recon;
 #[tokio::main]
 async fn main() -> Result<(), ()> {
     setup_configs();
-    let db = postgres::connect().await;
-    let root_domains = db.find_confirmed_domain().await;
+    let db: &'static mut DB = Box::leak(Box::new(postgres::connect().await));
 
-    recon::find_other_root_domains(&db, &root_domains).await;
-    recon::find_subdomains(&db, &root_domains).await;
+    loop {
+        let root_domains = db.find_stale_confirmed_domain().await;
 
-    Ok(())
+        info!("recon: {} domains", root_domains.len());
+        for domain in root_domains {
+            info!("recon: running for {}", domain.domain);
+            tokio::spawn(recon::run_recon(db, domain));
+        }
+
+        sleep(Duration::from_secs(5));
+    }
 }
 
 fn setup_configs() {
