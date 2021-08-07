@@ -3015,7 +3015,7 @@ fs.realpath@^1.0.0:
 
 fsevents@~2.3.1, fsevents@~2.3.2:
   version "2.3.2"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
@@ -4804,10 +4804,10 @@ raw-body@2.4.1:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-hook-form@7.12.1:
-  version "7.12.1"
-  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.12.1.tgz"
-  integrity sha512-JBu5TZK3IXzDKw9SuNFwyQFdIx5uGZSmN9QTDsNsDSYdccU/O+43jBUh0zKG4jDc4hiNYYgDw34lLt7qLSeusA==
+react-hook-form@7.12.2:
+  version "7.12.2"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.12.2.tgz"
+  integrity sha512-cpxocjrgpMAJCMJQR51BQhMoEx80/EQqePNihMTgoTYTqCRbd2GExi+N4GJIr+cFqrmbwNj9wxk5oLWYQsUefg==
 
 react-is@17.0.2:
   version "17.0.2"
