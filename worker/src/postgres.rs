@@ -1,6 +1,4 @@
 #![allow(non_snake_case)]
-
-use std::borrow::Borrow;
 use std::env;
 
 use crate::amass::AmassEnumResult;
@@ -64,6 +62,11 @@ impl DB {
     }
 
     pub async fn find_stale_confirmed_domain(&self) -> Vec<RootDomain> {
+        let mut conn = self
+            .pool
+            .acquire()
+            .await
+            .expect("failed to acquire connection");
         return sqlx::query_as!(
             RootDomain,
             // language=PostgreSQL
@@ -71,12 +74,17 @@ impl DB {
             SELECT *  from "RootDomain" 
             where confirmed and now() -"lastDNSRecon"  > interval '5 hour' "#
         )
-        .fetch_all(self.pool.borrow())
+        .fetch_all(&mut conn)
         .await
         .expect("failed to query root domains");
     }
 
     pub async fn bulk_insert_root_domain(&self, new_domains: Vec<String>, company_id: i32) {
+        let mut conn = self
+            .pool
+            .acquire()
+            .await
+            .expect("failed to acquire connection");
         sqlx::query!(
             // language=PostgreSQL
             r#"
@@ -87,12 +95,17 @@ impl DB {
             &new_domains,
             &vec![company_id; new_domains.len()]
         )
-        .execute(self.pool.borrow())
+        .execute(&mut conn)
         .await
         .expect("failed to save new domain");
     }
 
     pub async fn update_root_domain_recon_time(&self, domain: String) {
+        let mut conn = self
+            .pool
+            .acquire()
+            .await
+            .expect("failed to acquire connection");
         sqlx::query!(
             // language=PostgreSQL
             r#"
@@ -102,12 +115,17 @@ impl DB {
             "#,
             &domain
         )
-        .execute(self.pool.borrow())
+        .execute(&mut conn)
         .await
         .expect("failed to save new domain");
     }
 
     pub async fn update_root_domain_recon_state(&self, domain: String, state: bool) {
+        let mut conn = self
+            .pool
+            .acquire()
+            .await
+            .expect("failed to acquire connection");
         sqlx::query!(
             // language=PostgreSQL
             r#"
@@ -118,16 +136,15 @@ impl DB {
             state,
             &domain
         )
-            .execute(self.pool.borrow())
-            .await
-            .expect("failed to save new domain");
+        .execute(&mut conn)
+        .await
+        .expect("failed to save new domain");
     }
 }
 
 pub async fn connect() -> DB {
     let db_url = env::var("DATABASE_URL").expect("DATABASE_URL cannot be empty");
     let pool = PgPoolOptions::new()
-        .max_connections(2)
         .connect(&db_url)
         .await
         .expect("failed to connect to database");

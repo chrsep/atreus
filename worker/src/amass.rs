@@ -28,7 +28,17 @@ fn amass() -> Command {
 pub fn enumerate(domain: &String) -> Vec<AmassEnumResult> {
     info!("amass: running enum");
     let result = amass()
-        .args(&["enum", "-active", "-dir", "./amass", "-d", domain.as_str()])
+        .args(&[
+            "enum",
+            "-config",
+            "./amass/config.ini",
+            "-active",
+            "-nolocaldb",
+            "-dir",
+            format!("./amass/{}", domain.as_str()).as_str(),
+            "-d",
+            domain.as_str(),
+        ])
         .output()
         .expect("failed to execute amass");
     info!("amass: enum finished");
@@ -41,13 +51,13 @@ pub fn enumerate(domain: &String) -> Vec<AmassEnumResult> {
     let stdout = str::from_utf8(&result.stdout).expect("failed to parse stdout");
     info!("{}", stdout);
 
-    read_enum_result("./amass/amass.json")
+    read_enum_result(format!("./amass/{}/amass.json", domain.as_str()).as_str())
 }
 
 pub fn intel(domain: &String) -> Vec<String> {
     info!("amass: running intel");
     let result = amass()
-        .args(&["intel", "-nolocaldb", "-d", "-active", domain.as_str(), "-whois"])
+        .args(&["intel", "-d", "-active", domain.as_str(), "-whois"])
         .output()
         .expect("failed to execute amass");
     info!("amass: intel finished");
