@@ -10,6 +10,6 @@
       "packagePatterns": ["eslint"],
       "groupName": "eslint",
       "extends": ["schedule:monthly"]
-    },
+    }
   ]
 }
