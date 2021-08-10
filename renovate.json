@@ -4,7 +4,6 @@
   "dependencyDashboard": true,
   "stabilityDays": 7,
   "automergeType": "branch",
-  "prCreation": "not-pending",
   "packageRules": [   
     {
       "packagePatterns": ["eslint"],
