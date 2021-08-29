@@ -25,6 +25,9 @@ fn amass() -> Command {
     Command::new("amass/amass")
 }
 
+/**
+ * Find subdomains
+ */
 pub fn enumerate(domain: &String) -> Vec<AmassEnumResult> {
     info!("amass: running enum");
     let result = amass()
@@ -54,6 +57,9 @@ pub fn enumerate(domain: &String) -> Vec<AmassEnumResult> {
     read_enum_result(format!("./amass/{}/amass.json", domain.as_str()).as_str())
 }
 
+/**
+ * Finds other domain that might be related to this domain
+ */
 pub fn intel(domain: &String) -> Vec<String> {
     info!("amass: running intel");
     let result = amass()
@@ -71,6 +77,9 @@ pub fn intel(domain: &String) -> Vec<String> {
     stdout.lines().map(str::to_string).collect()
 }
 
+/**
+ * Reads result from enum json file.
+ */
 fn read_enum_result(file_path: &str) -> Vec<AmassEnumResult> {
     let contents = fs::read_to_string(file_path).expect("failed to read amass result file");
 

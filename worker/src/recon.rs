@@ -22,16 +22,12 @@ pub async fn find_other_root_domains(db: &'static DB, domain: RootDomain) {
 }
 
 pub async fn run_recon(db: &'static DB, domain: RootDomain) {
-    tokio::spawn(async move {
-        db.update_root_domain_recon_state(domain.domain.clone(), true)
-            .await;
-
-        // find_other_root_domains(db, domain.clone()).await;
-        find_subdomains(db, domain.clone()).await;
-
-        db.update_root_domain_recon_time(domain.domain.clone())
-            .await;
-        db.update_root_domain_recon_state(domain.domain, false)
-            .await;
-    });
+    db.update_root_domain_recon_state(domain.domain.clone(), true)
+        .await;
+    // find_other_root_domains(db, domain.clone()).await;
+    find_subdomains(db, domain.clone()).await;
+    db.update_root_domain_recon_time(domain.domain.clone())
+        .await;
+    db.update_root_domain_recon_state(domain.domain, false)
+        .await;
 }

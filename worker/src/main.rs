@@ -14,11 +14,9 @@ async fn main() -> Result<(), ()> {
 
     loop {
         let root_domains = db.find_stale_confirmed_domain().await;
-
-        info!("recon: {} domains", root_domains.len());
-        for domain in root_domains {
-            info!("recon: running for {}", domain.domain);
-            tokio::spawn(recon::run_recon(db, domain));
+        if let Some(domain) = root_domains.first() {
+            info!("recon: {} domains", root_domains.len());
+            recon::run_recon(db, domain.clone()).await;
         }
 
         sleep(Duration::from_secs(5));
