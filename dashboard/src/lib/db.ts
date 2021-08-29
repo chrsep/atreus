@@ -40,7 +40,11 @@ export const findCompanyById = async (id: number) => {
   return prisma.company.findUnique({
     where: { id },
     include: {
-      rootDomains: true,
+      rootDomains: {
+        orderBy: {
+          confirmed: "desc",
+        },
+      },
     },
   })
 }
