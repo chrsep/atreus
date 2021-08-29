@@ -7,7 +7,7 @@
     "build": "next build",
     "analyze": "ANALYZE=true next build",
     "build:prod": "prisma migrate deploy && next build",
-    "start": "prisma migrate deploy && next start",
+    "start": "next start",
     "prisma:generate": "prisma generate",
     "lint": "eslint --fix **/*.{ts,tsx}",
     "cy:open": "cypress open",
@@ -15,7 +15,8 @@
     "typecheck": "tsc --noEmit",
     "prepare": "cd .. && husky install dashboard/.husky",
     "studio": "prisma studio",
-    "prisma:migrate": "prisma migrate dev"
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:migrate-prod": "prisma migrate deploy"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "1.5.0",

@@ -5,13 +5,19 @@ app = "atreus-dashboard"
 kill_signal = "SIGINT"
 kill_timeout = 5
 
-[env]
+
+[deploy]
+release_command = "yarn prisma:migrate-prod"
+
+[processes]
+web = "yarn start"
 
 [experimental]
   allowed_public_ports = []
   auto_rollback = true
 
 [[services]]
+  processes = ["web"] # this service only applies to the web block
   http_checks = []
   internal_port = 3000
   protocol = "tcp"
