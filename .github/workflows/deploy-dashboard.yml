@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'worker/**'
+      - 'dashboard/**'
 
 jobs:
   cancel-previous:
