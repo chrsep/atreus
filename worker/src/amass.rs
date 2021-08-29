@@ -38,7 +38,7 @@ pub fn enumerate(domain: &String) -> Vec<AmassEnumResult> {
             "-active",
             "-nolocaldb",
             "-dir",
-            format!("./amass/{}", domain.as_str()).as_str(),
+            format!("./amass").as_str(),
             "-d",
             domain.as_str(),
         ])
@@ -54,7 +54,7 @@ pub fn enumerate(domain: &String) -> Vec<AmassEnumResult> {
     let stdout = str::from_utf8(&result.stdout).expect("failed to parse stdout");
     info!("{}", stdout);
 
-    read_enum_result(format!("./amass/{}/amass.json", domain.as_str()).as_str())
+    read_enum_result(format!("./amass/amass.json").as_str())
 }
 
 /**
