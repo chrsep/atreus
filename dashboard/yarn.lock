@@ -1104,19 +1104,19 @@
 
 "@prisma/client@2.30.0":
   version "2.30.0"
-  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.30.0.tgz#b0ed9db67405f619e428577f2d45843104142e00"
+  resolved "https://registry.npmjs.org/@prisma/client/-/client-2.30.0.tgz"
   integrity sha512-tjJNHVfgyNOwS2F+AkjMMCJGPnXzHuUCrOnAMJyidAu4aNzxbJ8jWwjt96rRMpyrg9Hwen3xqqQ2oA+ikK7nhQ==
   dependencies:
     "@prisma/engines-version" "2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb"
 
 "@prisma/engines-version@2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb":
   version "2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb"
-  resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb.tgz#1360113dc19e1d43d4442e3b638ccfa0e1711943"
+  resolved "https://registry.npmjs.org/@prisma/engines-version/-/engines-version-2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb.tgz"
   integrity sha512-oThNpx7HtJ0eEmnvrWARYcNCs6dqFdAK3Smt2bJVDD6Go4HLuuhjx028osP+rHaFrGOTx7OslLZYtvvFlAXRDA==
 
 "@prisma/engines@2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb":
   version "2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb"
-  resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb.tgz#b4d91ff876662b1de83e0cc913149a1c088becc7"
+  resolved "https://registry.npmjs.org/@prisma/engines/-/engines-2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb.tgz"
   integrity sha512-LPKq88lIbYezvX0OOc1PU42hHdTsSMPJWmK8lusaHK7DaLHyXjDp/551LbsVapypbjW6N3Jx/If6GoMDASSMSw==
 
 "@rollup/plugin-babel@^5.2.0":
@@ -1577,7 +1577,7 @@ anymatch@^3.0.0, anymatch@~3.1.1, anymatch@~3.1.2:
 
 arg@^5.0.1:
   version "5.0.1"
-  resolved "https://registry.yarnpkg.com/arg/-/arg-5.0.1.tgz#eb0c9a8f77786cad2af8ff2b862899842d7b6adb"
+  resolved "https://registry.npmjs.org/arg/-/arg-5.0.1.tgz"
   integrity sha512-e0hDa9H2Z9AwFkk2qDlwhoMYE4eToKarchkQHovNdLTCYMHZHeRjI71crOh+dio4K6u1IcwubQqo79Ga4CyAQA==
 
 argparse@^1.0.7:
@@ -1692,7 +1692,7 @@ at-least-node@^1.0.0:
 
 autoprefixer@10.3.3:
   version "10.3.3"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.3.3.tgz#4bac89c74ef98e6a40fe1c5b76c0d1c91db153ce"
+  resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.3.3.tgz"
   integrity sha512-yRzjxfnggrP/+qVHlUuZz5FZzEbkT+Yt0/Df6ScEMnbbZBLzYB2W0KLxoQCW+THm1SpOsM1ZPcTHAwuvmibIsQ==
   dependencies:
     browserslist "^4.16.8"
@@ -1887,7 +1887,7 @@ browserslist@4.16.6, browserslist@^4.16.6:
 
 browserslist@^4.16.7, browserslist@^4.16.8:
   version "4.16.8"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.16.8.tgz#cb868b0b554f137ba6e33de0ecff2eda403c4fb0"
+  resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.16.8.tgz"
   integrity sha512-sc2m9ohR/49sWEbPj14ZSSZqp+kbi16aLao42Hmn3Z8FpjuMaq2xCA2l4zl9ITfyzvnvyE0hcg62YkIGKxgaNQ==
   dependencies:
     caniuse-lite "^1.0.30001251"
@@ -1974,14 +1974,9 @@ camelcase-css@^2.0.1:
   resolved "https://registry.npmjs.org/camelcase-css/-/camelcase-css-2.0.1.tgz"
   integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
 
-caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001251:
-  version "1.0.30001251"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001251.tgz"
-  integrity sha512-HOe1r+9VkU4TFmnU70z+r7OLmtR+/chB1rdcJUeQlAinjEeb0cKL20tlAtOagNZhbrtLnCvV19B4FmF1rgzl6A==
-
-caniuse-lite@^1.0.30001252:
+caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001251, caniuse-lite@^1.0.30001252:
   version "1.0.30001252"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001252.tgz#cb16e4e3dafe948fc4a9bb3307aea054b912019a"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001252.tgz"
   integrity sha512-I56jhWDGMtdILQORdusxBOH+Nl/KgQSdDmpJezYddnAkVOmnoU8zwjTV9xAjMIYxr0iPreEAVylCGcmHCjfaOw==
 
 chalk@2.4.2, chalk@^2.0.0:
@@ -2011,7 +2006,7 @@ chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1:
 
 chalk@^4.1.2:
   version "4.1.2"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
   dependencies:
     ansi-styles "^4.1.0"
@@ -2134,7 +2129,7 @@ color-string@^1.6.0:
 
 color@^4.0.1:
   version "4.0.1"
-  resolved "https://registry.yarnpkg.com/color/-/color-4.0.1.tgz#21df44cd10245a91b1ccf5ba031609b0e10e7d67"
+  resolved "https://registry.npmjs.org/color/-/color-4.0.1.tgz"
   integrity sha512-rpZjOKN5O7naJxkH2Rx1sZzzBgaiWECc6BYXjeCE6kF0kcASJYbUq02u7JqIHwCb/j3NhV+QhRL2683aICeGZA==
   dependencies:
     color-convert "^2.0.1"
@@ -3042,7 +3037,7 @@ fs.realpath@^1.0.0:
 
 fsevents@~2.3.1, fsevents@~2.3.2:
   version "2.3.2"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
@@ -3107,7 +3102,7 @@ glob-parent@^5.1.2, glob-parent@~5.1.0, glob-parent@~5.1.2:
 
 glob-parent@^6.0.1:
   version "6.0.1"
-  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-6.0.1.tgz#42054f685eb6a44e7a7d189a96efa40a54971aa7"
+  resolved "https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.1.tgz"
   integrity sha512-kEVjS71mQazDBHKcsq4E9u/vUzaLcw1A8EtUeydawvIWQCJM0qQ08G1H7/XTjFUulla6XQiDOG6MXSaG0HDKog==
   dependencies:
     is-glob "^4.0.1"
@@ -4158,7 +4153,7 @@ next@11.1.0:
 
 node-emoji@^1.11.0:
   version "1.11.0"
-  resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.11.0.tgz#69a0150e6946e2f115e9d7ea4df7971e2628301c"
+  resolved "https://registry.npmjs.org/node-emoji/-/node-emoji-1.11.0.tgz"
   integrity sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==
   dependencies:
     lodash "^4.17.21"
@@ -4618,7 +4613,7 @@ postcss-load-config@^3.1.0:
 
 postcss-nested@5.0.6:
   version "5.0.6"
-  resolved "https://registry.yarnpkg.com/postcss-nested/-/postcss-nested-5.0.6.tgz#466343f7fc8d3d46af3e7dba3fcd47d052a945bc"
+  resolved "https://registry.npmjs.org/postcss-nested/-/postcss-nested-5.0.6.tgz"
   integrity sha512-rKqm2Fk0KbA8Vt3AdGN0FB9OBOMDVajMG6ZCf/GoHgdxUJ4sBFp0A/uMIRm+MJUdo33YXEtjqIz8u7DAp8B7DA==
   dependencies:
     postcss-selector-parser "^6.0.6"
@@ -4705,7 +4700,7 @@ pretty-hrtime@^1.0.3:
 
 prisma@2.30.0:
   version "2.30.0"
-  resolved "https://registry.yarnpkg.com/prisma/-/prisma-2.30.0.tgz#5b12091c480d538540b898d364b73651d44b4a01"
+  resolved "https://registry.npmjs.org/prisma/-/prisma-2.30.0.tgz"
   integrity sha512-2XYpSibcVpMd1JDxYypGDU/JKq0W2f/HI1itdddr4Pfg+q6qxt/ItWKcftv4/lqN6u/BVlQ2gDzXVEjpHeO5kQ==
   dependencies:
     "@prisma/engines" "2.30.0-28.60b19f4a1de4fe95741da371b4c44a92f4d1adcb"
@@ -5577,7 +5572,7 @@ table@^6.0.9:
 
 tailwindcss@2.2.8:
   version "2.2.8"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.2.8.tgz#3c1f270f5a51a62471bb0564dfd0dd07a7644c99"
+  resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-2.2.8.tgz"
   integrity sha512-sq6pKVIjklgtuj7OKn+6KD6UqNebYKZYUSx0oKx8aS1usdUXn1TLuwFyr/85HNYu5uHNduLFsXrtQJtkNmYlqQ==
   dependencies:
     arg "^5.0.1"
@@ -6186,7 +6181,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zod@3.7.1:
-  version "3.7.1"
-  resolved "https://registry.npmjs.org/zod/-/zod-3.7.1.tgz"
-  integrity sha512-9TRjeMKz3xFUOl/CYhBmp/hCrMhk5U6qRnfy9q+HwmQPbMYp3qnM+/cPst+wzHQjfSBjHDYZq7S7TQnlAjqjFg==
+zod@3.8.1:
+  version "3.8.1"
+  resolved "https://registry.npmjs.org/zod/-/zod-3.8.1.tgz"
+  integrity sha512-u4Uodl7dLh8nXZwqXL1SM5FAl5b4lXYHOxMUVb9lqhlEAZhA2znX+0oW480m0emGFMxpoRHzUncAqRkc4h8ZJA==
