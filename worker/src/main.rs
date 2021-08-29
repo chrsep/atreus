@@ -34,5 +34,5 @@ fn setup_configs() {
     env_logger::init();
 
     // setup tools config files
-    amass::generate_config();
+    // amass::generate_config();
 }
