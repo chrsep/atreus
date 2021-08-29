@@ -30,8 +30,8 @@ pub fn enumerate(domain: &String) -> Vec<AmassEnumResult> {
     let result = amass()
         .args(&[
             "enum",
-            "-config",
-            "./amass/config.ini",
+            // "-config",
+            // "./amass/config.ini",
             "-active",
             "-nolocaldb",
             "-dir",
