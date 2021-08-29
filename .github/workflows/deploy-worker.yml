@@ -1,11 +1,13 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Deploy
+name: Deploy worker
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'worker/**'
 
 jobs:
   cancel-previous:
@@ -15,20 +17,6 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
-
-  deploy-dashboard:
-    name: Deploy dashboard
-    runs-on: ubuntu-latest
-    steps:
-      # This step checks out a copy of your repository.
-      - uses: actions/checkout@v2
-      - uses: superfly/flyctl-actions@master
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-          DOCKER_BUILDKIT: 1
-          FLY_PROJECT_PATH: "./dashboard"
-        with:
-          args: "deploy"
 
   deploy-worker:
     name: Deploy worker
