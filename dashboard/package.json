@@ -36,7 +36,7 @@
     "react-hook-form": "7.12.2",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "swr": "0.5.7",
-    "tailwindcss": "2.2.8",
+    "tailwindcss": "2.2.9",
     "zod": "3.8.1"
   },
   "devDependencies": {
