@@ -33,7 +33,7 @@
     "preact-render-to-string": "5.1.19",
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
-    "react-hook-form": "7.12.2",
+    "react-hook-form": "7.15.3",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "swr": "0.5.7",
     "tailwindcss": "2.2.15",
