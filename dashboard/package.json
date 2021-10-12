@@ -37,7 +37,7 @@
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "swr": "0.5.7",
     "tailwindcss": "2.2.16",
-    "zod": "3.8.2"
+    "zod": "3.9.8"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "0.3.0",
