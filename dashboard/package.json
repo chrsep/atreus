@@ -35,7 +35,7 @@
     "react-dom": "npm:@preact/compat",
     "react-hook-form": "7.15.3",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
-    "swr": "0.5.7",
+    "swr": "1.0.1",
     "tailwindcss": "2.2.16",
     "zod": "3.9.8"
   },
