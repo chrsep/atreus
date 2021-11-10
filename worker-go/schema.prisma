@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "go run github.com/prisma/prisma-client-go"
+}
+
+model Company {
+  id          Int    @id @default(autoincrement())
+  name        String
+  bountyLink  String @default("")
+  bountyRules String @default("")
+  icon        String @default("")
+
+  rootDomains RootDomain[]
+}
+
+model RootDomain {
+  domain    String   @id
+
+  confirmed Boolean @default(false)
+
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  companyId Int
+
+
+  createdAt         DateTime @default(now())
+  lastDNSRecon      DateTime @default(now())
+  isDNSReconRunning Boolean @default(false)
+
+  subDomains SubDomain[]
+}
+
+model SubDomain {
+  domain String @id
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  rootDomain       RootDomain  @relation(fields: [rootDomainDomain], references: [domain], onDelete: Cascade)
+  rootDomainDomain String
+  ipAddresses        IpAddress[]
+
+  amassTag String
+  sources  String[]
+}
+
+model IpAddress {
+  subDomain       SubDomain @relation(fields: [subDomainDomain], references: [domain])
+  subDomainDomain String
+
+  ip   String
+  cidr String
+  asn  Int
+  desc String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@id([ip, subDomainDomain])
+}
