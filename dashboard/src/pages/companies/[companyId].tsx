@@ -34,21 +34,21 @@ const CompanyProfile: FC<
 
   return (
     <div>
-      <div className="flex items-center border-b border-opacity-10 w-full py-4 pl-6">
+      <div className="flex items-center py-4 pl-6 w-full border-b border-opacity-10">
         {data?.rootDomains && data?.rootDomains?.length > 0 ? (
           <FaviconImage
             altIcon={data.icon}
             domain={data.rootDomains[0].domain}
-            className="w-8 h-8 mr-4 rounded-lg bg-white p-1"
+            className="p-1 mr-4 w-8 h-8 bg-white rounded-lg"
           />
         ) : (
-          <div className="w-8 h-8 mr-4 rounded-lg bg-gray-700 " />
+          <div className="mr-4 w-8 h-8 bg-gray-700 rounded-lg" />
         )}
-        <h1 className="font-bold mr-auto">{data?.name}</h1>
+        <h1 className="mr-auto font-bold">{data?.name}</h1>
 
         {company.bountyLink && (
           <a href={company.bountyLink} target="_blank" rel="noreferrer">
-            <Button variant="secondary" className="mr-3 !p-2">
+            <Button variant="secondary" className="!p-2 mr-3">
               <Icon src="/icons/Link.svg" className="mr-2" />
               Bounty
             </Button>
@@ -57,7 +57,7 @@ const CompanyProfile: FC<
 
         <Button
           variant="outline"
-          className="mr-3 !p-2"
+          className="!p-2 mr-3"
           onClick={showAddDomainDialog}
         >
           <Icon src="/icons/Streaming-White.svg" className="mr-2" />
@@ -66,7 +66,7 @@ const CompanyProfile: FC<
 
         <Button
           variant="outline"
-          className="mr-6 !p-2"
+          className="!p-2 mr-6"
           onClick={showEditCompanyDialog}
         >
           <Icon src="/icons/Edit-White.svg" />
@@ -114,7 +114,7 @@ const ConfirmedDomains: FC<{
   <>
     {rootDomains.map((rootDomain) => (
       <div key={rootDomain.domain}>
-        <div className="flex items-center px-6 py-2 dark:bg-dark-bg-800 border-b border-opacity-5">
+        <div className="flex items-center py-2 px-6 dark:bg-dark-bg-800 border-b border-opacity-5">
           <p>{rootDomain.domain}</p>
 
           <RootDomainMoreMenu
@@ -135,7 +135,7 @@ const SubDomains: FC<{ rootDomain: string }> = ({ rootDomain }) => {
   return (
     <>
       {data?.subDomains.length === 0 && (
-        <p className="px-6 py-3 border-b border-opacity-10">no domain found</p>
+        <p className="py-3 px-6 border-b border-opacity-10">no domain found</p>
       )}
 
       <table className="w-full">
@@ -156,16 +156,13 @@ const SubDomains: FC<{ rootDomain: string }> = ({ rootDomain }) => {
 const SubDomain: FC<{
   domain: SubDomainWithIpAddress
   rootDomain: string
-}> = ({
-  domain: { domain, ipAddresses, updatedAt, createdAt, amassTag },
-  rootDomain,
-}) => {
+}> = ({ domain: { domain, ipAddresses, updatedAt, amassTag }, rootDomain }) => {
   const updated = dayjs(updatedAt)
-  const created = dayjs(createdAt)
+  // const created = dayjs(createdAt)
 
   return (
     <tr className="flex items-center border-b border-opacity-10 ">
-      <td className="px-6 py-3 w-1/6">
+      <td className="py-3 px-6 w-1/6">
         <span className="font-bold">{domain.replace(rootDomain, "")}</span>
         <span className="opacity-30">{rootDomain}</span>
       </td>
@@ -174,10 +171,10 @@ const SubDomain: FC<{
       {/*    <p className="py-1 w-[90px] flex-shrink-0">{address.ip}</p> */}
       {/*  ))} */}
       {/* </td> */}
-      <td className="text-xs w-1/6">{ipAddresses[0].cidr}</td>
-      <td className="text-xs w-1/6">{ipAddresses[0].asn}</td>
-      <td className="text-xs w-1/6">{amassTag}</td>
-      <td className="ml-auto mr-3 text-xs">
+      <td className="w-1/6 text-xs">{ipAddresses[0].cidr}</td>
+      <td className="w-1/6 text-xs">{ipAddresses[0].asn}</td>
+      <td className="w-1/6 text-xs">{amassTag}</td>
+      <td className="mr-3 ml-auto text-xs">
         {updated.format("DD MMM YYYY")}
         <span className="ml-2 opacity-30">{updated.format("HH:mm")}</span>
       </td>
@@ -198,7 +195,7 @@ const OtherDomains: FC<{ rootDomains?: RootDomain[] }> = ({
     <>
       {rootDomains.map((rootDomain) => (
         <div key={rootDomain.domain}>
-          <div className="flex items-center px-6 py-2 border-b border-opacity-5">
+          <div className="flex items-center py-2 px-6 border-b border-opacity-5">
             <p className="mr-auto">{rootDomain.domain}</p>
 
             <Button
@@ -229,7 +226,7 @@ const RootDomainMoreMenu: FC<{
 
   return (
     <div className="ml-auto">
-      <Menu as="div" className="relative inline-block text-left">
+      <Menu as="div" className="inline-block relative text-left">
         <div>
           <Menu.Button>
             <Button variant="icon" className="ml-auto">
@@ -247,8 +244,8 @@ const RootDomainMoreMenu: FC<{
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 w-40 mt-2 origin-top-right divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-dark-bg-700">
-            <div className="px-1 py-1">
+          <Menu.Items className="absolute right-0 mt-2 w-40 dark:bg-dark-bg-700 rounded-md divide-y divide-gray-100 ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none">
+            <div className="py-1 px-1">
               <Menu.Item>
                 {({ active }) => (
                   <button
@@ -280,18 +277,18 @@ const Tabs: FC<{
 }> = ({ panels }) => (
   <div className="w-full ">
     <Tab.Group>
-      <div className="border-b border-opacity-10 p-2">
-        <Tab.List className="flex p-1 space-x-1 bg-primary rounded-xl dark:bg-dark-bg-800 max-w-[200px]">
+      <div className="p-2 border-b border-opacity-10">
+        <Tab.List className="flex p-1 space-x-1 max-w-[200px] dark:bg-dark-bg-800 rounded-xl bg-primary">
           {Object.keys(TabOptions).map((option) => (
             <Tab
               key={option}
               className={({ selected }) =>
                 clsx(
-                  "w-full py-2 leading-5 font-medium text-primary-200 rounded-lg text-xs !font-bold",
-                  "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60",
+                  "py-2 w-full text-xs !font-bold leading-5 text-primary-200 rounded-lg",
+                  "focus:ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none",
                   selected
                     ? "bg-white dark:bg-dark-bg-700 shadow "
-                    : "!text-blue-100 hover:bg-white/[0.04] hover:text-white"
+                    : "!text-blue-100 hover:text-white hover:bg-white/[0.04]"
                 )
               }
             >
