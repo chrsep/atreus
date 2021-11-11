@@ -94,7 +94,7 @@ const CompanyLink: FC<{
   domain?: string
 }> = ({ companyId, domain, name, icon }) => {
   const { asPath } = useRouter()
-  const href = `/companies/${companyId}`
+  const href = `/companies/${companyId}/confirmed-domains`
 
   return (
     <Link href={href}>

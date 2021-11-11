@@ -16,6 +16,40 @@ export const findAllCompanies = async () => {
   })
 }
 
+export const findConfirmedRootDomainsByCompanyId = async (
+  companyId: number
+) => {
+  return prisma.rootDomain.findMany({
+    where: {
+      companyId,
+      confirmed: true,
+    },
+    include: {
+      subDomains: {
+        include: {
+          ipAddresses: true,
+        },
+      },
+    },
+  })
+}
+
+export const findUnconfirmedRootDomainsByCompanyId = (companyId: number) => {
+  return prisma.rootDomain.findMany({
+    where: {
+      companyId,
+      confirmed: false,
+    },
+    include: {
+      subDomains: {
+        include: {
+          ipAddresses: true,
+        },
+      },
+    },
+  })
+}
+
 export const insertNewCompany = async (
   name: string,
   rootDomains: string[],
@@ -39,13 +73,6 @@ export const insertNewCompany = async (
 export const findCompanyById = async (id: number) => {
   return prisma.company.findUnique({
     where: { id },
-    include: {
-      rootDomains: {
-        orderBy: {
-          confirmed: "desc",
-        },
-      },
-    },
   })
 }
 
