@@ -2,30 +2,39 @@ package main
 
 import (
 	"context"
-	"worker-go/db"
+	"worker-go/prisma"
 )
 
+var db *DB
+
 type DB struct {
-	client *db.PrismaClient
+	client *prisma.PrismaClient
 	ctx    context.Context
 }
 
-func initDB() (*DB, func()) {
-	client := db.NewClient()
-	ctx := context.Background()
+func (db *DB) FindConfirmedRootDomains() ([]prisma.RootDomainModel, error) {
+	domains, err := db.client.RootDomain.
+		FindMany(
+			prisma.RootDomain.Confirmed.Equals(true),
+		).
+		Exec(db.ctx)
 
-	if err := client.Connect(); err != nil {
+	return domains, err
+}
+
+func initDB() func() {
+	db = &DB{
+		client: prisma.NewClient(),
+		ctx:    context.Background(),
+	}
+
+	if err := db.client.Connect(); err != nil {
 		panic(err)
 	}
 
-	cleanup := func() {
-		if err := client.Prisma.Disconnect(); err != nil {
+	return func() {
+		if err := db.client.Prisma.Disconnect(); err != nil {
 			panic(err)
 		}
 	}
-
-	return &DB{
-		client: client,
-		ctx:    ctx,
-	}, cleanup
 }
