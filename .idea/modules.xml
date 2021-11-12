@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/atreus.iml" filepath="$PROJECT_DIR$/.idea/atreus.iml" />
       <module fileurl="file://$PROJECT_DIR$/dashboard/dashboard.iml" filepath="$PROJECT_DIR$/dashboard/dashboard.iml" />
       <module fileurl="file://$PROJECT_DIR$/worker/worker.iml" filepath="$PROJECT_DIR$/worker/worker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/worker-go/worker-go.iml" filepath="$PROJECT_DIR$/worker-go/worker-go.iml" />
     </modules>
   </component>
 </project>

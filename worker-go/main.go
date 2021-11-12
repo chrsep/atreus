@@ -1,4 +1,4 @@
-package worker_go
+package main
 
 import "log"
 
