@@ -32,7 +32,7 @@ func (s *SubFinder) Enumerate(domain string) ([]string, error) {
 	return strings.Split(string(result), "\n"), nil
 }
 
-func initSubfinder() {
+func setupSubfinder() {
 	config := runner.ConfigFile{
 		// Use the default list of resolvers by marshaling it to the config
 		Resolvers: resolve.DefaultResolvers,

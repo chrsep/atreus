@@ -15,7 +15,8 @@ func main() {
 
 func run() error {
 	loadEnv()
-	initSubfinder()
+	setupSubfinder()
+
 	cleanup := initDB()
 	defer cleanup()
 
@@ -36,9 +37,14 @@ func run() error {
 
 func reconSubdomains(domain string, subfinder *SubFinder, wg *sync.WaitGroup) {
 	defer wg.Done()
-	_, err := subfinder.Enumerate(domain)
+	domains, err := subfinder.Enumerate(domain)
 	if err != nil {
 		fmt.Printf("%s: enumerate failed", domain)
+	}
+
+	err = scanPorts(domains)
+	if err != nil {
+		fmt.Printf("%s: enumerate failed, %e", domain, err)
 	}
 
 }
