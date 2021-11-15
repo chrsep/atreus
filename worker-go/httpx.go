@@ -6,10 +6,36 @@ import (
 	"fmt"
 	"os/exec"
 	"strings"
+	"time"
 )
 
+type HTTPXResult struct {
+	Timestamp      time.Time `json:"timestamp"`
+	Request        string    `json:"request"`
+	ResponseHeader string    `json:"response-header"`
+	Scheme         string    `json:"scheme"`
+	Port           string    `json:"port"`
+	Path           string    `json:"path"`
+	BodySha256     string    `json:"body-sha256"`
+	HeaderSha256   string    `json:"header-sha256"`
+	A              []string  `json:"a"`
+	Cnames         []string  `json:"cnames"`
+	Url            string    `json:"url"`
+	Input          string    `json:"input"`
+	Title          string    `json:"title"`
+	Webserver      string    `json:"webserver"`
+	ResponseBody   string    `json:"response-body"`
+	ContentType    string    `json:"content-type"`
+	Method         string    `json:"method"`
+	Host           string    `json:"host"`
+	ContentLength  int       `json:"content-length"`
+	StatusCode     int       `json:"status-code"`
+	ResponseTime   string    `json:"response-time"`
+	Failed         bool      `json:"failed"`
+}
+
 func scanPorts(domains []string) error {
-	cmd := exec.Command("httpx", "-json", "-silent")
+	cmd := exec.Command("httpx", "-json", "-irr", "-silent")
 	cmd.Stdin = strings.NewReader(strings.Join(domains, "\n"))
 
 	var err bytes.Buffer
@@ -36,26 +62,4 @@ func scanPorts(domains []string) error {
 	fmt.Println(len(results))
 
 	return nil
-}
-
-type HTTPXResult struct {
-	Timestamp     string   `json:"timestamp"`
-	Scheme        string   `json:"scheme"`
-	Port          string   `json:"port"`
-	Path          string   `json:"path"`
-	BodySha256    string   `json:"body-sha256"`
-	HeaderSha256  string   `json:"header-sha256"`
-	A             []string `json:"a"`
-	Cnames        []string `json:"cnames"`
-	Url           string   `json:"url"`
-	Input         string   `json:"input"`
-	Title         string   `json:"title"`
-	Webserver     string   `json:"webserver"`
-	ContentType   string   `json:"content-type"`
-	Method        string   `json:"method"`
-	Host          string   `json:"host"`
-	ContentLength int      `json:"content-length"`
-	StatusCode    int      `json:"status-code"`
-	ResponseTime  string   `json:"response-time"`
-	Failed        bool     `json:"failed"`
 }
