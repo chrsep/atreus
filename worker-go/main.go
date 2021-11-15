@@ -27,7 +27,7 @@ func run() error {
 	var wg sync.WaitGroup
 	for _, domain := range domains {
 		wg.Add(1)
-		go reconSubdomains(domain.Domain, subfinder, &wg)
+		go reconSubdomains(domain.Name, subfinder, &wg)
 	}
 	wg.Wait()
 

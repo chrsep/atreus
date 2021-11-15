@@ -9,7 +9,6 @@ import { useRouter } from "next/router"
 import Icon from "@components/Icon"
 import clsx from "clsx"
 import { useGetCompanies } from "@lib/api-hooks"
-import FaviconImage from "@components/FaviconImage"
 
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
   <UserProvider>
@@ -46,13 +45,8 @@ const SideBar = () => {
         </div>
 
         <div className="p-4">
-          {companies.data?.map(({ id, name, rootDomains, icon }) => (
-            <CompanyLink
-              companyId={id}
-              name={name}
-              domain={rootDomains[0]?.domain}
-              icon={icon}
-            />
+          {companies.data?.map(({ id, name, icon }) => (
+            <CompanyLink companyId={id} name={name} icon={icon} />
           ))}
         </div>
       </nav>
@@ -91,8 +85,7 @@ const CompanyLink: FC<{
   companyId: number
   name: string
   icon: string
-  domain?: string
-}> = ({ companyId, domain, name, icon }) => {
+}> = ({ companyId, name, icon }) => {
   const { asPath } = useRouter()
   const href = `/companies/${companyId}/confirmed-domains`
 
@@ -105,11 +98,12 @@ const CompanyLink: FC<{
             "dark:bg-primary-300 dark:hover:bg-primary-400 !bg-opacity-20 ring-1 ring-primary-400 ring-opacity-30"
         )}
       >
-        {domain ? (
-          <FaviconImage
-            altIcon={icon}
-            domain={domain}
+        {icon ? (
+          <img
+            src={icon}
+            referrerPolicy="no-referrer"
             className="p-1 mr-4 w-6 h-6 bg-gray-700 rounded-lg"
+            alt=""
           />
         ) : (
           <div className="mr-4 w-6 h-6 bg-gray-700 rounded-lg" />

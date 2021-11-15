@@ -1,4 +1,3 @@
-import FaviconImage from "@components/FaviconImage"
 import Button from "@components/Button"
 import Icon from "@components/Icon"
 import EditCompanyDialog from "@components/EditCompanyDialog"
@@ -35,11 +34,13 @@ const CompanyLayout: FC<{
   return (
     <div>
       <div className="flex items-center py-4 pl-6 w-full border-b border-opacity-10">
-        {data?.rootDomains && data?.rootDomains?.length > 0 ? (
-          <FaviconImage
-            altIcon={data.icon}
-            domain={data.rootDomains[0].domain}
+        {company?.icon ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={company?.icon}
+            referrerPolicy="no-referrer"
             className="p-1 mr-4 w-8 h-8 bg-white rounded-lg"
+            alt=""
           />
         ) : (
           <div className="mr-4 w-8 h-8 bg-gray-700 rounded-lg" />

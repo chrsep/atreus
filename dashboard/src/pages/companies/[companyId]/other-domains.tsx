@@ -55,7 +55,7 @@ export const getServerSideProps = withPageAuthRequired({
       props: {
         company,
         rootDomains: rootDomains.map((domain) => ({
-          domain: domain.domain,
+          domain: domain.name,
         })),
       },
     }

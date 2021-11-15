@@ -7,61 +7,40 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialActions"]
+  provider = "prisma-client-js"
 }
 
 model Company {
-  id          Int    @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
+  name       String
+  bountyLink String   @default("")
+  icon       String   @default("")
+  domains    Domain[]
+}
+
+model Domain {
+  name      String   @id
+  ip        String   @default("")
+  confirmed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  company        Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  companyId      Int
+  rootDomain     Domain?   @relation("DomainToSubDomain", fields: [rootDomainName], references: [name], onDelete: Cascade)
+  rootDomainName String?
+  subDomains     Domain[]  @relation("DomainToSubDomain")
+  services       Service[]
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  port        Int
   name        String
-  bountyLink  String @default("")
-  bountyRules String @default("")
-  icon        String @default("")
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
 
-  rootDomains RootDomain[]
-}
-
-model RootDomain {
-  domain    String   @id
-
-  confirmed Boolean @default(false)
-
-  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
-  companyId Int
-
-
-  createdAt         DateTime @default(now())
-  lastDNSRecon      DateTime @default(now())
-  isDNSReconRunning Boolean @default(false)
-
-  subDomains SubDomain[]
-}
-
-model SubDomain {
-  domain String @id
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-
-  rootDomain       RootDomain  @relation(fields: [rootDomainDomain], references: [domain], onDelete: Cascade)
-  rootDomainDomain String
-  ipAddresses        IpAddress[]
-
-  amassTag String
-  sources  String[]
-}
-
-model IpAddress {
-  subDomain       SubDomain @relation(fields: [subDomainDomain], references: [domain])
-  subDomainDomain String
-
-  ip   String
-  cidr String
-  asn  Int
-  desc String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-
-  @@id([ip, subDomainDomain])
+  domain     Domain @relation(fields: [domainName], references: [name], onDelete: Cascade)
+  domainName String
 }

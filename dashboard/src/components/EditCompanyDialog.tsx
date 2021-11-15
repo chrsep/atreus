@@ -1,7 +1,7 @@
 import React, { FC, MutableRefObject, useRef } from "react"
 import Button from "@components/Button"
 import { useForm } from "react-hook-form"
-import { Company, RootDomain } from "@prisma/client"
+import { Company, Domain } from "@prisma/client"
 import Icon from "@components/Icon"
 import Dialog from "@components/Dialog"
 import { useRouter } from "next/router"
@@ -12,7 +12,7 @@ import { mutateApi } from "@lib/api-hooks"
 interface Props {
   open: boolean
   setOpen: (value: boolean) => void
-  company: Company & { rootDomains: RootDomain[] }
+  company: Company
 }
 
 const EditCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {

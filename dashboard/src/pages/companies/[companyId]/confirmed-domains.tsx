@@ -16,12 +16,12 @@ const ConfirmedDomain: FC<
   return (
     <CompanyLayout companyId={company.id} company={company}>
       {rootDomains.map((rootDomain) => (
-        <div key={rootDomain.domain}>
+        <div key={rootDomain.name}>
           <div className="flex items-center py-2 px-6 dark:bg-dark-bg-800 border-b border-opacity-5">
-            <p>{rootDomain.domain}</p>
+            <p>{rootDomain.name}</p>
 
             <RootDomainMoreMenu
-              domain={rootDomain.domain}
+              domain={rootDomain.name}
               companyId={company.id}
             />
           </div>
@@ -39,22 +39,17 @@ const ConfirmedDomain: FC<
                 <tr className="flex items-center border-b border-opacity-10 ">
                   <td className="py-3 px-6 w-1/6">
                     <span className="font-bold">
-                      {subDomain.domain.replace(rootDomain.domain, "")}
+                      {subDomain.name.replace(rootDomain.name, "")}
                     </span>
-                    <span className="opacity-30">{rootDomain.domain}</span>
+                    <span className="opacity-30">{rootDomain.name}</span>
                   </td>
                   {/* <td className="w-1/2 text-xs"> */}
                   {/*  {ipAddresses?.map((address) => ( */}
                   {/*    <p className="py-1 w-[90px] flex-shrink-0">{address.ip}</p> */}
                   {/*  ))} */}
                   {/* </td> */}
-                  <td className="w-1/6 text-xs">
-                    {subDomain.ipAddresses[0].cidr}
-                  </td>
-                  <td className="w-1/6 text-xs">
-                    {subDomain.ipAddresses[0].asn}
-                  </td>
-                  <td className="w-1/6 text-xs">{subDomain.amassTag}</td>
+                  <td className="w-1/6 text-xs">{subDomain.ip}</td>
+                  <td className="w-1/6 text-xs">{subDomain.ip}</td>
                   <td className="mr-3 ml-auto text-xs">
                     {dayjs(subDomain.updatedAt).format("DD MMM YYYY")}
                     <span className="ml-2 opacity-30">
@@ -145,21 +140,13 @@ export const getServerSideProps = withPageAuthRequired({
       props: {
         company,
         rootDomains: rootDomains.map((domain) => ({
-          domain: domain.domain,
+          name: domain.name,
           createdAt: domain.createdAt.toString(),
-          lastDNSRecon: domain.lastDNSRecon.toString(),
           subDomains: domain.subDomains.map((subDomain) => ({
-            domain: subDomain.domain,
+            name: subDomain.name,
             createdAt: subDomain.createdAt.toISOString(),
             updatedAt: subDomain.updatedAt.toISOString(),
-            amassTag: subDomain.amassTag,
-            ipAddresses: subDomain.ipAddresses.map((ipAddress) => ({
-              ip: ipAddress.ip,
-              cidr: ipAddress.cidr,
-              asn: ipAddress.asn,
-              createdAt: ipAddress.createdAt.toISOString(),
-              updatedAt: ipAddress.updatedAt.toISOString(),
-            })),
+            ip: subDomain.ip,
           })),
         })),
       },

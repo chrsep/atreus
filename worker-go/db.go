@@ -12,10 +12,10 @@ type DB struct {
 	ctx    context.Context
 }
 
-func (db *DB) FindConfirmedRootDomains() ([]prisma.RootDomainModel, error) {
-	domains, err := db.client.RootDomain.
+func (db *DB) FindConfirmedRootDomains() ([]prisma.DomainModel, error) {
+	domains, err := db.client.Domain.
 		FindMany(
-			prisma.RootDomain.Confirmed.Equals(true),
+			prisma.Domain.Confirmed.Equals(true),
 		).
 		Exec(db.ctx)
 
