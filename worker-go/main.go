@@ -5,6 +5,7 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/joho/godotenv/autoload"
 	"sync"
+	"worker-go/db"
 )
 
 func main() {
@@ -17,7 +18,7 @@ func run() error {
 	loadEnv()
 	setupSubfinder()
 
-	cleanup := initDB()
+	cleanup := db.Init()
 	defer cleanup()
 
 	domains, err := db.FindConfirmedRootDomains()
