@@ -31,7 +31,9 @@ require (
 	github.com/spyse-com/go-spyse v1.2.3 // indirect
 	github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/multierr v1.7.0 // indirect
 	go.uber.org/ratelimit v0.2.0 // indirect
+	go.uber.org/zap v1.19.1 // indirect
 	golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d // indirect
 	golang.org/x/sys v0.0.0-20211113001501-0c823b97ae02 // indirect
 	golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac // indirect

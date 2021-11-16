@@ -5,7 +5,9 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/joho/godotenv/autoload"
 	"sync"
+	"time"
 	"worker-go/db"
+	"worker-go/log"
 )
 
 func main() {
@@ -15,42 +17,50 @@ func main() {
 }
 
 func run() error {
-	loadEnv()
+	setupEnv()
 	setupSubfinder()
 
-	cleanup := db.Init()
-	defer cleanup()
+	cleanupLogger := log.Setup()
+	defer cleanupLogger()
 
-	domains, err := db.FindConfirmedRootDomains()
-	if err != nil {
-		return err
-	}
+	cleanupDB := db.Setup()
+	defer cleanupDB()
 
-	var wg sync.WaitGroup
-	for _, domain := range domains {
-		wg.Add(1)
-		go reconSubdomains(domain.Name, subfinder, &wg)
+	for true {
+		domains, err := db.FindConfirmedDomain()
+		if err != nil {
+			return err
+		}
+
+		var wg sync.WaitGroup
+		for _, domain := range domains {
+			wg.Add(1)
+			go enumerateSubdomain(domain.Name, domain.CompanyID, &wg)
+		}
+		wg.Wait()
+
+		fmt.Println("sleep: 10s timeout for domain enumeration")
+		time.Sleep(time.Second * 10)
 	}
-	wg.Wait()
 
 	return nil
 }
 
-func reconSubdomains(domain string, subfinder *SubFinder, wg *sync.WaitGroup) {
+func enumerateSubdomain(domain string, id int, wg *sync.WaitGroup) {
 	defer wg.Done()
-	domains, err := subfinder.Enumerate(domain)
+	subdomains, err := subfinder.Enumerate(domain)
 	if err != nil {
 		fmt.Printf("%s: enumerate failed", domain)
 	}
 
-	err = scanPorts(domains)
+	db.InsertSubDomains(subdomains, id, domain)
 	if err != nil {
 		fmt.Printf("%s: enumerate failed, %e", domain, err)
 	}
 
 }
 
-func loadEnv() {
+func setupEnv() {
 	err := godotenv.Load(".env.local")
 	if err != nil {
 		fmt.Println("Error loading .env file")
