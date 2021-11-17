@@ -20,7 +20,6 @@ model Company {
 
 model Domain {
   name      String   @id
-  ip        String   @default("")
   confirmed Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
@@ -34,13 +33,49 @@ model Domain {
 }
 
 model Service {
-  id          Int      @id @default(autoincrement())
   port        Int
   name        String
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
 
-  domain     Domain @relation(fields: [domainName], references: [name], onDelete: Cascade)
-  domainName String
+  cnameRecords String[]
+  aRecords     String[]
+
+  domain        Domain          @relation(fields: [domainName], references: [name], onDelete: Cascade)
+  domainName    String
+  probeResponse ProbeResponse[]
+
+  @@id([port, domainName])
+}
+
+model ProbeResponse {
+  bodySHA String @id
+
+  url       String
+  host      String
+  method    String
+  scheme    String
+  webserver String
+  timestamp DateTime
+
+  title        String
+  header       String
+  body         String
+  statusCode   Int
+  contentType  String
+  path         String
+  responseTime String
+
+  service           Service @relation(fields: [servicePort, serviceDomainName], references: [port, domainName])
+  servicePort       Int
+  serviceDomainName String
+  techs             Tech[]
+}
+
+model Tech {
+  name String @id
+
+  probeResponse        ProbeResponse? @relation(fields: [probeResponseBodySHA], references: [bodySHA])
+  probeResponseBodySHA String?
 }
