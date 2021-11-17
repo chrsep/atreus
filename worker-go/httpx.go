@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"os/exec"
 	"strings"
 	"time"
@@ -34,7 +33,7 @@ type HTTPXResult struct {
 	Failed         bool      `json:"failed"`
 }
 
-func scanPorts(domains []string) error {
+func scanServices(domains []string) ([]HTTPXResult, error) {
 	cmd := exec.Command("httpx", "-json", "-irr", "-silent")
 	cmd.Stdin = strings.NewReader(strings.Join(domains, "\n"))
 
@@ -46,20 +45,17 @@ func scanPorts(domains []string) error {
 	_ = cmd.Run()
 
 	var results []HTTPXResult
-	for _, r := range strings.Split(out.String(), "\n") {
-		if r == "" {
+	for _, line := range strings.Split(out.String(), "\n") {
+		if line == "" {
 			continue
 		}
 
-		var result HTTPXResult
-		err := json.Unmarshal([]byte(r), &result)
-		if err != nil {
-			return err
+		var r HTTPXResult
+		if err := json.Unmarshal([]byte(line), &r); err != nil {
+			return nil, err
 		}
-		results = append(results, result)
+		results = append(results, r)
 	}
 
-	fmt.Println(len(results))
-
-	return nil
+	return results, nil
 }

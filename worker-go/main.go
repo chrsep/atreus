@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/joho/godotenv"
 	_ "github.com/joho/godotenv/autoload"
+	"os"
 	"sync"
 	"time"
 	"worker-go/db"
@@ -11,12 +12,6 @@ import (
 )
 
 func main() {
-	if err := run(); err != nil {
-		panic(err)
-	}
-}
-
-func run() error {
 	setupEnv()
 	setupSubfinder()
 
@@ -26,10 +21,34 @@ func run() error {
 	cleanupDB := db.Setup()
 	defer cleanupDB()
 
-	for true {
-		domains, err := db.FindConfirmedDomain()
+	if err := run(); err != nil {
+		panic(err)
+	}
+}
+
+func run() error {
+	exit := make(chan string)
+
+	go runSubdomainEnumeration()
+	go runPortScan()
+
+	for {
+		time.Sleep(time.Second * 10)
+
+		select {
+		case <-exit:
+			os.Exit(0)
+		}
+	}
+
+	return nil
+}
+
+func runSubdomainEnumeration() {
+	for {
+		domains, err := db.FindRootDomains()
 		if err != nil {
-			return err
+			panic(err)
 		}
 
 		var wg sync.WaitGroup
@@ -39,11 +58,29 @@ func run() error {
 		}
 		wg.Wait()
 
-		fmt.Println("sleep: 10s timeout for domain enumeration")
-		time.Sleep(time.Second * 10)
+		log.Info("enumeration: 20s timeout for domain enumeration")
+		time.Sleep(time.Second * 20)
 	}
+}
 
-	return nil
+func runPortScan() {
+	for {
+		log.Info("scanning services")
+		domains, err := db.FindAllDomains()
+		if err != nil {
+			panic(err)
+		}
+
+		domainNames := make([]string, 0)
+		for _, domain := range domains {
+			domainNames = append(domainNames, domain.Name)
+		}
+
+		_, _ = scanServices(domainNames)
+
+		log.Info("port-scan: 5s timeout for port scan")
+		time.Sleep(time.Second * 5)
+	}
 }
 
 func enumerateSubdomain(domain string, id int, wg *sync.WaitGroup) {
@@ -53,11 +90,10 @@ func enumerateSubdomain(domain string, id int, wg *sync.WaitGroup) {
 		fmt.Printf("%s: enumerate failed", domain)
 	}
 
-	db.InsertSubDomains(subdomains, id, domain)
+	err = db.InsertSubDomains(subdomains, id, domain)
 	if err != nil {
 		fmt.Printf("%s: enumerate failed, %e", domain, err)
 	}
-
 }
 
 func setupEnv() {

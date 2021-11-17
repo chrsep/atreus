@@ -45,10 +45,8 @@ func setupSubfinder() {
 	}
 
 	runnerInstance, err := runner.NewRunner(&runner.Options{
-		Threads:            10, // Thread controls the number of threads to use for active enumerations
 		Timeout:            30, // Timeout is the seconds to wait for sources to respond
 		MaxEnumerationTime: 10, // MaxEnumerationTime is the maximum amount of time in mins to wait for enumeration
-		Verbose:            true,
 		YAMLConfig:         config,
 	})
 	if err != nil {
