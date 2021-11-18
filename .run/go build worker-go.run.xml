@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="go build worker-go" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
-    <module name="worker-go" />
+    <module name="worker" />
     <working_directory value="$PROJECT_DIR$/worker-go" />
     <kind value="PACKAGE" />
     <package value="worker-go" />
