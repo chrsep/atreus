@@ -74,8 +74,6 @@ model ProbeResponse {
 }
 
 model Tech {
-  name String @id
-
-  probeResponse        ProbeResponse? @relation(fields: [probeResponseBodySHA], references: [bodySHA])
-  probeResponseBodySHA String?
+  name          String          @id
+  probeResponse ProbeResponse[]
 }
