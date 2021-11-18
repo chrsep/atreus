@@ -5,6 +5,7 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/joho/godotenv/autoload"
 	"os"
+	"strconv"
 	"sync"
 	"time"
 	"worker-go/db"
@@ -76,7 +77,46 @@ func runPortScan() {
 			domainNames = append(domainNames, domain.Name)
 		}
 
-		_, _ = scanServices(domainNames)
+		results, _ := scanServices(domainNames)
+		for _, result := range results {
+			service := db.ServiceModel{}
+			service.Port, _ = strconv.Atoi(result.Port)
+			service.Name = result.Webserver
+			service.DomainName = result.Input
+			service.ARecords = result.A
+			service.CnameRecords = result.Cnames
+
+			response := db.ProbeResponseModel{}
+			response.BodySHA = result.BodySha256
+			response.URL = result.Url
+			response.Host = result.Host
+			response.Method = result.Method
+			response.Scheme = result.Scheme
+			response.Webserver = result.Webserver
+			response.Timestamp = result.Timestamp
+			response.Title = result.Title
+			response.Header = result.ResponseHeader
+			response.Body = result.ResponseBody
+			response.StatusCode = result.StatusCode
+			response.ContentType = result.ContentType
+			response.Path = result.Path
+			response.ResponseTime = result.ResponseTime
+
+			var techs []db.TechModel
+			for _, technology := range result.Technologies {
+				tech := db.TechModel{}
+				tech.Name = technology
+				techs = append(techs, tech)
+			}
+
+			if _, err = db.UpsertService(service); err != nil {
+				log.Error("failed to upsert service", err)
+			}
+
+			if _, err = db.UpsertProbeResponse(response, service.Port, service.DomainName); err != nil {
+				log.Error("failed to upsert probe response", err)
+			}
+		}
 
 		log.Info("port-scan: 5s timeout for port scan")
 		time.Sleep(time.Second * 5)

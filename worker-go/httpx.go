@@ -31,6 +31,7 @@ type HTTPXResult struct {
 	StatusCode     int       `json:"status-code"`
 	ResponseTime   string    `json:"response-time"`
 	Failed         bool      `json:"failed"`
+	Technologies   []string  `json:"technologies"`
 }
 
 func scanServices(domains []string) ([]HTTPXResult, error) {
