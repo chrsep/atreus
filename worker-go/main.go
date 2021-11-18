@@ -102,19 +102,16 @@ func runPortScan() {
 			response.Path = result.Path
 			response.ResponseTime = result.ResponseTime
 
-			var techs []db.TechModel
-			for _, technology := range result.Technologies {
-				tech := db.TechModel{}
-				tech.Name = technology
-				techs = append(techs, tech)
-			}
-
 			if _, err = db.UpsertService(service); err != nil {
 				log.Error("failed to upsert service", err)
 			}
 
 			if _, err = db.UpsertProbeResponse(response, service.Port, service.DomainName); err != nil {
 				log.Error("failed to upsert probe response", err)
+			}
+
+			if err := db.UpsertTech(result.Technologies, response.BodySHA); err != nil {
+				log.Error("failed to upsert tech", err)
 			}
 		}
 

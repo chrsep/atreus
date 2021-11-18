@@ -129,3 +129,24 @@ func UpsertProbeResponse(response ProbeResponseModel, servicePort int, serviceDo
 		),
 	).Exec(db.ctx)
 }
+
+func UpsertTech(techs []string, probeResponseBodySHA string) error {
+	ops := make([]transaction.Param, len(techs))
+	for i, tech := range techs {
+		op := db.Tech.UpsertOne(
+			Tech.Name.Equals(tech),
+		).Create(
+			Tech.Name.Set(tech),
+			Tech.ProbeResponse.Link(
+				ProbeResponse.BodySHA.Equals(probeResponseBodySHA),
+			),
+		).Update(
+			Tech.Name.Set(tech),
+			Tech.ProbeResponse.Link(
+				ProbeResponse.BodySHA.Equals(probeResponseBodySHA),
+			),
+		).Tx()
+		ops[i] = op
+	}
+	return db.Prisma.Transaction(ops...).Exec(db.ctx)
+}

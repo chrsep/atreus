@@ -35,7 +35,7 @@ type HTTPXResult struct {
 }
 
 func scanServices(domains []string) ([]HTTPXResult, error) {
-	cmd := exec.Command("httpx", "-json", "-irr", "-silent")
+	cmd := exec.Command("httpx", "-json", "-irr", "-tech-detect", "-silent")
 	cmd.Stdin = strings.NewReader(strings.Join(domains, "\n"))
 
 	var err bytes.Buffer
