@@ -38,9 +38,6 @@ jobs:
           run_install: |
             - cwd: ./dashboard
             - args: [--frozen-lockfile, --strict-peer-dependencies]
-      - name: Install Dependencies
-        working-directory: ./dashboard
-        run: pnpm install
       - name: Build
         working-directory: ./dashboard
-        run: yarn build
+        run: pnpm build
