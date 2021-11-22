@@ -7,7 +7,7 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/prisma/prisma-client-go v0.12.2
 	github.com/projectdiscovery/subfinder/v2 v2.4.9
-	github.com/shopspring/decimal v1.2.0
+	github.com/shopspring/decimal v1.3.1
 	github.com/takuoki/gocase v1.0.0
 	go.uber.org/zap v1.19.1
 )
