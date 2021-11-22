@@ -48,6 +48,9 @@ func run() error {
 }
 
 func runSubdomainEnumeration() {
+	ctx := context.Background()
+	sem := semaphore.NewWeighted(3)
+	wg := &sync.WaitGroup{}
 
 	for {
 		domains, err := db.FindRootDomains()
@@ -55,9 +58,6 @@ func runSubdomainEnumeration() {
 			panic(err)
 		}
 
-		ctx := context.Background()
-		sem := semaphore.NewWeighted(8)
-		wg := &sync.WaitGroup{}
 		for _, domain := range domains {
 			wg.Add(1)
 			err := sem.Acquire(ctx, 1)
