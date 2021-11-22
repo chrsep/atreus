@@ -38,6 +38,9 @@ jobs:
           run_install: |
             - cwd: ./dashboard
             - args: [--frozen-lockfile, --strict-peer-dependencies]
+      - name: Generate prisma
+        working-directory: ./dashboard
+        run: pnpm prisma:generate
       - name: Build
         working-directory: ./dashboard
         run: pnpm build
