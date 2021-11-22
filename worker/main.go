@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"sync"
 	"time"
-	"worker-go/db"
-	"worker-go/log"
+	"worker/db"
+	"worker/log"
 )
 
 func main() {

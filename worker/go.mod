@@ -1,11 +1,15 @@
-module worker-go
+module worker
 
 go 1.17
 
 require (
+	github.com/iancoleman/strcase v0.0.0-20190422225806-e506e3ef7365
 	github.com/joho/godotenv v1.4.0
 	github.com/prisma/prisma-client-go v0.12.2
 	github.com/projectdiscovery/subfinder/v2 v2.4.9
+	github.com/shopspring/decimal v1.2.0
+	github.com/takuoki/gocase v1.0.0
+	go.uber.org/zap v1.19.1
 )
 
 require (
@@ -30,7 +34,6 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.7.0 // indirect
 	go.uber.org/ratelimit v0.2.0 // indirect
-	go.uber.org/zap v1.19.1 // indirect
 	golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d // indirect
 	golang.org/x/sys v0.0.0-20211113001501-0c823b97ae02 // indirect
 	golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac // indirect
