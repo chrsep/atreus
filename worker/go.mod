@@ -3,7 +3,7 @@ module worker
 go 1.17
 
 require (
-	github.com/iancoleman/strcase v0.0.0-20190422225806-e506e3ef7365
+	github.com/iancoleman/strcase v0.2.0
 	github.com/joho/godotenv v1.4.0
 	github.com/prisma/prisma-client-go v0.12.2
 	github.com/projectdiscovery/subfinder/v2 v2.4.9
