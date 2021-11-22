@@ -10,6 +10,8 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 # Rebuild the source code only when needed
 FROM node:alpine AS builder
 WORKDIR /app
+RUN yarn global add pnpm
+
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 RUN pnpm prisma:generate
