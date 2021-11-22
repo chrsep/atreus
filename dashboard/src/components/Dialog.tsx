@@ -19,12 +19,12 @@ const Dialog: FC<Props> = ({
       <BaseDialog
         as="div"
         static
-        className="fixed z-10 inset-0 overflow-y-auto"
+        className="overflow-y-auto fixed inset-0 z-10"
         open={open}
         onClose={setOpen}
         initialFocus={initialFocus}
       >
-        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div className="flex sm:block justify-center items-end sm:p-0 px-4 pt-4 pb-20 min-h-screen text-center">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -38,7 +38,7 @@ const Dialog: FC<Props> = ({
           </Transition.Child>
           {/* This element is to trick the browser into centering the modal contents. */}
           <span
-            className="hidden sm:inline-block sm:align-top sm:h-screen"
+            className="hidden sm:inline-block sm:h-screen sm:align-top"
             aria-hidden="true"
           >
             &#8203;

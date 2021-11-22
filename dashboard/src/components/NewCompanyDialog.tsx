@@ -44,12 +44,12 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
         <h2 className="text-xs">New company</h2>
 
         <Button
-          className="ml-auto !p-1"
+          className="!p-1 ml-auto"
           type="submit"
           variant="icon"
           onClick={() => setOpen(false)}
         >
-          <Icon src="/icons/Close-White.svg" className="opacity-60 !w-6 !h-6" />
+          <Icon src="/icons/Close-White.svg" className="!w-6 !h-6 opacity-60" />
         </Button>
       </div>
 
@@ -78,14 +78,14 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
           {...register("icon")}
         />
 
-        <h2 className="mt-8 mb-3 mx-4 font-bold">Root domains</h2>
+        <h2 className="mx-4 mt-8 mb-3 font-bold">Root domains</h2>
 
         <div className="mx-4">
           {rootDomains.map((domain) => (
-            <div key={domain} className="pb-4 flex items-center">
+            <div key={domain} className="flex items-center pb-4">
               <Button
                 variant="outline"
-                className="mr-3 !text-red-500 font-bold !p-2"
+                className="!p-2 mr-3 font-bold !text-red-500"
                 onClick={() => {
                   setRootDomains(
                     rootDomains.filter(
@@ -101,12 +101,12 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
           ))}
         </div>
 
-        <div className="flex items-end items-center border-t border-b border-opacity-10 p-4">
+        <div className="flex items-center p-4 border-t border-b border-opacity-10">
           <input
             name="domain"
             onChange={(e) => setRootDomain(e.target.value)}
             value={rootDomain}
-            className="bg-dark-bg-800 w-full !outline-none"
+            className="w-full bg-dark-bg-800 !outline-none"
             placeholder="New root domain"
           />
 
@@ -122,7 +122,7 @@ const NewCompanyDialog: FC<Props> = ({ open, setOpen }) => {
           </Button>
         </div>
 
-        <Button className="ml-auto m-4" type="submit">
+        <Button className="m-4 ml-auto" type="submit">
           Save company
         </Button>
       </form>

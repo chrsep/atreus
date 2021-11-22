@@ -1,7 +1,7 @@
 import React, { FC, MutableRefObject, useRef } from "react"
 import Button from "@components/Button"
 import { useForm } from "react-hook-form"
-import { Company, RootDomain } from "@prisma/client"
+import { Company } from "@prisma/client"
 import Icon from "@components/Icon"
 import Dialog from "@components/Dialog"
 import { useRouter } from "next/router"
@@ -12,7 +12,7 @@ import { mutateApi } from "@lib/api-hooks"
 interface Props {
   open: boolean
   setOpen: (value: boolean) => void
-  company: Company & { rootDomains: RootDomain[] }
+  company: Company
 }
 
 const EditCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
@@ -58,12 +58,12 @@ const EditCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
         <h2 className="text-xs">Edit company</h2>
 
         <Button
-          className="ml-auto !p-1"
+          className="!p-1 ml-auto"
           type="submit"
           variant="icon"
           onClick={() => setOpen(false)}
         >
-          <Icon src="/icons/Close-White.svg" className="opacity-60 !w-6 !h-6" />
+          <Icon src="/icons/Close-White.svg" className="!w-6 !h-6 opacity-60" />
         </Button>
       </div>
 
@@ -94,10 +94,10 @@ const EditCompanyDialog: FC<Props> = ({ company, open, setOpen }) => {
         </div>
 
         <div className="flex items-center">
-          <Button className="ml-auto !p-2" variant="outline" onClick={onDelete}>
+          <Button className="!p-2 ml-auto" variant="outline" onClick={onDelete}>
             <Icon src="/icons/Trash-Red.svg" />
           </Button>
-          <Button className="ml-2 m-4" type="submit">
+          <Button className="m-4 ml-2" type="submit">
             Save
           </Button>
         </div>

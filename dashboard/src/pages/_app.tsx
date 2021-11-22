@@ -9,7 +9,6 @@ import { useRouter } from "next/router"
 import Icon from "@components/Icon"
 import clsx from "clsx"
 import { useGetCompanies } from "@lib/api-hooks"
-import FaviconImage from "@components/FaviconImage"
 
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
   <UserProvider>
@@ -29,16 +28,16 @@ const SideBar = () => {
 
   return (
     <>
-      <nav className="border border-opacity-10 w-60 xl:col-span-1 py-4 dark:bg-dark-bg-900 sticky top-0 h-screen flex-shrink-0">
+      <nav className="sticky top-0 flex-shrink-0 xl:col-span-1 py-4 w-60 h-screen dark:bg-dark-bg-900 border border-opacity-10">
         <div className="mx-4 mb-8">
           <NavigationLink href="/" iconSrc="/icons/Home.svg" text="Home" />
         </div>
 
-        <div className="flex items-center pl-6 py-4 border-b border-opacity-10 px-4 relative">
+        <div className="flex relative items-center py-4 px-4 pl-6 border-b border-opacity-10">
           <p className="font-bold ">Companies</p>
           <Button
             variant="outline"
-            className="ml-auto !p-2 !rounded-full absolute bottom-0 -mb-4 right-4"
+            className="absolute right-4 bottom-0 !p-2 -mb-4 ml-auto !rounded-full"
             onClick={() => setShowNewCompany(true)}
           >
             <Icon src="/icons/Add-Stroke.svg" className="!bg-white" />
@@ -46,13 +45,8 @@ const SideBar = () => {
         </div>
 
         <div className="p-4">
-          {companies.data?.map(({ id, name, rootDomains, icon }) => (
-            <CompanyLink
-              companyId={id}
-              name={name}
-              domain={rootDomains[0]?.domain}
-              icon={icon}
-            />
+          {companies.data?.map(({ id, name, icon }) => (
+            <CompanyLink companyId={id} name={name} icon={icon} />
           ))}
         </div>
       </nav>
@@ -73,12 +67,12 @@ const NavigationLink: FC<{
     <Link href={href}>
       <a
         className={clsx(
-          "flex items-center px-2 py-2 mb-2 dark:hover:bg-dark-bg-800 rounded-lg font-bold",
+          "flex items-center py-2 px-2 mb-2 font-bold dark:hover:bg-dark-bg-800 rounded-lg",
           asPath === href &&
-            "dark:bg-primary-300 !bg-opacity-20 dark:hover:bg-primary-400 ring-primary-400 ring-1 ring-opacity-30"
+            "dark:bg-primary-300 dark:hover:bg-primary-400 !bg-opacity-20 ring-1 ring-primary-400 ring-opacity-30"
         )}
       >
-        <div className="bg-primary-600 mr-4  rounded-[6px] p-1">
+        <div className="p-1 mr-4 bg-primary-600 rounded-[6px]">
           <Icon src={iconSrc} className="!bg-white" />
         </div>
         {text}
@@ -91,28 +85,28 @@ const CompanyLink: FC<{
   companyId: number
   name: string
   icon: string
-  domain?: string
-}> = ({ companyId, domain, name, icon }) => {
+}> = ({ companyId, name, icon }) => {
   const { asPath } = useRouter()
-  const href = `/companies/${companyId}`
+  const href = `/companies/${companyId}/confirmed-domains`
 
   return (
     <Link href={href}>
       <a
         className={clsx(
-          "flex items-center rounded-xl p-2 dark:hover:bg-dark-bg-800 my-2 text-xs",
+          "flex items-center p-2 my-2 text-xs dark:hover:bg-dark-bg-800 rounded-xl",
           asPath === href &&
-            "dark:bg-primary-300 !bg-opacity-20 dark:hover:bg-primary-400 ring-primary-400 ring-1 ring-opacity-30"
+            "dark:bg-primary-300 dark:hover:bg-primary-400 !bg-opacity-20 ring-1 ring-primary-400 ring-opacity-30"
         )}
       >
-        {domain ? (
-          <FaviconImage
-            altIcon={icon}
-            domain={domain}
-            className="w-6 h-6 mr-4 rounded-lg bg-gray-700 p-1"
+        {icon ? (
+          <img
+            src={icon}
+            referrerPolicy="no-referrer"
+            className="p-1 mr-4 w-6 h-6 bg-gray-700 rounded-lg"
+            alt=""
           />
         ) : (
-          <div className="w-6 h-6 mr-4 rounded-lg bg-gray-700" />
+          <div className="mr-4 w-6 h-6 bg-gray-700 rounded-lg" />
         )}
         <p className="truncate">{name}</p>
       </a>

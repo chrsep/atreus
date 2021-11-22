@@ -10,7 +10,7 @@ export const useGetCompanies = () => {
 
 export const useGetCompanyById = (
   id: number,
-  company: CompanyWithRootDomains
+  company?: CompanyWithRootDomains
 ) => {
   return useSWR<CompanyWithRootDomains>(`/api/companies/${id}`, {
     initialData: company,

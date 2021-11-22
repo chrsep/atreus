@@ -7,61 +7,73 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialActions"]
+  provider = "prisma-client-js"
 }
 
 model Company {
-  id          Int    @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
+  name       String
+  bountyLink String   @default("")
+  icon       String   @default("")
+  domains    Domain[]
+}
+
+model Domain {
+  name      String   @id
+  confirmed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  company        Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  companyId      Int
+  rootDomain     Domain?   @relation("DomainToSubDomain", fields: [rootDomainName], references: [name], onDelete: Cascade)
+  rootDomainName String?
+  subDomains     Domain[]  @relation("DomainToSubDomain")
+  services       Service[]
+}
+
+model Service {
+  port        Int
   name        String
-  bountyLink  String @default("")
-  bountyRules String @default("")
-  icon        String @default("")
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
 
-  rootDomains RootDomain[]
+  cnameRecords String[]
+  aRecords     String[]
+
+  domain        Domain          @relation(fields: [domainName], references: [name], onDelete: Cascade)
+  domainName    String
+  probeResponse ProbeResponse[]
+
+  @@id([port, domainName])
 }
 
-model RootDomain {
-  domain    String   @id
+model ProbeResponse {
+  bodySHA String @id
 
-  confirmed Boolean @default(false)
+  url       String
+  host      String
+  method    String
+  scheme    String
+  webserver String
+  timestamp DateTime
 
-  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
-  companyId Int
+  title        String
+  header       String
+  body         String
+  statusCode   Int
+  contentType  String
+  path         String
+  responseTime String
 
-
-  createdAt         DateTime @default(now())
-  lastDNSRecon      DateTime @default(now())
-  isDNSReconRunning Boolean @default(false)
-
-  subDomains SubDomain[]
+  service           Service @relation(fields: [servicePort, serviceDomainName], references: [port, domainName])
+  servicePort       Int
+  serviceDomainName String
+  techs             Tech[]
 }
 
-model SubDomain {
-  domain String @id
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-
-  rootDomain       RootDomain  @relation(fields: [rootDomainDomain], references: [domain], onDelete: Cascade)
-  rootDomainDomain String
-  ipAddresses        IpAddress[]
-
-  amassTag String
-  sources  String[]
-}
-
-model IpAddress {
-  subDomain       SubDomain @relation(fields: [subDomainDomain], references: [domain])
-  subDomainDomain String
-
-  ip   String
-  cidr String
-  asn  Int
-  desc String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-
-  @@id([ip, subDomainDomain])
+model Tech {
+  name          String          @id
+  probeResponse ProbeResponse[]
 }

@@ -16,4 +16,9 @@ const nextPWAConfig = {
   },
 }
 
-module.exports = withPlugins([[withPWA, nextPWAConfig], withPreact])
+/** @type {import("next").NextConfig} */
+const config = {
+  swcMinify: true,
+}
+
+module.exports = withPlugins([[withPWA, nextPWAConfig], withPreact], config)

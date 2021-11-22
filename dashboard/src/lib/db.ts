@@ -7,11 +7,37 @@ export const findAllCompanies = async () => {
       name: "asc",
     },
     include: {
-      rootDomains: {
+      domains: {
         where: {
           confirmed: true,
         },
       },
+    },
+  })
+}
+
+export const findConfirmedRootDomainsByCompanyId = async (
+  companyId: number
+) => {
+  return prisma.domain.findMany({
+    where: {
+      companyId,
+      confirmed: true,
+    },
+    include: {
+      subDomains: true,
+    },
+  })
+}
+
+export const findUnconfirmedRootDomainsByCompanyId = (companyId: number) => {
+  return prisma.domain.findMany({
+    where: {
+      companyId,
+      confirmed: false,
+    },
+    include: {
+      subDomains: true,
     },
   })
 }
@@ -27,11 +53,17 @@ export const insertNewCompany = async (
       name,
       bountyLink,
       icon,
-      rootDomains: {
-        createMany: {
-          data: rootDomains.map((domain) => ({ domain, confirmed: true })),
-        },
-      },
+      domains:
+        rootDomains.length === 0
+          ? undefined
+          : {
+              createMany: {
+                data: rootDomains.map((domain) => ({
+                  name: domain,
+                  confirmed: true,
+                })),
+              },
+            },
     },
   })
 }
@@ -39,13 +71,6 @@ export const insertNewCompany = async (
 export const findCompanyById = async (id: number) => {
   return prisma.company.findUnique({
     where: { id },
-    include: {
-      rootDomains: {
-        orderBy: {
-          confirmed: "desc",
-        },
-      },
-    },
   })
 }
 
@@ -69,41 +94,28 @@ export const addRootDomainsByCompanyId = async (
   companyId: number,
   rootDomains: string[]
 ) => {
-  return prisma.company.update({
-    where: { id: companyId },
-    include: {
-      rootDomains: true,
-    },
-    data: {
-      rootDomains: {
-        createMany: {
-          data: rootDomains.map((domain) => ({ domain, confirmed: true })),
-        },
-      },
-    },
+  return prisma.domain.createMany({
+    data: rootDomains.map((domain) => ({
+      name: domain,
+      confirmed: true,
+      companyId,
+    })),
   })
 }
 
 export const deleteRootDomain = async (domain: string) => {
-  return prisma.rootDomain.delete({
-    where: { domain },
+  return prisma.domain.delete({
+    where: { name: domain },
   })
 }
 
 export const findRootDomainById = async (domain: string) => {
-  return prisma.rootDomain.findUnique({
-    where: { domain },
+  return prisma.domain.findUnique({
+    where: { name: domain },
     include: {
       subDomains: {
         orderBy: {
           updatedAt: "desc",
-        },
-        include: {
-          ipAddresses: {
-            orderBy: {
-              ip: "asc",
-            },
-          },
         },
       },
     },
@@ -111,8 +123,8 @@ export const findRootDomainById = async (domain: string) => {
 }
 
 export const updateRootDomain = async (domain: string, confirmed: boolean) => {
-  return prisma.rootDomain.update({
-    where: { domain },
+  return prisma.domain.update({
+    where: { name: domain },
     data: { confirmed },
   })
 }

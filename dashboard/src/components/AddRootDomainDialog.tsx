@@ -40,20 +40,20 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
         <h2 className="text-xs">Add root domains</h2>
 
         <Button
-          className="ml-auto !p-1"
+          className="!p-1 ml-auto"
           type="submit"
           variant="icon"
           onClick={() => setOpen(false)}
         >
-          <Icon src="/icons/Close-White.svg" className="opacity-60 !w-6 !h-6" />
+          <Icon src="/icons/Close-White.svg" className="!w-6 !h-6 opacity-60" />
         </Button>
       </div>
 
       {rootDomains.map((domain) => (
-        <div key={domain} className="px-4 pb-3 flex items-center">
+        <div key={domain} className="flex items-center px-4 pb-3">
           <Button
             variant="outline"
-            className="mr-4 !text-red-500 font-bold !p-2"
+            className="!p-2 mr-4 font-bold !text-red-500"
             onClick={() => {
               setRootDomains(
                 rootDomains.filter((testedDomain) => testedDomain !== domain)
@@ -67,7 +67,7 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
       ))}
 
       <form
-        className="flex items-end mb-4 items-center border-t border-b border-opacity-10 px-4 py-2"
+        className="flex items-center py-2 px-4 mb-4 border-t border-b border-opacity-10"
         onSubmit={(e) => {
           e.preventDefault()
           setRootDomains([...rootDomains, rootDomain])
@@ -78,7 +78,7 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
           name="domain"
           onChange={(e) => setRootDomain(e.target.value)}
           value={rootDomain}
-          className="bg-dark-bg-800 w-full !outline-none text-base py-2"
+          className="py-2 w-full text-base bg-dark-bg-800 !outline-none"
           placeholder="New root domain"
           ref={domainField}
         />
@@ -88,7 +88,7 @@ const AddRootDomainDialog: FC<Props> = ({ companyId, open, setOpen }) => {
         </Button>
       </form>
 
-      <Button className="ml-auto m-4" onClick={handleSubmit}>
+      <Button className="m-4 ml-auto" onClick={handleSubmit}>
         Save root domains
       </Button>
     </Dialog>

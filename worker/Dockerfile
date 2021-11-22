@@ -1,13 +1,18 @@
-FROM rust:1.55 AS builder
-WORKDIR /app
-COPY . .
-RUN cargo install -v --path .
+FROM golang:1.17
 
-FROM gcr.io/distroless/cc
 WORKDIR /app
 
-COPY --from=builder /usr/local/cargo/bin/worker /app/worker
-COPY --from=builder /app/wordlist /app/wordlist
-COPY --from=builder /app/amass /app/amass
+COPY go.mod go.sum ./
+RUN go get ./...
 
-CMD ["./worker"]
+RUN go install -v github.com/prisma/prisma-client-go
+RUN go go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+
+COPY schema.prisma ./
+RUN go run github.com/prisma/prisma-client-go generate
+
+COPY ./ ./
+
+RUN go build -o worker ./*.go \
+
+CMD ["/bin/sh", "-c", "./worker"]
