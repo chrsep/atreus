@@ -27,6 +27,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
+          version: 6.21.1
           run_install: |
             - cwd: ./dashboard
             - args: [--frozen-lockfile, --strict-peer-dependencies]
