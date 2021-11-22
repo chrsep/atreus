@@ -24,6 +24,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 17
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          run_install: |
+            - cwd: ./dashboard
+            - args: [--frozen-lockfile, --strict-peer-dependencies]
       - name: Install Dependencies
         working-directory: ./dashboard
         run: pnpm install
