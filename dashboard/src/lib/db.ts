@@ -23,6 +23,9 @@ export const findConfirmedRootDomainsByCompanyId = async (
     where: {
       companyId,
       confirmed: true,
+      rootDomainName: {
+        equals: null,
+      },
     },
     include: {
       subDomains: true,
