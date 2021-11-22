@@ -37,8 +37,8 @@ const ConfirmedDomain: FC<
               rootDomain.subDomains.length > 0 &&
               rootDomain.subDomains.map((subDomain) => (
                 <tr className="flex items-center border-b border-opacity-10 ">
-                  <td className="py-3 px-6 w-1/6">
-                    <span className="font-bold">
+                  <td className="py-3 px-6 w-5/6">
+                    <span className="text-xs font-bold">
                       {subDomain.name.replace(rootDomain.name, "")}
                     </span>
                     <span className="opacity-30">{rootDomain.name}</span>
