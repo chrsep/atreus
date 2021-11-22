@@ -4,7 +4,7 @@ WORKDIR /app
 
 
 RUN go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-RUN go install -v github.com/prisma/prisma-client-go
+RUN go install -v github.com/prisma/prisma-client-go@latest
 
 COPY ./ ./
 RUN go run github.com/prisma/prisma-client-go generate
