@@ -1,9 +1,11 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"github.com/joho/godotenv"
 	_ "github.com/joho/godotenv/autoload"
+	"golang.org/x/sync/semaphore"
 	"os"
 	"strconv"
 	"sync"
@@ -46,18 +48,24 @@ func run() error {
 }
 
 func runSubdomainEnumeration() {
+
 	for {
 		domains, err := db.FindRootDomains()
 		if err != nil {
 			panic(err)
 		}
 
-		var wg sync.WaitGroup
+		ctx := context.Background()
+		sem := semaphore.NewWeighted(8)
+		wg := &sync.WaitGroup{}
 		for _, domain := range domains {
 			wg.Add(1)
-			go enumerateSubdomain(domain.Name, domain.CompanyID, &wg)
+			err := sem.Acquire(ctx, 1)
+			if err != nil {
+				panic(err)
+			}
+			go enumerateSubdomain(domain.Name, domain.CompanyID, sem, wg)
 		}
-		wg.Wait()
 
 		log.Info("enumeration: 20s timeout for domain enumeration")
 		time.Sleep(time.Second * 20)
@@ -120,8 +128,11 @@ func runPortScan() {
 	}
 }
 
-func enumerateSubdomain(domain string, id int, wg *sync.WaitGroup) {
-	defer wg.Done()
+func enumerateSubdomain(domain string, id int, sem *semaphore.Weighted, wg *sync.WaitGroup) {
+	defer func() {
+		sem.Release(1)
+		wg.Done()
+	}()
 	subdomains, err := subfinder.Enumerate(domain)
 	if err != nil {
 		fmt.Printf("%s: enumerate failed", domain)
