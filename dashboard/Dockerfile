@@ -18,6 +18,7 @@ RUN pnpm build && pnpm install --production --ignore-scripts --prefer-offline
 # Production image, copy all the files and run next
 FROM node:alpine AS runner
 WORKDIR /app
+RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
 
 ENV NODE_ENV production
 
