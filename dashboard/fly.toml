@@ -7,7 +7,7 @@ kill_timeout = 5
 
 
 [deploy]
-release_command = "pnpx prisma:migrate-prod"
+release_command = "pnpm run prisma:migrate-prod"
 
 [processes]
 web = "yarn start"
