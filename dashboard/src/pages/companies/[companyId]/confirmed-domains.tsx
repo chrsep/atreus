@@ -48,8 +48,8 @@ const ConfirmedDomain: FC<
                   {/*    <p className="py-1 w-[90px] flex-shrink-0">{address.ip}</p> */}
                   {/*  ))} */}
                   {/* </td> */}
-                  <td className="w-1/6 text-xs">{subDomain.ip}</td>
-                  <td className="w-1/6 text-xs">{subDomain.ip}</td>
+                  {/* <td className="w-1/6 text-xs">{subDomain.ip}</td> */}
+                  {/* <td className="w-1/6 text-xs">{subDomain.ip}</td> */}
                   <td className="mr-3 ml-auto text-xs">
                     {dayjs(subDomain.updatedAt).format("DD MMM YYYY")}
                     <span className="ml-2 opacity-30">
@@ -146,7 +146,7 @@ export const getServerSideProps = withPageAuthRequired({
             name: subDomain.name,
             createdAt: subDomain.createdAt.toISOString(),
             updatedAt: subDomain.updatedAt.toISOString(),
-            ip: subDomain.ip,
+            // ip: subDomain.ip,
           })),
         })),
       },

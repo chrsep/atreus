@@ -1,7 +1,7 @@
 import React, { FC, MutableRefObject, useRef } from "react"
 import Button from "@components/Button"
 import { useForm } from "react-hook-form"
-import { Company, Domain } from "@prisma/client"
+import { Company } from "@prisma/client"
 import Icon from "@components/Icon"
 import Dialog from "@components/Dialog"
 import { useRouter } from "next/router"
