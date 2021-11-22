@@ -10,6 +10,6 @@ RUN go run github.com/prisma/prisma-client-go generate
 
 RUN go get ./...
 
-RUN go build -o worker ./*.go \
+RUN go build -o worker ./*.go
 
 CMD ["/bin/sh", "-c", "./worker"]
