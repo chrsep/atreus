@@ -24,6 +24,9 @@ model Domain {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
+  lastDomainRecon DateTime @default(now())
+  lastPortScan    DateTime @default(now())
+
   company        Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
   companyId      Int
   rootDomain     Domain?   @relation("DomainToSubDomain", fields: [rootDomainName], references: [name], onDelete: Cascade)
