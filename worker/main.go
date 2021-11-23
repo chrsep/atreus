@@ -54,7 +54,7 @@ func runSubdomainEnumeration() {
 	wg := &sync.WaitGroup{}
 
 	for {
-		domains, err := db.FindRootDomains()
+		domains, err := db.FindRootDomainToEnumerate(10)
 		if err != nil {
 			panic(err)
 		}
@@ -77,7 +77,7 @@ func runSubdomainEnumeration() {
 func runPortScan() {
 	for {
 		log.Info("scanning services")
-		domains, err := db.FindAllDomains()
+		domains, err := db.FindDomainToPortScan(10)
 		if err != nil {
 			panic(err)
 		}

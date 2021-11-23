@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"github.com/prisma/prisma-client-go/runtime/transaction"
+	"time"
 )
 
 var db *DB
@@ -24,11 +25,23 @@ func Setup() func() {
 	}
 }
 
-func FindRootDomains() ([]DomainModel, error) {
+func FindRootDomainToEnumerate(take int) ([]DomainModel, error) {
 	return db.Domain.FindMany(
 		Domain.Confirmed.Equals(true),
 		Domain.RootDomainName.IsNull(),
-	).Exec(db.ctx)
+		Domain.LastDomainEnumeration.Before(
+			time.Now().Add(-1*24*time.Hour),
+		),
+	).Take(take).Exec(db.ctx)
+}
+
+func FindDomainToPortScan(take int) ([]DomainModel, error) {
+	return db.Domain.FindMany(
+		Domain.Confirmed.Equals(true),
+		Domain.LastPortScan.Before(
+			time.Now().Add(-1*time.Hour),
+		),
+	).Take(take).Exec(db.ctx)
 }
 
 func InsertSubDomains(domains []string, companyId int, rootDomain string) error {
@@ -52,12 +65,6 @@ func InsertSubDomains(domains []string, companyId int, rootDomain string) error 
 		}
 	}
 	return db.Prisma.Transaction(ops...).Exec(db.ctx)
-}
-
-func FindAllDomains() ([]DomainModel, error) {
-	return db.Domain.FindMany(
-		Domain.Confirmed.Equals(true),
-	).Exec(db.ctx)
 }
 
 func UpsertService(service ServiceModel) transaction.Param {
