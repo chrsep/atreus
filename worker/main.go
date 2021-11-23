@@ -70,7 +70,7 @@ func runSubdomainEnumeration() {
 		wg.Wait()
 
 		log.Info("enumeration: 20s timeout for domain enumeration")
-		time.Sleep(time.Second * 20)
+		time.Sleep(time.Second * 5)
 	}
 }
 
@@ -116,6 +116,7 @@ func runPortScan() {
 			ops = append(ops, db.UpsertService(service))
 			ops = append(ops, db.UpsertProbeResponse(response, service.Port, service.DomainName))
 			ops = append(ops, db.UpsertTech(result.Technologies, response.BodySHA)...)
+			ops = append(ops, db.UpdateDomainLastPortScanTx(service.DomainName))
 		}
 		if err := db.RunTransactions(ops); err != nil {
 			log.Error("failed to save port scan results", err)
@@ -131,14 +132,16 @@ func enumerateSubdomain(domain string, id int, sem *semaphore.Weighted, wg *sync
 		sem.Release(1)
 		wg.Done()
 	}()
+
 	subdomains, err := subfinder.Enumerate(domain)
 	if err != nil {
-		fmt.Printf("%s: enumerate failed", domain)
+		log.Error("domain enumeration failed", err)
 	}
-
-	err = db.InsertSubDomains(subdomains, id, domain)
-	if err != nil {
-		fmt.Printf("%s: enumerate failed, %e", domain, err)
+	if err = db.InsertSubDomains(subdomains, id, domain); err != nil {
+		log.Error("failed to insert subdomain", err)
+	}
+	if _, err = db.UpdateRootDomainLastEnumeration(domain); err != nil {
+		log.Error("failed to update last enumeration date", err)
 	}
 }
 
