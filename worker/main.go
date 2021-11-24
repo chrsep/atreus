@@ -70,7 +70,7 @@ func runSubdomainEnumeration() {
 		}
 		wg.Wait()
 
-		log.Info("enumeration: 20s timeout for domain enumeration")
+		log.Info("enumeration: 5s timeout for domain enumeration")
 		time.Sleep(time.Second * 5)
 	}
 }

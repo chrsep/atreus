@@ -8,6 +8,7 @@ import (
 	"github.com/projectdiscovery/subfinder/v2/pkg/runner"
 	"io"
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -41,7 +42,13 @@ func setupSubfinder() {
 		// Use the default list of all passive sources
 		AllSources: passive.DefaultAllSources,
 		// Use the default list of recursive sources
-		Recursive: passive.DefaultRecursiveSources,
+		Recursive:      passive.DefaultRecursiveSources,
+		Binaryedge:     []string{os.Getenv("BINARYEDGE_KEY")},
+		Chaos:          []string{os.Getenv("CHAOS_KEY")},
+		SecurityTrails: []string{os.Getenv("SECURITYTRAILS_KEY")},
+		Shodan:         []string{os.Getenv("SHODAN_KEY")},
+		URLScan:        []string{os.Getenv("URLSCAN_KEY")},
+		Virustotal:     []string{os.Getenv("VIRUSTOTAL_KEY")},
 	}
 
 	runnerInstance, err := runner.NewRunner(&runner.Options{
