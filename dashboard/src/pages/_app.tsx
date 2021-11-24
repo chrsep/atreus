@@ -9,9 +9,13 @@ import { useRouter } from "next/router"
 import Icon from "@components/Icon"
 import clsx from "clsx"
 import { useGetCompanies } from "@lib/api-hooks"
+import Head from "next/head"
 
 const Atreus: FC<AppProps> = ({ Component, pageProps }) => (
   <UserProvider>
+    <Head>
+      <title>Atreus</title>
+    </Head>
     <div className="flex dark:bg-dark-bg-900">
       <SideBar />
 
