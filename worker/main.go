@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/joho/godotenv"
 	_ "github.com/joho/godotenv/autoload"
-	"github.com/prisma/prisma-client-go/runtime/transaction"
 	"github.com/rs/xid"
 	"golang.org/x/sync/semaphore"
 	"os"
@@ -89,7 +88,6 @@ func runPortScan() {
 			domainNames = append(domainNames, domain.Name)
 		}
 
-		var ops []transaction.Param
 		results, _ := scanServices(domainNames)
 		for _, result := range results {
 			service := db.ServiceModel{}
@@ -115,12 +113,17 @@ func runPortScan() {
 			response.Path = result.Path
 			response.ResponseTime = result.ResponseTime
 
-			ops = append(ops, db.UpsertService(service))
-			ops = append(ops, db.UpsertProbeResponse(response, service.Port, service.DomainName))
-			ops = append(ops, db.UpsertTech(result.Technologies, response.BodySHA)...)
-		}
-		if err := db.RunTransactions(ops); err != nil {
-			log.Error("failed to save port scan results", err)
+			if _, err = db.UpsertService(service); err != nil {
+				log.Error("failed to upsert service", err)
+			}
+
+			if _, err = db.UpsertProbeResponse(response, service.Port, service.DomainName); err != nil {
+				log.Error("failed to upsert probe response", err)
+			}
+
+			if err := db.UpsertTech(result.Technologies, response.BodySHA); err != nil {
+				log.Error("failed to upsert tech", err)
+			}
 		}
 		if _, err := db.MarkPortScanFinished(portScanID.String()); err != nil {
 			log.Error("failed to mark port scan as finished", err)

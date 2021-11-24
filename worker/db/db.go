@@ -116,7 +116,7 @@ func InsertSubDomains(domains []string, companyId int, rootDomain string) error 
 	return db.Prisma.Transaction(ops...).Exec(db.ctx)
 }
 
-func UpsertService(service ServiceModel) transaction.Param {
+func UpsertService(service ServiceModel) (*ServiceModel, error) {
 	return db.Service.UpsertOne(
 		Service.PortDomainName(
 			Service.Port.Equals(service.Port),
@@ -135,10 +135,10 @@ func UpsertService(service ServiceModel) transaction.Param {
 		),
 		Service.ARecords.Set(service.ARecords),
 		Service.CnameRecords.Set(service.CnameRecords),
-	).Tx()
+	).Exec(db.ctx)
 }
 
-func UpsertProbeResponse(response ProbeResponseModel, servicePort int, serviceDomainName string) transaction.Param {
+func UpsertProbeResponse(response ProbeResponseModel, servicePort int, serviceDomainName string) (*ProbeResponseModel, error) {
 	return db.ProbeResponse.UpsertOne(
 		ProbeResponse.BodySHA.Equals(response.BodySHA),
 	).Create(
@@ -183,10 +183,10 @@ func UpsertProbeResponse(response ProbeResponseModel, servicePort int, serviceDo
 				Service.DomainName.Equals(serviceDomainName),
 			),
 		),
-	).Tx()
+	).Exec(db.ctx)
 }
 
-func UpsertTech(techs []string, probeResponseBodySHA string) []transaction.Param {
+func UpsertTech(techs []string, probeResponseBodySHA string) error {
 	ops := make([]transaction.Param, len(techs))
 	for i, tech := range techs {
 		op := db.Tech.UpsertOne(
@@ -204,9 +204,5 @@ func UpsertTech(techs []string, probeResponseBodySHA string) []transaction.Param
 		).Tx()
 		ops[i] = op
 	}
-	return ops
-}
-
-func RunTransactions(transactions []transaction.Param) error {
-	return db.Prisma.Transaction(transactions...).Exec(db.ctx)
+	return db.Prisma.Transaction(ops...).Exec(db.ctx)
 }
