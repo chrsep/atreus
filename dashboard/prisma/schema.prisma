@@ -1,10 +1,5 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-enum ReconStatus {
-  SCANNING
-  IDLE
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -29,9 +24,9 @@ model Domain {
   updatedAt DateTime @default(now())
 
   lastDomainEnumeration   DateTime?
-  domainEnumerationStatus ReconStatus @default(IDLE)
+  domainEnumerationID     String?
   lastPortScan            DateTime?
-  portScanStatus          ReconStatus @default(IDLE)
+  portScanID              String?
 
   company        Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
   companyId      Int
