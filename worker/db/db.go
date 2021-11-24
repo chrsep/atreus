@@ -29,8 +29,11 @@ func FindRootDomainToEnumerate(take int) ([]DomainModel, error) {
 	return db.Domain.FindMany(
 		Domain.Confirmed.Equals(true),
 		Domain.RootDomainName.IsNull(),
-		Domain.LastDomainEnumeration.Before(
-			time.Now().Add(-1*24*time.Hour),
+		Domain.Or(
+			Domain.LastDomainEnumeration.IsNull(),
+			Domain.LastDomainEnumeration.Before(
+				time.Now().Add(-1*24*time.Hour),
+			),
 		),
 	).Take(take).Exec(db.ctx)
 }
@@ -54,8 +57,11 @@ func UpdateDomainLastPortScanTx(domainName string) transaction.Param {
 func FindDomainToPortScan(take int) ([]DomainModel, error) {
 	return db.Domain.FindMany(
 		Domain.Confirmed.Equals(true),
-		Domain.LastPortScan.Before(
-			time.Now().Add(-1*time.Hour),
+		Domain.Or(
+			Domain.LastPortScan.IsNull(),
+			Domain.LastPortScan.Before(
+				time.Now().Add(-1*time.Hour),
+			),
 		),
 	).Take(take).Exec(db.ctx)
 }
