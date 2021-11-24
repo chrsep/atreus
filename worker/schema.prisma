@@ -28,9 +28,9 @@ model Domain {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
-  lastDomainEnumeration   DateTime @default(now())
+  lastDomainEnumeration   DateTime?
   domainEnumerationStatus ReconStatus @default(IDLE)
-  lastPortScan            DateTime @default(now())
+  lastPortScan            DateTime?
   portScanStatus          ReconStatus @default(IDLE)
 
   company        Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
