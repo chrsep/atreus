@@ -25,45 +25,72 @@ func Setup() func() {
 	}
 }
 
-func FindRootDomainToEnumerate(take int) ([]DomainModel, error) {
+// FindRootDomainToEnumerate finds root domain to enumerate and mark it with enumerationID to prevent other instance s from enumerating it
+func FindRootDomainToEnumerate(enumerationID string, limit int) ([]DomainModel, error) {
+	query := `
+		UPDATE "Domain" SET "domainEnumerationID" = $1 
+		WHERE name in (
+		    SELECT name FROM "Domain" 
+		    WHERE "confirmed" = true AND 
+		          "rootDomainName" IS NULL AND 
+		          ("lastDomainEnumeration" IS NULL OR "lastDomainEnumeration" < NOW() - INTERVAL '1 day') AND
+		          ("domainEnumerationID" IS NULL OR "domainEnumerationID" = '' OR "lastDomainEnumeration" < NOW() - INTERVAL '2 day')
+		    LIMIT $2
+		)
+	`
+	if _, err := db.Prisma.ExecuteRaw(
+		query,
+		enumerationID,
+		limit,
+	).Exec(db.ctx); err != nil {
+		return nil, err
+	}
+
 	return db.Domain.FindMany(
-		Domain.Confirmed.Equals(true),
-		Domain.RootDomainName.IsNull(),
-		Domain.Or(
-			Domain.LastDomainEnumeration.IsNull(),
-			Domain.LastDomainEnumeration.Before(
-				time.Now().Add(-1*24*time.Hour),
-			),
-		),
-	).Take(take).Exec(db.ctx)
+		Domain.DomainEnumerationID.Equals(enumerationID),
+	).Exec(db.ctx)
 }
 
-func UpdateRootDomainLastEnumeration(domainName string) (*DomainModel, error) {
+func MarkDomainEnumerationAsFinished(domainName string) (*DomainModel, error) {
 	return db.Domain.FindUnique(
 		Domain.Name.Equals(domainName),
 	).Update(
 		Domain.LastDomainEnumeration.Set(time.Now()),
+		Domain.DomainEnumerationID.Set(""),
 	).Exec(db.ctx)
 }
 
-func UpdateDomainLastPortScanTx(domainName string) transaction.Param {
-	return db.Domain.FindUnique(
-		Domain.Name.Equals(domainName),
+func MarkPortScanFinished(portScanID string) (*BatchResult, error) {
+	return db.Domain.FindMany(
+		Domain.PortScanID.Equals(portScanID),
 	).Update(
+		Domain.PortScanID.Set(""),
 		Domain.LastPortScan.Set(time.Now()),
-	).Tx()
+	).Exec(db.ctx)
 }
 
-func FindDomainToPortScan(take int) ([]DomainModel, error) {
+func FindDomainToPortScan(portScanID string, limit int) ([]DomainModel, error) {
+	query := `
+        UPDATE "Domain" SET "portScanID" = $1 
+        WHERE "name" in (
+            SELECT "name" FROM "Domain" 
+            WHERE "confirmed" = true AND
+		          ("lastPortScan" IS NULL OR "lastPortScan" < NOW() - INTERVAL '30 minute') AND
+		          ("portScanID" IS NULL OR "portScanID" = '' OR "lastPortScan" < NOW() - INTERVAL '1 day')
+            LIMIT $2
+        ) 
+	`
+	if _, err := db.Prisma.ExecuteRaw(
+		query,
+		portScanID,
+		limit,
+	).Exec(db.ctx); err != nil {
+		return nil, err
+	}
+
 	return db.Domain.FindMany(
-		Domain.Confirmed.Equals(true),
-		Domain.Or(
-			Domain.LastPortScan.IsNull(),
-			Domain.LastPortScan.Before(
-				time.Now().Add(-1*time.Hour),
-			),
-		),
-	).Take(take).Exec(db.ctx)
+		Domain.PortScanID.Equals(portScanID),
+	).Exec(db.ctx)
 }
 
 func InsertSubDomains(domains []string, companyId int, rootDomain string) error {

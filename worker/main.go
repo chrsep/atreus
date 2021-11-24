@@ -6,6 +6,7 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/prisma/prisma-client-go/runtime/transaction"
+	"github.com/rs/xid"
 	"golang.org/x/sync/semaphore"
 	"os"
 	"strconv"
@@ -54,15 +55,15 @@ func runSubdomainEnumeration() {
 	wg := &sync.WaitGroup{}
 
 	for {
-		domains, err := db.FindRootDomainToEnumerate(10)
+		enumerationID := xid.New()
+		domains, err := db.FindRootDomainToEnumerate(enumerationID.String(), 10)
 		if err != nil {
 			panic(err)
 		}
 
 		for _, domain := range domains {
 			wg.Add(1)
-			err := sem.Acquire(ctx, 1)
-			if err != nil {
+			if err := sem.Acquire(ctx, 1); err != nil {
 				panic(err)
 			}
 			go enumerateSubdomain(domain.Name, domain.CompanyID, sem, wg)
@@ -77,7 +78,8 @@ func runSubdomainEnumeration() {
 func runPortScan() {
 	for {
 		log.Info("scanning services")
-		domains, err := db.FindDomainToPortScan(10)
+		portScanID := xid.New()
+		domains, err := db.FindDomainToPortScan(portScanID.String(), 50)
 		if err != nil {
 			panic(err)
 		}
@@ -116,10 +118,12 @@ func runPortScan() {
 			ops = append(ops, db.UpsertService(service))
 			ops = append(ops, db.UpsertProbeResponse(response, service.Port, service.DomainName))
 			ops = append(ops, db.UpsertTech(result.Technologies, response.BodySHA)...)
-			ops = append(ops, db.UpdateDomainLastPortScanTx(service.DomainName))
 		}
 		if err := db.RunTransactions(ops); err != nil {
 			log.Error("failed to save port scan results", err)
+		}
+		if _, err := db.MarkPortScanFinished(portScanID.String()); err != nil {
+			log.Error("failed to mark port scan as finished", err)
 		}
 
 		log.Info("port-scan: 5s timeout for port scan")
@@ -140,7 +144,7 @@ func enumerateSubdomain(domain string, id int, sem *semaphore.Weighted, wg *sync
 	if err = db.InsertSubDomains(subdomains, id, domain); err != nil {
 		log.Error("failed to insert subdomain", err)
 	}
-	if _, err = db.UpdateRootDomainLastEnumeration(domain); err != nil {
+	if _, err = db.MarkDomainEnumerationAsFinished(domain); err != nil {
 		log.Error("failed to update last enumeration date", err)
 	}
 }
