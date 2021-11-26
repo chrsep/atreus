@@ -152,3 +152,16 @@ export const findActiveDomainEnumerationCount = () => {
     },
   })
 }
+
+export const findRecentProbes = async () => {
+  return prisma.probeResponse.findMany({
+    take: 50,
+    orderBy: {
+      timestamp: "desc",
+    },
+    include: {
+      service: true,
+      techs: true,
+    },
+  })
+}
