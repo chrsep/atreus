@@ -51,7 +51,7 @@ const Home: SSRPage<typeof getServerSideProps> = ({
                 key={bodySHA}
                 className="py-4 px-8 w-full border-b border-opacity-10"
               >
-                <div className="flex">
+                <div className="flex text-xs">
                   <StatusCode code={statusCode.toString()} className="mr-2" />
                   <p>{title}</p>
                   {!title && <i className="text-gray-500">No Title</i>}
