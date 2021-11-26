@@ -51,9 +51,9 @@ const Home: SSRPage<typeof getServerSideProps> = ({
               >
                 <div className="flex">
                   <StatusCode code={statusCode.toString()} className="mr-2" />
-                  <p>{serviceDomainName}</p>
-                  <p className="ml-auto text-gray-500">{title}</p>
+                  <p>{title}</p>
                   {!title && <i className="text-gray-500">No Title</i>}
+                  <p className="ml-auto text-gray-500">{serviceDomainName}</p>
                 </div>
 
                 <div className="flex mt-2">
