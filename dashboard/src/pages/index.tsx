@@ -41,7 +41,9 @@ const Home: SSRPage<typeof getServerSideProps> = ({
       </div>
 
       <div>
-        <h2 className="py-4 px-8 font-bold bg-gray-800">Recent Probes</h2>
+        <h2 className="py-4 px-8 font-bold bg-gray-800 bg-opacity-30">
+          Recent Probes
+        </h2>
         <div className="w-full border-t border-opacity-10">
           {recentProbes.map(
             ({ bodySHA, title, serviceDomainName, statusCode, techs }) => (
@@ -56,7 +58,7 @@ const Home: SSRPage<typeof getServerSideProps> = ({
                   <p className="ml-auto text-gray-500">{serviceDomainName}</p>
                 </div>
 
-                <div className="flex mt-2">
+                <div className="flex flex-wrap mt-2 -ml-2">
                   {techs.map(({ name }) => (
                     <p
                       key={name}
@@ -67,7 +69,7 @@ const Home: SSRPage<typeof getServerSideProps> = ({
                   ))}
 
                   {techs.length === 0 && (
-                    <p className="py-1 px-2 mr-1 text-xs text-gray-400 bg-gray-700 bg-opacity-20 rounded-lg">
+                    <p className="py-1 px-2 mr-1 text-xs text-gray-400 bg-gray-700 bg-opacity-10 rounded-lg">
                       No techs detected
                     </p>
                   )}
