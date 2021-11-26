@@ -124,3 +124,31 @@ export const updateRootDomain = async (domain: string, confirmed: boolean) => {
     data: { confirmed },
   })
 }
+
+export const findCompanyCount = () => {
+  return prisma.company.count()
+}
+
+export const findDomainCount = () => {
+  return prisma.domain.count()
+}
+
+export const findActivePortScanCount = () => {
+  return prisma.domain.count({
+    where: {
+      portScanID: {
+        not: "",
+      },
+    },
+  })
+}
+
+export const findActiveDomainEnumerationCount = () => {
+  return prisma.domain.count({
+    where: {
+      domainEnumerationID: {
+        not: "",
+      },
+    },
+  })
+}
