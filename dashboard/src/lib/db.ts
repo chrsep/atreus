@@ -6,13 +6,6 @@ export const findAllCompanies = async () => {
     orderBy: {
       name: "asc",
     },
-    include: {
-      domains: {
-        where: {
-          confirmed: true,
-        },
-      },
-    },
   })
 }
 
