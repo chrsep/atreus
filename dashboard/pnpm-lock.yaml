@@ -9,7 +9,7 @@ specifiers:
   '@tailwindcss/line-clamp': 0.2.2
   '@tailwindcss/typography': 0.4.1
   '@types/node': 16.11.7
-  '@types/react': 17.0.34
+  '@types/react': 17.0.37
   '@typescript-eslint/eslint-plugin': 5.3.1
   autoprefixer: 10.4.0
   clsx: 1.1.1
@@ -75,7 +75,7 @@ devDependencies:
   '@tailwindcss/line-clamp': 0.2.2_tailwindcss@2.2.19
   '@tailwindcss/typography': 0.4.1_tailwindcss@2.2.19
   '@types/node': 16.11.7
-  '@types/react': 17.0.34
+  '@types/react': 17.0.37
   '@typescript-eslint/eslint-plugin': 5.3.1_eslint@7.30.0+typescript@4.5.2
   eslint: 7.30.0
   eslint-config-airbnb-typescript: 12.3.1_2d989fb7905f7e68eac207c5e882285c
@@ -1789,8 +1789,8 @@ packages:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
     dev: true
 
-  /@types/react/17.0.34:
-    resolution: {integrity: sha512-46FEGrMjc2+8XhHXILr+3+/sTe3OfzSPU9YGKILLrUYbQ1CLQC9Daqo1KzENGXAWwrFwiY0l4ZbF20gRvgpWTg==}
+  /@types/react/17.0.37:
+    resolution: {integrity: sha512-2FS1oTqBGcH/s0E+CjrCCR9+JMpsu9b69RTFO+40ua43ZqP5MmQ4iUde/dMjWR909KxZwmOQIFq6AV6NjEG5xg==}
     dependencies:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
