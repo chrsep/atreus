@@ -6,7 +6,7 @@ specifiers:
   '@prisma/client': 3.6.0
   '@tailwindcss/aspect-ratio': 0.4.0
   '@tailwindcss/forms': 0.4.0
-  '@tailwindcss/line-clamp': 0.2.2
+  '@tailwindcss/line-clamp': 0.3.0
   '@tailwindcss/typography': 0.4.1
   '@types/node': 16.11.12
   '@types/react': 17.0.37
@@ -72,7 +72,7 @@ dependencies:
 devDependencies:
   '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@2.2.19
   '@tailwindcss/forms': 0.4.0_tailwindcss@2.2.19
-  '@tailwindcss/line-clamp': 0.2.2_tailwindcss@2.2.19
+  '@tailwindcss/line-clamp': 0.3.0_tailwindcss@2.2.19
   '@tailwindcss/typography': 0.4.1_tailwindcss@2.2.19
   '@types/node': 16.11.12
   '@types/react': 17.0.37
@@ -1718,10 +1718,10 @@ packages:
       tailwindcss: 2.2.19_6b4e3d148bdcb715d5f821ed0a9c268b
     dev: true
 
-  /@tailwindcss/line-clamp/0.2.2_tailwindcss@2.2.19:
-    resolution: {integrity: sha512-NgA4Ds+/eCiO+6O3SooRsfJ8m7M2+QvNvHwOjBQq7FIYoWwAV4I4Wu4fjHeuO9Yi6p47ceHUKEGGEBh0ozQodg==}
+  /@tailwindcss/line-clamp/0.3.0_tailwindcss@2.2.19:
+    resolution: {integrity: sha512-ffDDclrqr3sy8cpChCozedDUAN8enxqAiWeH8d4dGQ2hcXlxf51+7KleveFi/n/TxEuRVApoL7hICeDOdYPKpg==}
     peerDependencies:
-      tailwindcss: '>=2.0.0 || >=3.0.0-alpha.1'
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
       tailwindcss: 2.2.19_6b4e3d148bdcb715d5f821ed0a9c268b
     dev: true
