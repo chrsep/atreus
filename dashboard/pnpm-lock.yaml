@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@auth0/nextjs-auth0': 1.6.1
+  '@auth0/nextjs-auth0': 1.6.2
   '@headlessui/react': 1.4.2
   '@prisma/client': 3.6.0
   '@tailwindcss/aspect-ratio': 0.4.0
@@ -48,7 +48,7 @@ specifiers:
   zod: 3.11.6
 
 dependencies:
-  '@auth0/nextjs-auth0': 1.6.1_next@12.0.3
+  '@auth0/nextjs-auth0': 1.6.2_next@12.0.3
   '@headlessui/react': 1.4.2_9bfab5d69556db861da30525f2351767
   '@prisma/client': 3.6.0_prisma@3.6.0
   autoprefixer: 10.4.0_postcss@8.4.5
@@ -110,8 +110,8 @@ packages:
       leven: 3.1.0
     dev: false
 
-  /@auth0/nextjs-auth0/1.6.1_next@12.0.3:
-    resolution: {integrity: sha512-xecYNjI1KvFerzarMUS6p7coWWAI7/JeJ9iMxj+ztIo+VJfR9CkYV2b/Fu3A2iy+UYbIoG78YV2plOynAIUOwQ==}
+  /@auth0/nextjs-auth0/1.6.2_next@12.0.3:
+    resolution: {integrity: sha512-jmcWfZyJAil+XPt/yyT7zjV2tCdRdbJj4bw54Gbs8kyCAtRyCvSlJ3Q+qWCFEmH9megGuPY/T9qCYOEpMFsDEQ==}
     engines: {node: ^10.13.0 || >=12.0.0}
     peerDependencies:
       next: '>=10'
@@ -120,7 +120,7 @@ packages:
       cookie: 0.4.1
       debug: 4.3.2
       futoin-hkdf: 1.4.2
-      http-errors: 1.8.0
+      http-errors: 1.8.1
       joi: 17.4.2
       jose: 2.0.5
       next: 12.0.3_9bfab5d69556db861da30525f2351767
@@ -3826,15 +3826,15 @@ packages:
       toidentifier: 1.0.0
     dev: false
 
-  /http-errors/1.8.0:
-    resolution: {integrity: sha512-4I8r0C5JDhT5VkvI47QktDW75rNlGVsUf/8hzjCC/wkWI/jdTRmBb9aI7erSG82r1bjKY3F6k28WnsVxB1C73A==}
+  /http-errors/1.8.1:
+    resolution: {integrity: sha512-Kpk9Sm7NmI+RHhnj6OIWDI1d6fIoFAtFt9RLaTMRlg/8w49juAStsrBgp0Dp4OdxdVbRIeKhtCUvoi/RuAhO4g==}
     engines: {node: '>= 0.6'}
     dependencies:
       depd: 1.1.2
       inherits: 2.0.4
       setprototypeof: 1.2.0
       statuses: 1.5.0
-      toidentifier: 1.0.0
+      toidentifier: 1.0.1
     dev: false
 
   /http2-wrapper/1.0.3:
@@ -6052,6 +6052,11 @@ packages:
 
   /toidentifier/1.0.0:
     resolution: {integrity: sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==}
+    engines: {node: '>=0.6'}
+    dev: false
+
+  /toidentifier/1.0.1:
+    resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
     dev: false
 
