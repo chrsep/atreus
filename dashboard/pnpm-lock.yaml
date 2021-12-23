@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@auth0/nextjs-auth0': 1.6.2
   '@headlessui/react': 1.4.2
-  '@prisma/client': 3.6.0
+  '@prisma/client': 3.7.0
   '@tailwindcss/aspect-ratio': 0.4.0
   '@tailwindcss/forms': 0.4.0
   '@tailwindcss/line-clamp': 0.3.0
@@ -37,7 +37,7 @@ specifiers:
   preact: 10.6.4
   preact-render-to-string: 5.1.19
   prettier: 2.5.1
-  prisma: 3.6.0
+  prisma: 3.7.0
   react: npm:@preact/compat
   react-dom: npm:@preact/compat
   react-hook-form: 7.19.4
@@ -50,7 +50,7 @@ specifiers:
 dependencies:
   '@auth0/nextjs-auth0': 1.6.2_next@12.0.3
   '@headlessui/react': 1.4.2_9bfab5d69556db861da30525f2351767
-  '@prisma/client': 3.6.0_prisma@3.6.0
+  '@prisma/client': 3.7.0_prisma@3.7.0
   autoprefixer: 10.4.0_postcss@8.4.5
   clsx: 1.1.1
   dayjs: 1.10.7
@@ -60,7 +60,7 @@ dependencies:
   next-pwa: 5.4.4_next@12.0.3
   preact: 10.6.4
   preact-render-to-string: 5.1.19_preact@10.6.4
-  prisma: 3.6.0
+  prisma: 3.7.0
   react: /@preact/compat/17.0.3_preact@10.6.4
   react-dom: /@preact/compat/17.0.3_preact@10.6.4
   react-hook-form: 7.19.4_@preact+compat@17.0.3
@@ -1585,8 +1585,8 @@ packages:
       preact: 10.6.4
     dev: false
 
-  /@prisma/client/3.6.0_prisma@3.6.0:
-    resolution: {integrity: sha512-ycSGY9EZGROtje0iCNsgC5Zqi/ttX2sO7BNMYaLsUMiTlf3F69ZPH+08pRo0hrDfkZzyimXYqeXJlaoYDH1w7A==}
+  /@prisma/client/3.7.0_prisma@3.7.0:
+    resolution: {integrity: sha512-fUJMvBOX5C7JPc0e3CJD6Gbelbu4dMJB4ScYpiht8HMUnRShw20ULOipTopjNtl6ekHQJ4muI7pXlQxWS9nMbw==}
     engines: {node: '>=12.6'}
     requiresBuild: true
     peerDependencies:
@@ -1595,16 +1595,16 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727
-      prisma: 3.6.0
+      '@prisma/engines-version': 3.7.0-31.8746e055198f517658c08a0c426c7eec87f5a85f
+      prisma: 3.7.0
     dev: false
 
-  /@prisma/engines-version/3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727:
-    resolution: {integrity: sha512-vtoO2ys6mSfc8ONTWdcYztKN3GBU1tcKBj0aXObyjzSuGwHFcM/pEA0xF+n1W4/0TAJgfoPX2khNEit6g0jtNA==}
+  /@prisma/engines-version/3.7.0-31.8746e055198f517658c08a0c426c7eec87f5a85f:
+    resolution: {integrity: sha512-+qx2b+HK7BKF4VCa0LZ/t1QCXsu6SmvhUQyJkOD2aPpmOzket4fEnSKQZSB0i5tl7rwCDsvAiSeK8o7rf+yvwg==}
     dev: false
 
-  /@prisma/engines/3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727:
-    resolution: {integrity: sha512-dRClHS7DsTVchDKzeG72OaEyeDskCv91pnZ72Fftn0mp4BkUvX2LvWup65hCNzwwQm5IDd6A88APldKDnMiEMA==}
+  /@prisma/engines/3.7.0-31.8746e055198f517658c08a0c426c7eec87f5a85f:
+    resolution: {integrity: sha512-W549ub5NlgexNhR8EFstA/UwAWq3Zq0w9aNkraqsozVCt2CsX+lK4TK7IW5OZVSnxHwRjrgEAt3r9yPy8nZQRg==}
     requiresBuild: true
     dev: false
 
@@ -5169,13 +5169,13 @@ packages:
     resolution: {integrity: sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=}
     engines: {node: '>= 0.8'}
 
-  /prisma/3.6.0:
-    resolution: {integrity: sha512-6SqgHS/5Rq6HtHjsWsTxlj+ySamGyCLBUQfotc2lStOjPv52IQuDVpp58GieNqc9VnfuFyHUvTZw7aQB+G2fvQ==}
+  /prisma/3.7.0:
+    resolution: {integrity: sha512-pzgc95msPLcCHqOli7Hnabu/GRfSGSUWl5s2P6N13T/rgMB+NNeKbxCmzQiZT2yLOeLEPivV6YrW1oeQIwJxcg==}
     engines: {node: '>=12.6'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 3.6.0-24.dc520b92b1ebb2d28dc3161f9f82e875bd35d727
+      '@prisma/engines': 3.7.0-31.8746e055198f517658c08a0c426c7eec87f5a85f
     dev: false
 
   /process/0.11.10:
