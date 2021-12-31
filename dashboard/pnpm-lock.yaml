@@ -11,7 +11,7 @@ specifiers:
   '@types/node': 16.11.17
   '@types/react': 17.0.38
   '@typescript-eslint/eslint-plugin': 5.3.1
-  autoprefixer: 10.4.0
+  autoprefixer: 10.4.1
   clsx: 1.1.1
   dayjs: 1.10.7
   eslint: 7.30.0
@@ -51,7 +51,7 @@ dependencies:
   '@auth0/nextjs-auth0': 1.6.2_next@12.0.3
   '@headlessui/react': 1.4.2_9bfab5d69556db861da30525f2351767
   '@prisma/client': 3.7.0_prisma@3.7.0
-  autoprefixer: 10.4.0_postcss@8.4.5
+  autoprefixer: 10.4.1_postcss@8.4.5
   clsx: 1.1.1
   dayjs: 1.10.7
   next: 12.0.3_9bfab5d69556db861da30525f2351767
@@ -66,7 +66,7 @@ dependencies:
   react-hook-form: 7.19.4_@preact+compat@17.0.3
   react-ssr-prepass: /preact-ssr-prepass/1.2.0_preact@10.6.4
   swr: 0.5.7_@preact+compat@17.0.3
-  tailwindcss: 2.2.19_16a290f6d0e3717bf6d2667234aebd30
+  tailwindcss: 2.2.19_cefe482e8d38053bbf3d5815e0c551b3
   zod: 3.11.6
 
 devDependencies:
@@ -89,7 +89,7 @@ devDependencies:
   eslint-plugin-prettier: 3.4.0_da7c2d6e208799242984c73559327ba8
   eslint-plugin-react: 7.24.0_eslint@7.30.0
   eslint-plugin-react-hooks: 4.2.0_eslint@7.30.0
-  eslint-plugin-tailwindcss: 1.17.1_autoprefixer@10.4.0
+  eslint-plugin-tailwindcss: 1.17.1_autoprefixer@10.4.1
   husky: 7.0.4
   lint-staged: 12.1.4
   postcss: 8.4.5
@@ -204,7 +204,7 @@ packages:
       '@babel/compat-data': 7.16.0
       '@babel/core': 7.16.0
       '@babel/helper-validator-option': 7.14.5
-      browserslist: 4.17.6
+      browserslist: 4.19.1
       semver: 6.3.0
     dev: false
 
@@ -1706,7 +1706,7 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 2.2.19_16a290f6d0e3717bf6d2667234aebd30
+      tailwindcss: 2.2.19_cefe482e8d38053bbf3d5815e0c551b3
     dev: true
 
   /@tailwindcss/forms/0.4.0_tailwindcss@2.2.19:
@@ -1715,7 +1715,7 @@ packages:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.3
-      tailwindcss: 2.2.19_16a290f6d0e3717bf6d2667234aebd30
+      tailwindcss: 2.2.19_cefe482e8d38053bbf3d5815e0c551b3
     dev: true
 
   /@tailwindcss/line-clamp/0.3.0_tailwindcss@2.2.19:
@@ -1723,7 +1723,7 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 2.2.19_16a290f6d0e3717bf6d2667234aebd30
+      tailwindcss: 2.2.19_cefe482e8d38053bbf3d5815e0c551b3
     dev: true
 
   /@tailwindcss/typography/0.4.1_tailwindcss@2.2.19:
@@ -1735,7 +1735,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
-      tailwindcss: 2.2.19_16a290f6d0e3717bf6d2667234aebd30
+      tailwindcss: 2.2.19_cefe482e8d38053bbf3d5815e0c551b3
     dev: true
 
   /@types/cacheable-request/6.0.2:
@@ -2190,20 +2190,20 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: false
 
-  /autoprefixer/10.4.0_postcss@8.4.5:
-    resolution: {integrity: sha512-7FdJ1ONtwzV1G43GDD0kpVMn/qbiNqyOPMFTX5nRffI+7vgWoFEc6DcXOxHJxrWNDXrZh18eDsZjvZGUljSRGA==}
+  /autoprefixer/10.4.1_postcss@8.4.5:
+    resolution: {integrity: sha512-B3ZEG7wtzXDRCEFsan7HmR2AeNsxdJB0+sEC0Hc5/c2NbhJqPwuZm+tn233GBVw82L+6CtD6IPSfVruwKjfV3A==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.17.6
-      caniuse-lite: 1.0.30001279
-      fraction.js: 4.1.1
+      browserslist: 4.19.1
+      caniuse-lite: 1.0.30001294
+      fraction.js: 4.1.2
       normalize-range: 0.1.2
       picocolors: 1.0.0
       postcss: 8.4.5
-      postcss-value-parser: 4.1.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   /available-typed-arrays/1.0.5:
@@ -2379,20 +2379,20 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001279
+      caniuse-lite: 1.0.30001294
       colorette: 1.4.0
-      electron-to-chromium: 1.3.894
+      electron-to-chromium: 1.4.30
       escalade: 3.1.1
       node-releases: 1.1.77
     dev: false
 
-  /browserslist/4.17.6:
-    resolution: {integrity: sha512-uPgz3vyRTlEiCv4ee9KlsKgo2V6qPk7Jsn0KAn2OBqbqKo3iNcPEC1Ti6J4dwnz+aIRfEEEuOzC9IBk8tXUomw==}
+  /browserslist/4.19.1:
+    resolution: {integrity: sha512-u2tbbG5PdKRTUoctO3NBD8FQ5HdPh1ZXPHzp1rwaa5jTc+RV9/+RlWiAIKmjRPQF+xbGM9Kklj5bZQFa2s/38A==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001279
-      electron-to-chromium: 1.3.894
+      caniuse-lite: 1.0.30001294
+      electron-to-chromium: 1.4.30
       escalade: 3.1.1
       node-releases: 2.0.1
       picocolors: 1.0.0
@@ -2460,6 +2460,10 @@ packages:
 
   /caniuse-lite/1.0.30001279:
     resolution: {integrity: sha512-VfEHpzHEXj6/CxggTwSFoZBBYGQfQv9Cf42KPlO79sWXCD1QNKWKsKzFeWL7QpZHJQYAvocqV6Rty1yJMkqWLQ==}
+    dev: false
+
+  /caniuse-lite/1.0.30001294:
+    resolution: {integrity: sha512-LiMlrs1nSKZ8qkNhpUf5KD0Al1KCBE3zaT7OLOwEkagXMEDij98SiOovn9wxVGQpklk9vVC/pUSqgYmkmKOS8g==}
     dev: false
 
   /chalk/2.4.2:
@@ -2662,7 +2666,7 @@ packages:
   /core-js-compat/3.19.1:
     resolution: {integrity: sha512-Q/VJ7jAF/y68+aUsQJ/afPOewdsGkDtcMb40J8MbuWKlK3Y+wtHq8bTHKPj2WKWLIqmS5JhHs4CzHtz6pT2W6g==}
     dependencies:
-      browserslist: 4.17.6
+      browserslist: 4.19.1
       semver: 7.0.0
     dev: false
 
@@ -2759,7 +2763,7 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      caniuse-lite: 1.0.30001279
+      caniuse-lite: 1.0.30001294
       postcss: 8.2.15
     dev: false
 
@@ -2954,8 +2958,8 @@ packages:
       jake: 10.8.2
     dev: false
 
-  /electron-to-chromium/1.3.894:
-    resolution: {integrity: sha512-WY8pA4irAZ4cm/Pr7YFPtPLVqj3nU6d0SbfoHF6M7HZNONfPdAnYAarumqQ75go2LuN72uO9wGuCEqnfya/ytg==}
+  /electron-to-chromium/1.4.30:
+    resolution: {integrity: sha512-609z9sIMxDHg+TcR/VB3MXwH+uwtrYyeAwWc/orhnr90ixs6WVGSrt85CDLGUdNnLqCA7liv426V20EecjvflQ==}
     dev: false
 
   /elliptic/6.5.4:
@@ -3291,13 +3295,13 @@ packages:
       string.prototype.matchall: 4.0.6
     dev: true
 
-  /eslint-plugin-tailwindcss/1.17.1_autoprefixer@10.4.0:
+  /eslint-plugin-tailwindcss/1.17.1_autoprefixer@10.4.1:
     resolution: {integrity: sha512-WcGxGZUpUoWsopkvDsgc7OZZJm+wbklen2iT8zE+kuhsNMw5aCmbvvrw+ylwmPugityZCby2DTyMYmzwgtrj+Q==}
     engines: {node: '>=12.13.0'}
     dependencies:
       fast-glob: 3.2.7
       postcss: 8.4.5
-      tailwindcss: 2.2.19_16a290f6d0e3717bf6d2667234aebd30
+      tailwindcss: 2.2.19_cefe482e8d38053bbf3d5815e0c551b3
     transitivePeerDependencies:
       - autoprefixer
       - ts-node
@@ -3568,8 +3572,8 @@ packages:
     resolution: {integrity: sha1-C+4AUBiusmDQo6865ljdATbsG5k=}
     dev: false
 
-  /fraction.js/4.1.1:
-    resolution: {integrity: sha512-MHOhvvxHTfRFpF1geTK9czMIZ6xclsEor2wkIGYYq+PxcQqT7vStJqjhe6S1TenZrMZzo+wlqOufBDVepUEgPg==}
+  /fraction.js/4.1.2:
+    resolution: {integrity: sha512-o2RiJQ6DZaR/5+Si0qJUIy637QMRudSi9kU/FFzx9EZazrIdnBgpU+3sEWCxAVhH2RtxW2Oz+T4p2o8uOPVcgA==}
     dev: false
 
   /fs-extra/10.0.0:
@@ -5109,6 +5113,10 @@ packages:
   /postcss-value-parser/4.1.0:
     resolution: {integrity: sha512-97DXOFbQJhk71ne5/Mt6cOu6yxsSfM0QGQyl0L25Gca4yGWEGJaig7l7gbCX623VqTBNGLRLaVUCnNkcedlRSQ==}
 
+  /postcss-value-parser/4.2.0:
+    resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
+    dev: false
+
   /postcss/8.2.15:
     resolution: {integrity: sha512-2zO3b26eJD/8rb106Qu2o7Qgg52ND5HPjcyQiK2B98O388h43A448LCslC0dI2P97wCAQRJsFvwTRcXxTKds+Q==}
     engines: {node: ^10 || ^12 || >=14}
@@ -5938,7 +5946,7 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /tailwindcss/2.2.19_16a290f6d0e3717bf6d2667234aebd30:
+  /tailwindcss/2.2.19_cefe482e8d38053bbf3d5815e0c551b3:
     resolution: {integrity: sha512-6Ui7JSVtXadtTUo2NtkBBacobzWiQYVjYW0ZnKaP9S1ZCKQ0w7KVNz+YSDI/j7O7KCMHbOkz94ZMQhbT9pOqjw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -5947,7 +5955,7 @@ packages:
       postcss: ^8.0.9
     dependencies:
       arg: 5.0.1
-      autoprefixer: 10.4.0_postcss@8.4.5
+      autoprefixer: 10.4.1_postcss@8.4.5
       bytes: 3.1.0
       chalk: 4.1.2
       chokidar: 3.5.2
