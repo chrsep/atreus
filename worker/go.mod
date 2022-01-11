@@ -7,9 +7,10 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/prisma/prisma-client-go v0.12.2
 	github.com/projectdiscovery/subfinder/v2 v2.4.9
+	github.com/rs/xid v1.3.0
 	github.com/shopspring/decimal v1.3.1
 	github.com/takuoki/gocase v1.0.0
-	go.uber.org/zap v1.19.1
+	go.uber.org/zap v1.20.0
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 )
 
@@ -29,7 +30,6 @@ require (
 	github.com/projectdiscovery/dnsx v1.0.3 // indirect
 	github.com/projectdiscovery/gologger v1.1.4 // indirect
 	github.com/projectdiscovery/retryabledns v1.0.12 // indirect
-	github.com/rs/xid v1.3.0 // indirect
 	github.com/spyse-com/go-spyse v1.2.3 // indirect
 	github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
