@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/iancoleman/strcase v0.2.0
 	github.com/joho/godotenv v1.4.0
-	github.com/prisma/prisma-client-go v0.13.0
+	github.com/prisma/prisma-client-go v0.13.1
 	github.com/projectdiscovery/subfinder/v2 v2.4.9
 	github.com/rs/xid v1.3.0
 	github.com/shopspring/decimal v1.3.1
