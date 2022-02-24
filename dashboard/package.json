@@ -30,7 +30,7 @@
     "next-plugin-preact": "3.0.6",
     "next-pwa": "5.4.4",
     "preact": "10.6.6",
-    "preact-render-to-string": "5.1.19",
+    "preact-render-to-string": "5.1.20",
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
     "react-hook-form": "7.19.4",

@@ -35,7 +35,7 @@ specifiers:
   next-pwa: 5.4.4
   postcss: 8.4.6
   preact: 10.6.6
-  preact-render-to-string: 5.1.19
+  preact-render-to-string: 5.1.20
   prettier: 2.5.1
   prisma: 3.9.2
   react: npm:@preact/compat
@@ -56,10 +56,10 @@ dependencies:
   dayjs: 1.10.7
   next: 12.1.0_9bfab5d69556db861da30525f2351767
   next-compose-plugins: 2.2.1
-  next-plugin-preact: 3.0.6_75c08fede531e4b11514f64a4c33dedb
+  next-plugin-preact: 3.0.6_67fe2693a72de0374129eaa7d83eb524
   next-pwa: 5.4.4_next@12.1.0
   preact: 10.6.6
-  preact-render-to-string: 5.1.19_preact@10.6.6
+  preact-render-to-string: 5.1.20_preact@10.6.6
   prisma: 3.9.2
   react: /@preact/compat/17.0.3_preact@10.6.6
   react-dom: /@preact/compat/17.0.3_preact@10.6.6
@@ -4003,7 +4003,7 @@ packages:
     resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
     dev: false
 
-  /next-plugin-preact/3.0.6_75c08fede531e4b11514f64a4c33dedb:
+  /next-plugin-preact/3.0.6_67fe2693a72de0374129eaa7d83eb524:
     resolution: {integrity: sha512-Ze8c8h0jaCPbG0X9T5jJpSDtrfvU9NLlt+DJWtxOu2fn6qPbNU3s61F1hTcldZb3IbpXkp5iGnhPCdgGZEGrCQ==}
     requiresBuild: true
     peerDependencies:
@@ -4015,7 +4015,7 @@ packages:
       '@prefresh/webpack': 3.3.2_preact@10.6.6
       module-alias: 2.2.2
       preact: 10.6.6
-      preact-render-to-string: 5.1.19_preact@10.6.6
+      preact-render-to-string: 5.1.20_preact@10.6.6
     transitivePeerDependencies:
       - '@prefresh/babel-plugin'
       - next
@@ -4456,8 +4456,8 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
 
-  /preact-render-to-string/5.1.19_preact@10.6.6:
-    resolution: {integrity: sha512-bj8sn/oytIKO6RtOGSS/1+5CrQyRSC99eLUnEVbqUa6MzJX5dYh7wu9bmT0d6lm/Vea21k9KhCQwvr2sYN3rrQ==}
+  /preact-render-to-string/5.1.20_preact@10.6.6:
+    resolution: {integrity: sha512-ivh2oOGzth0o7XqbatWUQ81WQGoJwSqDKP5z917SoqTWYCAr7dlBzMv3SAMTAu3Gr5g47BJwrvyO44H2Y10ubg==}
     peerDependencies:
       preact: '>=10'
     dependencies:
