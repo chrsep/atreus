@@ -30,4 +30,4 @@ jobs:
           DOCKER_BUILDKIT: 1
           FLY_PROJECT_PATH: "./dashboard"
         with:
-          args: "deploy"
+          args: "deploy --remote-only"
