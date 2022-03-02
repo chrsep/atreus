@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@auth0/nextjs-auth0': 1.7.0
-  '@headlessui/react': 1.4.3
+  '@headlessui/react': 1.5.0
   '@prefresh/babel-plugin': 0.4.3
   '@prisma/client': 3.10.0
   '@tailwindcss/aspect-ratio': 0.4.0
@@ -36,7 +36,7 @@ specifiers:
 
 dependencies:
   '@auth0/nextjs-auth0': 1.7.0_next@12.1.0
-  '@headlessui/react': 1.4.3_9bfab5d69556db861da30525f2351767
+  '@headlessui/react': 1.5.0_9bfab5d69556db861da30525f2351767
   '@prisma/client': 3.10.0_prisma@3.10.0
   autoprefixer: 10.4.2_postcss@8.4.6
   clsx: 1.1.1
@@ -125,8 +125,8 @@ packages:
       '@hapi/hoek': 9.2.1
     dev: false
 
-  /@headlessui/react/1.4.3_9bfab5d69556db861da30525f2351767:
-    resolution: {integrity: sha512-n2IQkaaw0aAAlQS5MEXsM4uRK+w18CrM72EqnGRl/UBOQeQajad8oiKXR9Nk15jOzTFQjpxzrZMf1NxHidFBiw==}
+  /@headlessui/react/1.5.0_9bfab5d69556db861da30525f2351767:
+    resolution: {integrity: sha512-aaRnYxBb3MU2FNJf3Ut9RMTUqqU3as0aI1lQhgo2n9Fa67wRu14iOGqx93xB+uMNVfNwZ5B3y/Ndm7qZGuFeMQ==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16 || ^17 || ^18
