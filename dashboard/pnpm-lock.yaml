@@ -10,7 +10,7 @@ specifiers:
   '@tailwindcss/line-clamp': 0.3.1
   '@tailwindcss/typography': 0.5.2
   '@types/node': 16.11.25
-  '@types/react': 17.0.39
+  '@types/react': 17.0.45
   autoprefixer: 10.4.2
   clsx: 1.1.1
   dayjs: 1.11.2
@@ -62,7 +62,7 @@ devDependencies:
   '@tailwindcss/line-clamp': 0.3.1_tailwindcss@3.0.23
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.23
   '@types/node': 16.11.25
-  '@types/react': 17.0.39
+  '@types/react': 17.0.45
   husky: 7.0.4
   lint-staged: 12.3.4
   postcss: 8.4.13
@@ -474,8 +474,8 @@ packages:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
     dev: true
 
-  /@types/react/17.0.39:
-    resolution: {integrity: sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==}
+  /@types/react/17.0.45:
+    resolution: {integrity: sha512-YfhQ22Lah2e3CHPsb93tRwIGNiSwkuz1/blk4e6QrWS0jQzCSNbGLtOEYhPg02W0yGTTmpajp7dCTbBAMN3qsg==}
     dependencies:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
