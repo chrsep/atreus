@@ -6,7 +6,7 @@ specifiers:
   '@prefresh/babel-plugin': 0.4.3
   '@prisma/client': 3.10.0
   '@tailwindcss/aspect-ratio': 0.4.0
-  '@tailwindcss/forms': 0.4.0
+  '@tailwindcss/forms': 0.5.1
   '@tailwindcss/line-clamp': 0.3.1
   '@tailwindcss/typography': 0.5.2
   '@types/node': 16.11.25
@@ -58,7 +58,7 @@ dependencies:
 devDependencies:
   '@prefresh/babel-plugin': 0.4.3
   '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.0.23
-  '@tailwindcss/forms': 0.4.0_tailwindcss@3.0.23
+  '@tailwindcss/forms': 0.5.1_tailwindcss@3.0.23
   '@tailwindcss/line-clamp': 0.3.1_tailwindcss@3.0.23
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.23
   '@types/node': 16.11.25
@@ -394,8 +394,8 @@ packages:
       tailwindcss: 3.0.23_autoprefixer@10.4.2
     dev: true
 
-  /@tailwindcss/forms/0.4.0_tailwindcss@3.0.23:
-    resolution: {integrity: sha512-DeaQBx6EgEeuZPQACvC+mKneJsD8am1uiJugjgQK1+/Vt+Ai0GpFBC2T2fqnUad71WgOxyrZPE6BG1VaI6YqfQ==}
+  /@tailwindcss/forms/0.5.1_tailwindcss@3.0.23:
+    resolution: {integrity: sha512-QSwsFORnC2BAP0lRzQkz1pw+EzIiiPdk4e27vGQjyXkwJPeC7iLIRVndJzf9CJVbcrrIcirb/TfxF3gRTyFEVA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
