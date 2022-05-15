@@ -19,7 +19,7 @@
     "prisma:migrate-prod": "prisma migrate deploy"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "1.7.0",
+    "@auth0/nextjs-auth0": "1.8.0",
     "@headlessui/react": "1.5.0",
     "@prisma/client": "3.10.0",
     "autoprefixer": "10.4.7",

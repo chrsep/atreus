@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@auth0/nextjs-auth0': 1.7.0
+  '@auth0/nextjs-auth0': 1.8.0
   '@headlessui/react': 1.5.0
   '@prefresh/babel-plugin': 0.4.3
   '@prisma/client': 3.10.0
@@ -35,7 +35,7 @@ specifiers:
   zod: 3.11.6
 
 dependencies:
-  '@auth0/nextjs-auth0': 1.7.0_next@12.1.6
+  '@auth0/nextjs-auth0': 1.8.0_next@12.1.6
   '@headlessui/react': 1.5.0_9bfab5d69556db861da30525f2351767
   '@prisma/client': 3.10.0_prisma@3.10.0
   autoprefixer: 10.4.7_postcss@8.4.13
@@ -72,18 +72,18 @@ devDependencies:
 
 packages:
 
-  /@auth0/nextjs-auth0/1.7.0_next@12.1.6:
-    resolution: {integrity: sha512-twz4f1A94i2ShJ6jB3UsFuVhzE0vJ1M/Ukq5bNBm/gpvCK6E/P8Ew2wQloak73+mXcV7eg5S+HOlmiKpcSe6mw==}
+  /@auth0/nextjs-auth0/1.8.0_next@12.1.6:
+    resolution: {integrity: sha512-lOI7i1khyuvVUGD/V9k+YMVxj3LB74KYqrCRQ8Uezai8YEAPHhExGMpIlFUPV7J4iPIuNNhW/4TYa45nkPNr0w==}
     engines: {node: ^10.13.0 || >=12.0.0}
     peerDependencies:
       next: '>=10'
     dependencies:
       base64url: 3.0.1
-      cookie: 0.4.1
-      debug: 4.3.3
-      futoin-hkdf: 1.4.2
+      cookie: 0.5.0
+      debug: 4.3.4
+      futoin-hkdf: 1.5.0
       http-errors: 1.8.1
-      joi: 17.5.0
+      joi: 17.6.0
       jose: 2.0.5
       next: 12.1.6_9bfab5d69556db861da30525f2351767
       on-headers: 1.0.2
@@ -860,8 +860,8 @@ packages:
     engines: {node: '>= 12'}
     dev: true
 
-  /cookie/0.4.1:
-    resolution: {integrity: sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==}
+  /cookie/0.5.0:
+    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
     engines: {node: '>= 0.6'}
     dev: false
 
@@ -888,18 +888,6 @@ packages:
     resolution: {integrity: sha512-F4LXf1OeU9hrSYRPTTj/6FbO4HTjPKXvEIC1P2kcnFurViINCVk3ZV0xAS3XVx9MkMsXbbqlK6hjseaYbgKEHw==}
     dev: false
 
-  /debug/4.3.3:
-    resolution: {integrity: sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-    dependencies:
-      ms: 2.1.2
-    dev: false
-
   /debug/4.3.3_supports-color@9.2.1:
     resolution: {integrity: sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==}
     engines: {node: '>=6.0'}
@@ -912,6 +900,18 @@ packages:
       ms: 2.1.2
       supports-color: 9.2.1
     dev: true
+
+  /debug/4.3.4:
+    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
+    dev: false
 
   /decompress-response/6.0.0:
     resolution: {integrity: sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==}
@@ -1082,8 +1082,8 @@ packages:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
     dev: false
 
-  /futoin-hkdf/1.4.2:
-    resolution: {integrity: sha512-2BggwLEJOTfXzKq4Tl2bIT37p0IqqKkblH4e0cMp2sXTdmwg/ADBKMxvxaEytYYcgdxgng8+acsi3WgMVUl6CQ==}
+  /futoin-hkdf/1.5.0:
+    resolution: {integrity: sha512-4CerDhtTgx4i5PKccQIpEp4T9wqmosPIP9Kep35SdCpYkQeriD3zddUVhrO1Fc4QvGhsAnd2rXyoOr5047mJEg==}
     engines: {node: '>=8'}
     dev: false
 
@@ -1249,8 +1249,8 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /joi/17.5.0:
-    resolution: {integrity: sha512-R7hR50COp7StzLnDi4ywOXHrBrgNXuUUfJWIR5lPY5Bm/pOD3jZaTwpluUXVLRWcoWZxkrHBBJ5hLxgnlehbdw==}
+  /joi/17.6.0:
+    resolution: {integrity: sha512-OX5dG6DTbcr/kbMFj0KGYxuew69HPcAE3K/sZpEV2nP6e/j/C0HV+HNiBPCASxdx5T7DMoa0s8UeHWMnb6n2zw==}
     dependencies:
       '@hapi/hoek': 9.2.1
       '@hapi/topo': 5.1.0
