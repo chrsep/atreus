@@ -49,7 +49,7 @@
     "@types/react": "17.0.45",
     "husky": "7.0.4",
     "lint-staged": "12.3.4",
-    "postcss": "8.4.13",
+    "postcss": "8.4.31",
     "prettier": "2.5.1",
     "typescript": "4.6.4",
     "webpack": "^5.69.1"
